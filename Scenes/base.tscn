@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bplmhiv0r8b3d"]
+
+[ext_resource type="PackedScene" uid="uid://byftoioygd6js" path="res://Scenes/Player1.tscn" id="1_31hd7"]
+[ext_resource type="Texture2D" uid="uid://dia77alkvwajx" path="res://icon.svg" id="2_1w1q6"]
+[ext_resource type="PackedScene" uid="uid://deth1no6loh1e" path="res://Scenes/Player2.tscn" id="3_6qyon"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w5gtm"]
+
+[node name="Base" type="Node2D" unique_id=860293535]
+
+[node name="Player1" parent="." unique_id=1839866205 instance=ExtResource("1_31hd7")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1278093968]
+position = Vector2(405, 150)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=131197967]
+position = Vector2(384, 362)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2008290275]
+shape = SubResource("WorldBoundaryShape2D_w5gtm")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1689363921]
+position = Vector2(18.5, 63)
+scale = Vector2(9.2109375, 1)
+texture = ExtResource("2_1w1q6")
+
+[node name="Player2" parent="." unique_id=1067377693 instance=ExtResource("3_6qyon")]
+position = Vector2(803, -2)

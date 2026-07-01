@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://byftoioygd6js"]
+
+[ext_resource type="Script" uid="uid://r4k0grg0pb0c" path="res://Scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://dia77alkvwajx" path="res://icon.svg" id="1_rpqav"]
+[ext_resource type="PackedScene" uid="uid://dlgeapahsfg15" path="res://Scenes/basic_gun.tscn" id="3_dvont"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nvaw"]
+size = Vector2(32, 32)
+
+[node name="Player1" type="CharacterBody2D" unique_id=1839866205]
+script = ExtResource("1_kyqiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=830481966]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_rpqav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761380868]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_1nvaw")
+
+[node name="WeaponHolderFlipper" type="Node2D" parent="." unique_id=1431127343]
+scale = Vector2(-1, 1)
+
+[node name="WeaponHolder" type="Node2D" parent="WeaponHolderFlipper" unique_id=1822474020]
+position = Vector2(38, 12)
+
+[node name="BasicGun" parent="WeaponHolderFlipper/WeaponHolder" unique_id=40949958 instance=ExtResource("3_dvont")]

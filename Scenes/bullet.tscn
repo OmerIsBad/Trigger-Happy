@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c3fogrrvvcs5s"]
+
+[ext_resource type="Script" uid="uid://b4aodux7rxrnc" path="res://Scripts/bullet.gd" id="1_oduel"]
+[ext_resource type="Texture2D" uid="uid://dia77alkvwajx" path="res://icon.svg" id="1_xjght"]
+
+[node name="Bullet" type="Node2D" unique_id=758255167]
+script = ExtResource("1_oduel")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1581734007]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_xjght")
+
+[node name="BulletLifeTimer" type="Timer" parent="." unique_id=611502473]
+
+[connection signal="timeout" from="BulletLifeTimer" to="." method="_on_bullet_life_timer_timeout"]
