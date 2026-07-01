@@ -8,7 +8,7 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 #Gun Stats
 var Recoil = 750.0
 var FireRate = 0.3
-var MagSize
+var MagSize = -1 #-1 for infinite
 var GunName
 var CanShoot = true
 
@@ -44,6 +44,8 @@ func IdentifyPlayerShoot():
 		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)
 
 func Shoot():
+	if MagSize != -1: #Check if this gun has infinite ammo
+		MagSize -= 1
 	var Bullet = BulletScene.instantiate()
 	
 	Bullet.global_position = $Muzzle.global_position

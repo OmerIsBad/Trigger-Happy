@@ -25,3 +25,6 @@ scale = Vector2(-1, 1)
 position = Vector2(38, 12)
 
 [node name="BasicGun" parent="WeaponHolderFlipper/WeaponHolder" unique_id=40949958 instance=ExtResource("3_kfthp")]
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=966266317]
+one_shot = true

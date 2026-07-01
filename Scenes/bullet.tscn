@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://b4aodux7rxrnc" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://dia77alkvwajx" path="res://icon.svg" id="1_xjght"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_npw3m"]
+radius = 6.0
+
 [node name="Bullet" type="Node2D" unique_id=758255167]
 script = ExtResource("1_oduel")
 
@@ -11,5 +14,10 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_xjght")
 
 [node name="BulletLifeTimer" type="Timer" parent="." unique_id=611502473]
+
+[node name="HitBox" type="Area2D" parent="." unique_id=551225276]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=412678726]
+shape = SubResource("CircleShape2D_npw3m")
 
 [connection signal="timeout" from="BulletLifeTimer" to="." method="_on_bullet_life_timer_timeout"]

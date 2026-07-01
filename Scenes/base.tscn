@@ -6,6 +6,9 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w5gtm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
+size = Vector2(511, 40)
+
 [node name="Base" type="Node2D" unique_id=860293535]
 
 [node name="Player1" parent="." unique_id=1839866205 instance=ExtResource("1_31hd7")]
@@ -26,3 +29,27 @@ texture = ExtResource("2_1w1q6")
 
 [node name="Player2" parent="." unique_id=1067377693 instance=ExtResource("3_6qyon")]
 position = Vector2(803, -2)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1081622047]
+position = Vector2(542, 71)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=782663237]
+position = Vector2(39.499992, 1)
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_1w1q6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1357366294]
+position = Vector2(39.5, 1)
+shape = SubResource("RectangleShape2D_npw3m")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=854879522]
+position = Vector2(366, 209)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=933729442]
+position = Vector2(39.499992, 1)
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_1w1q6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=278582582]
+position = Vector2(39.5, 1)
+shape = SubResource("RectangleShape2D_npw3m")
