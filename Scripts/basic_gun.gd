@@ -55,6 +55,7 @@ func Shoot():
 	Bullet.Knockback = BulletKnockback
 	get_tree().current_scene.add_child(Bullet)
 	
+	
 	StartCooldown()
 
 func ApplyRecoil():

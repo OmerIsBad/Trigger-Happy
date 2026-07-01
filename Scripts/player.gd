@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor() and CoyoteTimerNode.is_stopped():
 		CoyoteTimerNode.start(CoyoteTime)
 	
-	#If he's on the floor we give em all jumping privilages
+	#If he's on the floor we give em all jumping privilages 
 	elif is_on_floor():
 		CanJump = true
 		CanDoubleJump = true
@@ -117,9 +117,9 @@ func _physics_process(delta: float) -> void:
 	
 	if !is_on_floor() and velocity.y > 0:
 		AnimatedSprite.play("Fall")
-	elif !is_on_floor() and velocity.y < 0:
+	if !is_on_floor() and velocity.y < 0:
 		AnimatedSprite.play("Jump")
-	
+
 	
 	
 	move_and_slide()
