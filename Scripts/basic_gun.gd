@@ -15,7 +15,7 @@ var CanShoot = true
 #Bullet Stats
 var BulletSpeed = 75
 var BulletLifeTime = 10.0
-var BulletKnockback
+var BulletKnockback = 1250.0
 var BulletDirection = -1
 
 # Called when the node enters the scene tree for the first time.
@@ -52,6 +52,7 @@ func Shoot():
 	Bullet.Direction = BulletDirection
 	Bullet.Speed = BulletSpeed
 	Bullet.Lifetime = BulletLifeTime
+	Bullet.Knockback = BulletKnockback
 	get_tree().current_scene.add_child(Bullet)
 	
 	StartCooldown()
@@ -67,3 +68,4 @@ func StartCooldown():
 
 func _on_fire_rate_timer_timeout() -> void:
 	CanShoot = true
+	

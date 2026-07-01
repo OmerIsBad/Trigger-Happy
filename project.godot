@@ -15,13 +15,17 @@ run/main_scene="uid://bplmhiv0r8b3d"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://btu8i0v1c26yf"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/mode=4
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 
@@ -72,4 +76,5 @@ SHOOT_2={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

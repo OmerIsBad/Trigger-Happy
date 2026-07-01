@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var WeaponHolderFlipperNode = $WeaponHolderFlipper
 @onready var CoyoteTimerNode = $CoyoteTimer
+@onready var AnimatedSprite = $AnimatedSprite2D
 
 var CoyoteTime = 0.15
 var CanJump = true
@@ -104,11 +105,33 @@ func _physics_process(delta: float) -> void:
 	#Turn Gun to direction
 	WeaponHolderFlipperNode.scale.x = Direction
 
+	#-----ANIMATIONS!-----
+	if InputDirection == 0:
+		AnimatedSprite.play("Idle")
+	elif InputDirection == 1:
+		AnimatedSprite.flip_h = true
+		AnimatedSprite.play("Run")
+	elif InputDirection == -1:
+		AnimatedSprite.flip_h = false
+		AnimatedSprite.play("Run")
+	
+	if !is_on_floor() and velocity.y > 0:
+		AnimatedSprite.play("Fall")
+	elif !is_on_floor() and velocity.y < 0:
+		AnimatedSprite.play("Jump")
+	
+	
+	
 	move_and_slide()
+	
 
 func Jump():
 	velocity.y = -JumpForce
 	CanJump = false
+	
+func ApplyKnockback(Knockback, PushDirection):
+	print("Called! with knockback as: ", Knockback, "And direcion as: ", PushDirection)
+	velocity.x += Knockback * PushDirection
 	
 	
 func _on_coyote_timer_timeout() -> void:

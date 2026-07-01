@@ -21,3 +21,4 @@ texture = ExtResource("1_xjght")
 shape = SubResource("CircleShape2D_npw3m")
 
 [connection signal="timeout" from="BulletLifeTimer" to="." method="_on_bullet_life_timer_timeout"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
