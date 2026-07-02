@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://70vm4h0tt2ts"]
+
+[ext_resource type="Script" uid="uid://dxuk1s02jxd12" path="res://Scripts/AWMSniper.gd" id="1_4bl06"]
+[ext_resource type="Texture2D" uid="uid://ccli0hsjcvcyb" path="res://Assets/AWM_Sniper_In_Hand.png" id="2_vy01x"]
+
+[node name="AWMSniper" type="Node2D" unique_id=43814650]
+script = ExtResource("1_4bl06")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1150809030]
+scale = Vector2(2, 2)
+texture = ExtResource("2_vy01x")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1999410042]
+position = Vector2(39, -2)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=621057328]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

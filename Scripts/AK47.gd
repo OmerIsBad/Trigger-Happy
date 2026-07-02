@@ -9,9 +9,9 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 
 
 #Gun Stats
-var Recoil = 150.0
+var Recoil = 250.0
 var FireRate = 0.15
-var MagSize = -1 #-1 for infinite
+var MagSize = 30 #-1 for infinite
 var GunName = "AK47"
 var CanShoot = true
 
@@ -36,7 +36,8 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed(ShootButton) and CanShoot:
 		Shoot()
-		ApplyRecoil()
+		if MagSize != 0:
+			ApplyRecoil()
 
 func IdentifyPlayerShoot():
 	print(get_parent().get_parent().get_parent().name)
@@ -50,6 +51,7 @@ func IdentifyPlayerShoot():
 func Shoot():
 	if MagSize != -1: #Check if this gun has infinite ammo
 		MagSize -= 1
+		
 	var Bullet = BulletScene.instantiate()
 	
 	Bullet.global_position = $Muzzle.global_position
@@ -59,8 +61,10 @@ func Shoot():
 	Bullet.Knockback = BulletKnockback
 	get_tree().current_scene.add_child(Bullet)
 	
-	
-	StartCooldown()
+	if MagSize == 0:
+		DestroyGun()
+	else:
+		StartCooldown()
 
 func ApplyRecoil():
 	get_parent().get_parent().get_parent().velocity.x -= Recoil * get_parent().get_parent().get_parent().Direction
@@ -71,6 +75,10 @@ func ApplyRecoil():
 	var RecoilTween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	RecoilTween.tween_property(PlayerHand, "position", KickPosition, 0.05)
 	RecoilTween.tween_property(PlayerHand, "position", RestPosition, 0.1)
+
+func DestroyGun():
+	get_parent().get_parent().get_parent().DropGun(GunName)
+	queue_free()
 
 func StartCooldown():
 	CanShoot = false

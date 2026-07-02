@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dcnmywy7djk7h" path="res://Assets/Player_Air_RED.png" id="2_2ale3"]
 [ext_resource type="Texture2D" uid="uid://b5fj4ew8f3pil" path="res://Assets/Player_Run_RED.png" id="2_dvont"]
 [ext_resource type="Texture2D" uid="uid://brurq1gppfwel" path="res://Assets/Player_Idle_RED.png" id="3_i047d"]
-[ext_resource type="PackedScene" uid="uid://n8i4k1p27p8m" path="res://Scenes/PumpShotgun.tscn" id="5_2ale3"]
+[ext_resource type="PackedScene" uid="uid://70vm4h0tt2ts" path="res://Scenes/AWMSniper.tscn" id="5_2ale3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
 atlas = ExtResource("2_2ale3")
@@ -115,7 +115,7 @@ scale = Vector2(-1, 1)
 [node name="WeaponHolder" type="Node2D" parent="Hand" unique_id=1822474020]
 position = Vector2(28, 19)
 
-[node name="PumpShotgun" parent="Hand/WeaponHolder" unique_id=492981240 instance=ExtResource("5_2ale3")]
+[node name="AWMSniper" parent="Hand/WeaponHolder" unique_id=43814650 instance=ExtResource("5_2ale3")]
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=468557345]
 one_shot = true

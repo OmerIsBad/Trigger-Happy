@@ -113,7 +113,7 @@ shape = SubResource("CapsuleShape2D_oixfn")
 scale = Vector2(-1, 1)
 
 [node name="WeaponHolder" type="Node2D" parent="Hand" unique_id=1040076102]
-position = Vector2(38, 12)
+position = Vector2(28, 19)
 
 [node name="Glock29" parent="Hand/WeaponHolder" unique_id=40949958 instance=ExtResource("3_kfthp")]
 

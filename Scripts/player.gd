@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @onready var HandNode = $Hand
+@onready var WeaponHolderNode = $Hand/WeaponHolder
 @onready var CoyoteTimerNode = $CoyoteTimer
 @onready var AnimatedSprite = $AnimatedSprite2D
+
 
 var CoyoteTime = 0.15
 var CanJump = true
@@ -140,7 +142,21 @@ func Jump():
 func ApplyKnockback(Knockback, PushDirection):
 	print("knockback of ", Knockback)
 	velocity.x += Knockback * PushDirection
+
+func DropGun(GunName: String):
+	var DroppedGunScene = preload("res://Scenes/DroppedGun.tscn")
+	var DroppedGun = DroppedGunScene.instantiate()
 	
+	DroppedGun.get_node("GunSprite").texture = load("res://Assets/OnlyGuns/" + GunName + ".png")
+	DroppedGun.position = position
 	
+	get_tree().current_scene.add_child(DroppedGun)
+	
+	#Give Player Basic Glock
+	var GlockScene = preload("res://Scenes/Glock29.tscn")
+	var Glock = GlockScene.instantiate()
+	WeaponHolderNode.add_child(Glock)
+	
+
 func _on_coyote_timer_timeout() -> void:
 	CanJump = false

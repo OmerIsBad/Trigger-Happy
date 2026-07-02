@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://mm11upsjajyn"]
+
+[ext_resource type="Script" uid="uid://bi3ywos42a4eg" path="res://Scripts/DroppedGun.gd" id="1_jewd6"]
+
+[node name="DroppedGun" type="Node2D" unique_id=129773950]
+script = ExtResource("1_jewd6")
+
+[node name="GunSprite" type="Sprite2D" parent="." unique_id=1214240285]
+scale = Vector2(2, 2)
+
+[node name="DeleteTimer" type="Timer" parent="." unique_id=590417100]
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

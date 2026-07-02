@@ -11,14 +11,14 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 #Gun Stats
 var Recoil = 650.0
 var FireRate = 1.0
-var MagSize = -1 #-1 for infinite
+var MagSize = 8 #-1 for infinite
 var GunName = "PumpShotgun"
 var CanShoot = true
 
 #Bullet Stats
 var BulletSpeed = 150.0
 var BulletLifeTime = 0.015
-var BulletKnockback = 3250
+var BulletKnockback = 4250
 var BulletDirection = -1
 
 # Called when the node enters the scene tree for the first time.
@@ -36,7 +36,8 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed(ShootButton) and CanShoot:
 		Shoot()
-		ApplyRecoil()
+		if MagSize != 0:
+			ApplyRecoil()
 
 func IdentifyPlayerShoot():
 	print(get_parent().get_parent().get_parent().name)
@@ -59,8 +60,10 @@ func Shoot():
 	Bullet.Knockback = BulletKnockback
 	get_tree().current_scene.add_child(Bullet)
 	
-	
-	StartCooldown()
+	if MagSize == 0:
+		DestroyGun()
+	else:
+		StartCooldown()
 
 func ApplyRecoil():
 	get_parent().get_parent().get_parent().velocity.x -= Recoil * get_parent().get_parent().get_parent().Direction
@@ -76,7 +79,9 @@ func StartCooldown():
 	CanShoot = false
 	FireRateTimer.start(FireRate)
 	
-
+func DestroyGun():
+	get_parent().get_parent().get_parent().DropGun(GunName)
+	queue_free()
 
 func _on_fire_rate_timer_timeout() -> void:
 	CanShoot = true
