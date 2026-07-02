@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://n8i4k1p27p8m"]
+
+[ext_resource type="Script" uid="uid://b0hyagp7vmp3b" path="res://Scripts/PumpShotgun.gd" id="1_vkbth"]
+[ext_resource type="Texture2D" uid="uid://byrxpsfq0pv3b" path="res://Assets/PumpShotgun_In_Hand.png" id="2_75537"]
+
+[node name="PumpShotgun" type="Node2D" unique_id=492981240]
+script = ExtResource("1_vkbth")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=552616084]
+scale = Vector2(2, 2)
+texture = ExtResource("2_75537")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=631279921]
+position = Vector2(32, -5)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1637576824]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

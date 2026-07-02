@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dlgeapahsfg15"]
+
+[ext_resource type="Script" uid="uid://bqcrkxns8yi0a" path="res://Scripts/Glock29.gd" id="1_71ye7"]
+[ext_resource type="Texture2D" uid="uid://hpd5qcntoygh" path="res://Assets/Glock26_In_Hand.png" id="2_hblro"]
+
+[node name="Glock29" type="Node2D" unique_id=40949958]
+script = ExtResource("1_71ye7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2049127775]
+scale = Vector2(2, 2)
+texture = ExtResource("2_hblro")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1481519287]
+position = Vector2(17, -8)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1312687347]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

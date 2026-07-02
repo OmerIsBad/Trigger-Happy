@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://behxlpv6hngwg"]
+
+[ext_resource type="Script" uid="uid://dsn8kq02vbank" path="res://Scripts/AK47.gd" id="1_0d5bk"]
+[ext_resource type="Texture2D" uid="uid://b6wp014rr28nd" path="res://Assets/AK47_In_Hand.png" id="2_w1jls"]
+
+[node name="AK47" type="Node2D" unique_id=1749951757]
+script = ExtResource("1_0d5bk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=516131303]
+scale = Vector2(2, 2)
+texture = ExtResource("2_w1jls")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=2127579697]
+position = Vector2(34, -5)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1394480441]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

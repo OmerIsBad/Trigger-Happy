@@ -27,6 +27,10 @@ window/size/mode=4
 window/size/resizable=false
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Omer Ahmed/Documents/GitHub/simple-gun-test/Movie2.avi"
+
 [input]
 
 LEFT={

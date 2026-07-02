@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var WeaponHolderFlipperNode = $WeaponHolderFlipper
+@onready var HandNode = $Hand
 @onready var CoyoteTimerNode = $CoyoteTimer
 @onready var AnimatedSprite = $AnimatedSprite2D
 
@@ -11,6 +11,7 @@ var CanDoubleJump = false
 var Acceleration = 40.0
 var TopSpeed = 500.0
 var Friction = 25
+var ExtremeSpeedFriction = 45
 var AirResistance = 15
 var UpGravity = 40
 var DownGravity = 60
@@ -59,23 +60,36 @@ func _physics_process(delta: float) -> void:
 			CanDoubleJump = false
 			Jump()
 
-	# Apply Acceeration if button in pressed
-	if InputDirection == 1:
+	# Apply Acceeration if button pressed and player isnt above TS
+	if abs(velocity.x) < TopSpeed:
+		if InputDirection == 1:
+			velocity.x += Acceleration
+		elif InputDirection == -1:
+			velocity.x -= Acceleration
+	
+	#if player is above topspeed due to KNOCKBACK, let him slow down
+	elif InputDirection == 1 and velocity.x < 0:
 		velocity.x += Acceleration
-	elif InputDirection == -1:
+	elif InputDirection == -1 and velocity.x > 0:
 		velocity.x -= Acceleration
 	
 	
 	
 	#Apply Friction or Air Resistance if nothing is pressed
 	if is_on_floor():
+		#if extreme speed, increase friction, else use normal
+		var FrictionToUse = Friction
+		
+		if abs(velocity.x) > TopSpeed :
+			FrictionToUse = ExtremeSpeedFriction
+		
 		#To prevent pingponging, reset to zero
-		if InputDirection == 0.0 and abs(velocity.x) < Friction:
+		if InputDirection == 0.0 and abs(velocity.x) < FrictionToUse:
 			velocity.x = 0
 		elif InputDirection == 0.0 and velocity.x > 0.0:
-			velocity.x -= Friction
+			velocity.x -= FrictionToUse
 		elif InputDirection == 0.0 and velocity.x < 0.0:
-			velocity.x += Friction
+			velocity.x += FrictionToUse
 	else:
 		#to prevent pingponging, reset to zero
 		if InputDirection == 0.0 and abs(velocity.x) < AirResistance:
@@ -85,12 +99,6 @@ func _physics_process(delta: float) -> void:
 		elif InputDirection == 0.0 and velocity.x < 0.0:
 			velocity.x += AirResistance
 	
-	
-	#keep player from exceding top speed
-	if velocity.x > TopSpeed:
-		velocity.x = TopSpeed
-	elif velocity.x < -TopSpeed:
-		velocity.x = -TopSpeed
 	
 	#Jumpy
 	if Input.is_action_just_pressed(MoveJump) and CanJump == true:
@@ -103,7 +111,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += UpGravity
 	
 	#Turn Gun to direction
-	WeaponHolderFlipperNode.scale.x = Direction
+	HandNode.scale.x = Direction
 
 	#-----ANIMATIONS!-----
 	if InputDirection == 0:
@@ -130,7 +138,7 @@ func Jump():
 	CanJump = false
 	
 func ApplyKnockback(Knockback, PushDirection):
-	print("Called! with knockback as: ", Knockback, "And direcion as: ", PushDirection)
+	print("knockback of ", Knockback)
 	velocity.x += Knockback * PushDirection
 	
 	

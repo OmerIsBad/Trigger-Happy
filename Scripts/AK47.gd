@@ -4,23 +4,27 @@ var ShootButton
 
 var BulletScene = preload("res://Scenes/bullet.tscn")
 @onready var FireRateTimer = $FireRateTimer
+@onready var PlayerHand = get_parent().get_parent()
+
+
 
 #Gun Stats
-var Recoil = 750.0
-var FireRate = 0.3
+var Recoil = 150.0
+var FireRate = 0.15
 var MagSize = -1 #-1 for infinite
-var GunName
+var GunName = "AK47"
 var CanShoot = true
 
 #Bullet Stats
-var BulletSpeed = 75
+var BulletSpeed = 85
 var BulletLifeTime = 10.0
-var BulletKnockback = 1250.0
+var BulletKnockback = 450.0
 var BulletDirection = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	IdentifyPlayerShoot()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,13 +64,17 @@ func Shoot():
 
 func ApplyRecoil():
 	get_parent().get_parent().get_parent().velocity.x -= Recoil * get_parent().get_parent().get_parent().Direction
-
+	
+	var RestPosition = PlayerHand.position
+	var KickPosition = RestPosition + Vector2(-15 * BulletDirection, 0)
+	
+	var RecoilTween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	RecoilTween.tween_property(PlayerHand, "position", KickPosition, 0.05)
+	RecoilTween.tween_property(PlayerHand, "position", RestPosition, 0.1)
 
 func StartCooldown():
 	CanShoot = false
 	FireRateTimer.start(FireRate)
 	
-
 func _on_fire_rate_timer_timeout() -> void:
 	CanShoot = true
-	
