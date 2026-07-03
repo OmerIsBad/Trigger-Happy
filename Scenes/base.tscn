@@ -4,52 +4,103 @@
 [ext_resource type="Texture2D" uid="uid://d0knq47jntws5" path="res://Assets/Prototype.png" id="2_6qyon"]
 [ext_resource type="PackedScene" uid="uid://deth1no6loh1e" path="res://Scenes/Player2.tscn" id="3_6qyon"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w5gtm"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
 size = Vector2(511, 40)
 
 [node name="Base" type="Node2D" unique_id=860293535]
 
 [node name="Player1" parent="." unique_id=1839866205 instance=ExtResource("1_31hd7")]
+position = Vector2(480, -500)
 
 [node name="Player2" parent="." unique_id=1067377693 instance=ExtResource("3_6qyon")]
-position = Vector2(392, 297)
+position = Vector2(1440, -500)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1278093968]
-position = Vector2(405, 150)
+position = Vector2(960, 540)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=131197967]
-position = Vector2(384, 362)
+[node name="Platforms" type="Node2D" parent="." unique_id=849574418]
+z_index = -1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2008290275]
-shape = SubResource("WorldBoundaryShape2D_w5gtm")
+[node name="Platform" type="StaticBody2D" parent="Platforms" unique_id=1081622047]
+position = Vector2(580, 950)
+scale = Vector2(1, 0.39999998)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1689363921]
-position = Vector2(18.5, 63)
-scale = Vector2(9.2109375, 1)
-texture = ExtResource("2_6qyon")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1081622047]
-position = Vector2(1018, -12)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=782663237]
-position = Vector2(39.499992, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform" unique_id=782663237]
 scale = Vector2(3.9921877, 0.3125)
 texture = ExtResource("2_6qyon")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1357366294]
-position = Vector2(39.5, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform" unique_id=1357366294]
 shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=854879522]
-position = Vector2(-68, 112)
+[node name="Platform2" type="StaticBody2D" parent="Platforms" unique_id=1709327983]
+position = Vector2(1340, 948)
+scale = Vector2(1, 0.39999998)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=933729442]
-position = Vector2(39.499992, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2" unique_id=103298439]
 scale = Vector2(3.9921877, 0.3125)
 texture = ExtResource("2_6qyon")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=278582582]
-position = Vector2(39.5, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2" unique_id=1250391896]
 shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms" unique_id=612689674]
+position = Vector2(960, 851)
+scale = Vector2(1, 0.39999998)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3" unique_id=1475936841]
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_6qyon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3" unique_id=357687714]
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="Platform4" type="StaticBody2D" parent="Platforms" unique_id=2133316420]
+position = Vector2(960, 734)
+scale = Vector2(2.7199974, 0.39999998)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4" unique_id=1373088332]
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_6qyon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4" unique_id=754499784]
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="Platform5" type="StaticBody2D" parent="Platforms" unique_id=1295687350]
+position = Vector2(960.00006, 412)
+scale = Vector2(3.3199973, 0.39999998)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5" unique_id=1780914457]
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_6qyon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform5" unique_id=133891590]
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="Platform6" type="StaticBody2D" parent="Platforms" unique_id=894993449]
+position = Vector2(1340, 566.00006)
+scale = Vector2(1, 0.39999998)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6" unique_id=470809305]
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_6qyon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform6" unique_id=708522626]
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="Platform7" type="StaticBody2D" parent="Platforms" unique_id=896627172]
+position = Vector2(580, 566)
+scale = Vector2(1, 0.39999998)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7" unique_id=215014635]
+scale = Vector2(3.9921877, 0.3125)
+texture = ExtResource("2_6qyon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform7" unique_id=1567310251]
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true

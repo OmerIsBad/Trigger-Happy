@@ -18,7 +18,7 @@ var CanShoot = true
 #Bullet Stats
 var BulletSpeed = 75
 var BulletLifeTime = 10.0
-var BulletKnockback = 850.0
+var BulletKnockback = 600.0
 var BulletDirection = -1
 
 # Called when the node enters the scene tree for the first time.

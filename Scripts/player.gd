@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var CoyoteTimerNode = $CoyoteTimer
 @onready var AnimatedSprite = $AnimatedSprite2D
 
-
 var CoyoteTime = 0.15
 var CanJump = true
 
@@ -13,7 +12,7 @@ var CanDoubleJump = false
 var Acceleration = 40.0
 var TopSpeed = 500.0
 var Friction = 25
-var ExtremeSpeedFriction = 45
+var ExtremeSpeedFriction = 80
 var AirResistance = 15
 var UpGravity = 40
 var DownGravity = 60
@@ -23,6 +22,9 @@ var MoveRight
 var MoveJump
 var Direction = -1.0 
 var InputDirection
+var SpeedDegradation = 5
+var RespawnPosition
+var Stock = 3
 
 func IdentifyPlayer():
 	if name == "Player1":
@@ -36,8 +38,13 @@ func IdentifyPlayer():
 
 func _ready() -> void:
 	IdentifyPlayer()
+	RespawnPosition = position
 
 func _physics_process(delta: float) -> void:
+	if position.y > 1500:
+		Respawn()
+		print("poop")
+		return
 	
 	InputDirection = Input.get_axis(MoveLeft, MoveRight)
 	if InputDirection != 0:
@@ -65,9 +72,15 @@ func _physics_process(delta: float) -> void:
 	# Apply Acceeration if button pressed and player isnt above TS
 	if abs(velocity.x) < TopSpeed:
 		if InputDirection == 1:
-			velocity.x += Acceleration
+			if (velocity.x + Acceleration) < TopSpeed:
+				velocity.x += Acceleration
+			else:
+				velocity.x = 500
 		elif InputDirection == -1:
-			velocity.x -= Acceleration
+			if (velocity.x - Acceleration) > -TopSpeed:
+				velocity.x -= Acceleration
+			else:
+				velocity.x = -500
 	
 	#if player is above topspeed due to KNOCKBACK, let him slow down
 	elif InputDirection == 1 and velocity.x < 0:
@@ -75,10 +88,12 @@ func _physics_process(delta: float) -> void:
 	elif InputDirection == -1 and velocity.x > 0:
 		velocity.x -= Acceleration
 	
-	
+	if abs(velocity.x) > TopSpeed:
+		velocity.x -= SpeedDegradation * Direction
+
 	
 	#Apply Friction or Air Resistance if nothing is pressed
-	if is_on_floor():
+	if is_on_floor() or abs(velocity.x) > TopSpeed:
 		#if extreme speed, increase friction, else use normal
 		var FrictionToUse = Friction
 		
@@ -156,6 +171,15 @@ func DropGun(GunName: String):
 	var GlockScene = preload("res://Scenes/Glock29.tscn")
 	var Glock = GlockScene.instantiate()
 	WeaponHolderNode.add_child(Glock)
+
+func Respawn() -> void:
+	Stock -= 1
+	if Stock > 0:
+		position = RespawnPosition
+		velocity = Vector2.ZERO
+		CanJump = false
+		CanDoubleJump = true
+	
 	
 
 func _on_coyote_timer_timeout() -> void:
