@@ -19,6 +19,7 @@ var DownGravity = 60
 var JumpForce = 1000
 var MoveLeft
 var MoveRight
+var MoveDown
 var MoveJump
 var Direction = -1.0 
 var InputDirection
@@ -30,15 +31,29 @@ func IdentifyPlayer():
 	if name == "Player1":
 		MoveLeft = "LEFT"
 		MoveRight = "RIGHT"
+		MoveDown = "DOWN"
 		MoveJump = "JUMP"
 	elif name == "Player2":
 		MoveLeft = "LEFT_2"
 		MoveRight = "RIGHT_2"
+		MoveDown = "DOWN_2"
 		MoveJump = "JUMP_2"
+	elif name == "Player3":
+		MoveLeft = "LEFT_3"
+		MoveRight = "RIGHT_3"
+		MoveDown = "DOWN_3"
+		MoveJump = "JUMP_3"
+	elif name == "Player4":
+		MoveLeft = "LEFT_4"
+		MoveRight = "RIGHT_4"
+		MoveDown = "DOWN_4"
+		MoveJump = "JUMP_4"
+	
 
 func _ready() -> void:
 	IdentifyPlayer()
 	RespawnPosition = position
+	add_to_group("players")
 
 func _physics_process(delta: float) -> void:
 	if position.y > 1500:
@@ -82,8 +97,12 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = -500
 	
+	#Fall Down Through Platform
+	if Input.is_action_just_pressed(MoveDown):
+		position.y += 1
+	
 	#if player is above topspeed due to KNOCKBACK, let him slow down
-	elif InputDirection == 1 and velocity.x < 0:
+	if InputDirection == 1 and velocity.x < 0:
 		velocity.x += Acceleration
 	elif InputDirection == -1 and velocity.x > 0:
 		velocity.x -= Acceleration
@@ -179,7 +198,15 @@ func Respawn() -> void:
 		velocity = Vector2.ZERO
 		CanJump = false
 		CanDoubleJump = true
+		get_child(2).get_child(0).get_child(0).queue_free()
+		
+		#Give Player Basic Glock
+		var GlockScene = preload("res://Scenes/Glock29.tscn")
+		var Glock = GlockScene.instantiate()
+		WeaponHolderNode.add_child(Glock)
 	
+	else:
+		remove_from_group("players")
 	
 
 func _on_coyote_timer_timeout() -> void:

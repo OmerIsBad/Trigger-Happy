@@ -46,6 +46,12 @@ func IdentifyPlayerShoot():
 	elif get_parent().get_parent().get_parent().name == "Player2":
 		ShootButton = "SHOOT_2"
 		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)
+	elif get_parent().get_parent().get_parent().name == "Player3":
+		ShootButton = "SHOOT_3"
+		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)
+	elif get_parent().get_parent().get_parent().name == "Player4":
+		ShootButton = "SHOOT_4"
+		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)
 
 func Shoot():
 	if MagSize != -1: #Check if this gun has infinite ammo

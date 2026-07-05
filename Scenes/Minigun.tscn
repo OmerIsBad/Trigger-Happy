@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n21yc82y8kn"]
+
+[ext_resource type="Script" uid="uid://bm3m1y2rmcpxu" path="res://Scripts/MiniGun.gd" id="1_6rmx4"]
+[ext_resource type="Texture2D" uid="uid://c0joafh2xwgsw" path="res://Assets/Minigun_In_Hand.png" id="2_jkprt"]
+
+[node name="Minigun" type="Node2D" unique_id=660639381]
+script = ExtResource("1_6rmx4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1593716699]
+scale = Vector2(2, 2)
+texture = ExtResource("2_jkprt")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=214886839]
+position = Vector2(42, 7)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=43465940]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

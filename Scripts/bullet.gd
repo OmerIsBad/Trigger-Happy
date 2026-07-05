@@ -12,7 +12,7 @@ func _ready() -> void:
 	BulletLifeTimer.start(Lifetime)
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body.name == "Player1" or body.name == "Player2":
+	if body.is_in_group("players"):
 		body.ApplyKnockback(Knockback,Direction)
 		queue_free()
 
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	var result = space_state.intersect_ray(query)
 	if result:
 		var body = result.collider
-		if body.name == "Player1" or body.name == "Player2":
+		if body.is_in_group("players"):
 			body.ApplyKnockback(Knockback, Direction)
 		queue_free()
 
