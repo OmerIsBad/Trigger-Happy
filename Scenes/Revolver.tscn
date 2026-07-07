@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b6vnrg5ceppqb"]
+
+[ext_resource type="Script" uid="uid://cjq4b7htu15vn" path="res://Scripts/Revolver.gd" id="1_njmpp"]
+[ext_resource type="Texture2D" uid="uid://clwc7yrex7qsh" path="res://Assets/Revolver_In_Hand.png" id="2_8k6ue"]
+
+[node name="Revolver" type="Node2D" unique_id=316541468]
+script = ExtResource("1_njmpp")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1465565022]
+position = Vector2(25, -7)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=333764636]
+scale = Vector2(2, 2)
+texture = ExtResource("2_8k6ue")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=25589608]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

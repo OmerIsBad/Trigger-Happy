@@ -10,7 +10,7 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 
 #Gun Stats
 var Recoil = 250.0
-var FireRate = 0.4
+var FireRate = 0.25
 var MagSize = -1 #-1 for infinite
 var GunName
 var CanShoot = true
@@ -18,7 +18,7 @@ var CanShoot = true
 #Bullet Stats
 var BulletSpeed = 75
 var BulletLifeTime = 10.0
-var BulletKnockback = 600.0
+var BulletKnockback = 950.0
 var BulletDirection = -1
 
 # Called when the node enters the scene tree for the first time.

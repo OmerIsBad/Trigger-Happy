@@ -61,6 +61,11 @@ func _physics_process(delta: float) -> void:
 		print("poop")
 		return
 	
+		#Fall Down Through Platform
+	if Input.is_action_just_pressed(MoveDown):
+		position.y += 1
+	
+	
 	InputDirection = Input.get_axis(MoveLeft, MoveRight)
 	if InputDirection != 0:
 		Direction = InputDirection
@@ -96,10 +101,6 @@ func _physics_process(delta: float) -> void:
 				velocity.x -= Acceleration
 			else:
 				velocity.x = -500
-	
-	#Fall Down Through Platform
-	if Input.is_action_just_pressed(MoveDown):
-		position.y += 1
 	
 	#if player is above topspeed due to KNOCKBACK, let him slow down
 	if InputDirection == 1 and velocity.x < 0:
@@ -141,7 +142,7 @@ func _physics_process(delta: float) -> void:
 		Jump()
 	
 	#Upwards and downwards gravity
-	if velocity.y >= 0 and !is_on_floor():
+	if velocity.y > 0 and !is_on_floor():
 		velocity.y += DownGravity
 	else:
 		velocity.y += UpGravity
