@@ -10,7 +10,7 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 
 #Gun Stats
 var Recoil = 375.0
-var FireRate = 0.4
+var FireRate = 0.5
 var MagSize = 6 #-1 for infinite
 var GunName = "Revolver"
 var CanShoot = true

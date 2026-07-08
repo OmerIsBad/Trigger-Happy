@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c1x86yqbkxojk"]
+
+[ext_resource type="Script" uid="uid://bvs3g3raq5xv" path="res://Scripts/TommyGun.gd" id="1_27f3h"]
+[ext_resource type="Texture2D" uid="uid://cqy1vw2l4a3ja" path="res://Assets/TommyGun_In_Hand.png" id="2_xa6yd"]
+
+[node name="TommyGun" type="Node2D" unique_id=775063512]
+script = ExtResource("1_27f3h")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=31845139]
+position = Vector2(37, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1608938642]
+scale = Vector2(2, 2)
+texture = ExtResource("2_xa6yd")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=378519241]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

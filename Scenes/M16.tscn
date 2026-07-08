@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dskkb0d4iqdmg"]
+
+[ext_resource type="Script" uid="uid://dk3m5jb8rkhp8" path="res://Scripts/M16.gd" id="1_i7uae"]
+[ext_resource type="Texture2D" uid="uid://q2s7435202hy" path="res://Assets/M16_In_Hand.png" id="2_rj08p"]
+
+[node name="M16" type="Node2D" unique_id=2146042130]
+script = ExtResource("1_i7uae")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1214180203]
+position = Vector2(31, -9)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=53092073]
+scale = Vector2(2, 2)
+texture = ExtResource("2_rj08p")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1570175413]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

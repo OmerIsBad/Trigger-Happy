@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cvxjqoy8kyooo"]
+
+[ext_resource type="Script" uid="uid://c6hwdvr1217xv" path="res://Scripts/GoldenEagle.gd" id="1_4i5d6"]
+[ext_resource type="Texture2D" uid="uid://bgex5ktemjb1y" path="res://Assets/GoldenEagle_In_Hand.png" id="2_iu0ix"]
+
+[node name="GoldenEagle" type="Node2D" unique_id=484975760]
+script = ExtResource("1_4i5d6")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=594030024]
+position = Vector2(20, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448338137]
+scale = Vector2(2, 2)
+texture = ExtResource("2_iu0ix")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1999277286]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

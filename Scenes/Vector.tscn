@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bkrng0pbm5i4y"]
+
+[ext_resource type="Script" uid="uid://y7pqx4e5gw18" path="res://Scripts/Vector.gd" id="1_yc5wg"]
+[ext_resource type="Texture2D" uid="uid://bp8ae61bfh0d6" path="res://Assets/Vector_In_Hand.png" id="2_b863k"]
+
+[node name="Vector" type="Node2D" unique_id=1088071734]
+script = ExtResource("1_yc5wg")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1784874576]
+position = Vector2(27, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1769278324]
+scale = Vector2(2, 2)
+texture = ExtResource("2_b863k")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1355735737]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d014jvlurn01j"]
+
+[ext_resource type="Script" uid="uid://dg777h30uou2y" path="res://Scripts/Crossbow.gd" id="1_76d8c"]
+[ext_resource type="Texture2D" uid="uid://cwos31ulcdw31" path="res://Assets/CrossBow_In_Hand.png" id="2_ckaav"]
+
+[node name="CrossBow" type="Node2D" unique_id=1592152949]
+script = ExtResource("1_76d8c")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=200562830]
+position = Vector2(37, -4)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1750689706]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ckaav")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1949334565]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

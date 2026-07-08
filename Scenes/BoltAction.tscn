@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b3ua6r5bpific"]
+
+[ext_resource type="Script" uid="uid://b2c7n622s62s" path="res://Scripts/BoltAction.gd" id="1_jwq04"]
+[ext_resource type="Texture2D" uid="uid://bdfpr20ywrb3m" path="res://Assets/BoltActionSniper_In_Hand.png" id="2_oh4h4"]
+
+[node name="BoltAction" type="Node2D" unique_id=394721350]
+script = ExtResource("1_jwq04")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=811769492]
+position = Vector2(42, -3)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2095357143]
+scale = Vector2(2, 2)
+texture = ExtResource("2_oh4h4")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1438244540]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

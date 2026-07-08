@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c0y46mttfxfhj"]
+
+[ext_resource type="Script" uid="uid://bpi75141hscaa" path="res://Scripts/P90.gd" id="1_vh0uv"]
+[ext_resource type="Texture2D" uid="uid://qq58i1ckwews" path="res://Assets/P90_In_Hand.png" id="2_1it12"]
+
+[node name="P90" type="Node2D" unique_id=154209015]
+script = ExtResource("1_vh0uv")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1546891606]
+position = Vector2(33, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=639707883]
+scale = Vector2(2, 2)
+texture = ExtResource("2_1it12")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=519358902]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

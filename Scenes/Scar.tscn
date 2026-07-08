@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cpfr1hrbb4wts"]
+
+[ext_resource type="Texture2D" uid="uid://bphmf5rvuovyo" path="res://Assets/Scar_In_Hand.png" id="1_1q5uh"]
+[ext_resource type="Script" uid="uid://ddko0bohw3m1q" path="res://Scripts/Scar.gd" id="1_4b1x6"]
+
+[node name="Scar" type="Node2D" unique_id=1880770622]
+script = ExtResource("1_4b1x6")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1038968445]
+position = Vector2(34, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=969139923]
+scale = Vector2(2, 2)
+texture = ExtResource("1_1q5uh")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=895905566]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

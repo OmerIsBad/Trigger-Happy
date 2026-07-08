@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://6xcifhgb3img"]
+
+[ext_resource type="Script" uid="uid://diogc8ktfchcy" path="res://Scripts/DoubleBarrel.gd" id="1_m7tpt"]
+[ext_resource type="Texture2D" uid="uid://d10e3q4yfg8qd" path="res://Assets/DoubleBarrel_In_Hand.png" id="2_7u1xk"]
+
+[node name="DoubleBarrel" type="Node2D" unique_id=712531920]
+script = ExtResource("1_m7tpt")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=518431390]
+position = Vector2(39, -5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014074632]
+scale = Vector2(2, 2)
+texture = ExtResource("2_7u1xk")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1506427034]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

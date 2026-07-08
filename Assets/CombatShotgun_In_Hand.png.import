@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coac2l8jxubnf"
-path="res://.godot/imported/DP-12_In_Hand.png-16f38b96639a163403437064e86b3580.ctex"
+uid="uid://evmenrx0y0j5"
+path="res://.godot/imported/CombatShotgun_In_Hand.png-999d558aefe7b17e2c8696fc95186f82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/DP-12_In_Hand.png"
-dest_files=["res://.godot/imported/DP-12_In_Hand.png-16f38b96639a163403437064e86b3580.ctex"]
+source_file="res://Assets/CombatShotgun_In_Hand.png"
+dest_files=["res://.godot/imported/CombatShotgun_In_Hand.png-999d558aefe7b17e2c8696fc95186f82.ctex"]
 
 [params]
 

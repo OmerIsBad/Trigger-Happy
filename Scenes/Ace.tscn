@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://di0c0ti2xq6tk"]
+
+[ext_resource type="Texture2D" uid="uid://crwnjdfd5v66q" path="res://Assets/Ace_In_Hand.png" id="1_ora38"]
+[ext_resource type="Script" uid="uid://cjmiwu378k8s6" path="res://Scripts/Ace.gd" id="1_v2bwv"]
+
+[node name="Ace" type="Node2D" unique_id=242118462]
+script = ExtResource("1_v2bwv")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1415075624]
+position = Vector2(37, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1160391017]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ora38")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=190077161]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://l6wp37uehlc8"]
+
+[ext_resource type="Script" uid="uid://bajs3bggvkyld" path="res://Scripts/Uzi.gd" id="1_pw6yj"]
+[ext_resource type="Texture2D" uid="uid://bnsk5cqnqxo5v" path="res://Assets/Uzi_In_Hand.png" id="2_ijfnp"]
+
+[node name="Uzi" type="Node2D" unique_id=1640815016]
+script = ExtResource("1_pw6yj")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1566828200]
+position = Vector2(23, -14)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2006825607]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ijfnp")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1914708747]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

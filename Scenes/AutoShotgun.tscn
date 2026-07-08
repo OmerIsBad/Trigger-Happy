@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dhdsi530512qe"]
+
+[ext_resource type="Texture2D" uid="uid://coac2l8jxubnf" path="res://Assets/AutoShotgun_In_Hand.png" id="1_ns147"]
+[ext_resource type="Script" uid="uid://3ij8t0fevhek" path="res://Scripts/AutoShotgun.gd" id="1_q1vs5"]
+
+[node name="AutoShotgun" type="Node2D" unique_id=926062459]
+script = ExtResource("1_q1vs5")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=219950369]
+position = Vector2(33, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1009392044]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ns147")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1381173944]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

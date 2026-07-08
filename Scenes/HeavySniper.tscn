@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ryk8xiphw38v"]
+
+[ext_resource type="Script" uid="uid://biwl75efye6xq" path="res://Scripts/HeavySniper.gd" id="1_t50bq"]
+[ext_resource type="Texture2D" uid="uid://b8l0t1q46ccn1" path="res://Assets/Heavy_Sniper_In_Hand.png" id="2_4npfs"]
+
+[node name="HeavySniper" type="Node2D" unique_id=1385280375]
+script = ExtResource("1_t50bq")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1385782444]
+position = Vector2(41, -5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137032078]
+scale = Vector2(2, 2)
+texture = ExtResource("2_4npfs")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=2056636794]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

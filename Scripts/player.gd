@@ -26,6 +26,11 @@ var InputDirection
 var SpeedDegradation = 5
 var RespawnPosition
 var Stock = 3
+var CounterSteerBoost = 10
+
+var YBoundary = 1500
+var LeftBoundary = -1000
+var RightBoundary = 3000
 
 func IdentifyPlayer():
 	if name == "Player1":
@@ -56,9 +61,19 @@ func _ready() -> void:
 	add_to_group("players")
 
 func _physics_process(delta: float) -> void:
-	if position.y > 1500:
+	if position.y > YBoundary:
 		Respawn()
-		print("poop")
+		return
+	
+	#To prevent inconsistent death times after being shot off
+	#the map, we let Yboundary kill the player, and keep
+	#the player at the Xboundaries so they dont mess
+	#up the cameras average position 
+	if position.x > RightBoundary:
+		position.x = RightBoundary
+		return
+	if position.x < LeftBoundary:
+		position.x = LeftBoundary
 		return
 	
 		#Fall Down Through Platform
@@ -103,34 +118,39 @@ func _physics_process(delta: float) -> void:
 				velocity.x = -500
 	
 	#if player is above topspeed due to KNOCKBACK, let him slow down
-	if InputDirection == 1 and velocity.x < 0:
-		velocity.x += Acceleration
+	elif InputDirection == 1 and velocity.x < 0:
+		velocity.x += CounterSteerBoost + ExtremeSpeedFriction
 	elif InputDirection == -1 and velocity.x > 0:
-		velocity.x -= Acceleration
+		velocity.x -= CounterSteerBoost + ExtremeSpeedFriction
 	
 	if abs(velocity.x) > TopSpeed:
 		velocity.x -= SpeedDegradation * Direction
 
 	
 	#Apply Friction or Air Resistance if nothing is pressed
-	if is_on_floor() or abs(velocity.x) > TopSpeed:
+	if is_on_floor():
 		#if extreme speed, increase friction, else use normal
 		var FrictionToUse = Friction
 		
 		if abs(velocity.x) > TopSpeed :
 			FrictionToUse = ExtremeSpeedFriction
+		else:
+			FrictionToUse = Friction
 		
 		#To prevent pingponging, reset to zero
 		if InputDirection == 0.0 and abs(velocity.x) < FrictionToUse:
 			velocity.x = 0
-		elif InputDirection == 0.0 and velocity.x > 0.0:
+		#ACTUALLY applying friction
+		if InputDirection == 0.0 and velocity.x > 0.0:
 			velocity.x -= FrictionToUse
-		elif InputDirection == 0.0 and velocity.x < 0.0:
+		if InputDirection == 0.0 and velocity.x < 0.0:
 			velocity.x += FrictionToUse
+		
 	else:
 		#to prevent pingponging, reset to zero
 		if InputDirection == 0.0 and abs(velocity.x) < AirResistance:
 			velocity.x = 0
+		#ACTUALLY applying air resistance
 		elif InputDirection == 0.0 and velocity.x > 0.0:
 			velocity.x -= AirResistance
 		elif InputDirection == 0.0 and velocity.x < 0.0:

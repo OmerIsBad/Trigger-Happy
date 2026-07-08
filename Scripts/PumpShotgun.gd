@@ -9,7 +9,7 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 
 
 #Gun Stats
-var Recoil = 650.0
+var Recoil = 1050.0
 var FireRate = 1.0
 var MagSize = 8 #-1 for infinite
 var GunName = "PumpShotgun"

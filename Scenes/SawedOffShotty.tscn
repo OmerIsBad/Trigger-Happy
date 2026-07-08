@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bx4jpoeb3eoso"]
+
+[ext_resource type="Script" uid="uid://cibfosbcwdviv" path="res://Scripts/SawedOffShotty.gd" id="1_8v68j"]
+[ext_resource type="Texture2D" uid="uid://buxjgmp0xueii" path="res://Assets/SawedOffShotty_In_Hand.png" id="1_a0jn0"]
+
+[node name="SawedOffShotty" type="Node2D" unique_id=521668168]
+script = ExtResource("1_8v68j")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=522017465]
+position = Vector2(30, -5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834707244]
+scale = Vector2(2, 2)
+texture = ExtResource("1_a0jn0")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1439123950]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

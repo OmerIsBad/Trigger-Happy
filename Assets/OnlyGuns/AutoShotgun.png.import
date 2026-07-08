@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://evmenrx0y0j5"
-path="res://.godot/imported/Spas-12_In_Hand.png-527b48b9d3fd7a1d0ede7c7a858e48fe.ctex"
+uid="uid://dgve0ix4dghx1"
+path="res://.godot/imported/AutoShotgun.png-e94b09d0f925cac69865d2c7e32ef2e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Spas-12_In_Hand.png"
-dest_files=["res://.godot/imported/Spas-12_In_Hand.png-527b48b9d3fd7a1d0ede7c7a858e48fe.ctex"]
+source_file="res://Assets/OnlyGuns/AutoShotgun.png"
+dest_files=["res://.godot/imported/AutoShotgun.png-e94b09d0f925cac69865d2c7e32ef2e2.ctex"]
 
 [params]
 
