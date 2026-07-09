@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c7q073eql23l2"]
+
+[ext_resource type="Script" uid="uid://cq4tggyrpkjsp" path="res://Scripts/Rocket.gd" id="1_m1lyg"]
+[ext_resource type="Texture2D" uid="uid://c4dr0h2h15gmv" path="res://Assets/Rocket.png" id="2_pp8mc"]
+
+[sub_resource type="Curve" id="Curve_tm07d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_b8kjj"]
+colors = PackedColorArray(0.99215686, 0.22352941, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cupxa"]
+radius = 7.0
+height = 38.0
+
+[node name="Rocket" type="Node2D" unique_id=313914879]
+script = ExtResource("1_m1lyg")
+
+[node name="Trail" type="Line2D" parent="." unique_id=1510378838]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_tm07d")
+gradient = SubResource("Gradient_b8kjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=129145648]
+scale = Vector2(2, 2)
+texture = ExtResource("2_pp8mc")
+
+[node name="RocketLifeTimer" type="Timer" parent="." unique_id=2144530917]
+
+[node name="HitBox" type="Area2D" parent="." unique_id=939955398]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1716274123]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cupxa")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ch7jjj0qi2bbs"]
+
+[ext_resource type="Script" uid="uid://cwglulhs204y3" path="res://Scripts/RocketLauncher.gd" id="1_d3ibk"]
+[ext_resource type="Texture2D" uid="uid://bowae7souxyx7" path="res://Assets/RocketLauncher_In_Hand.png" id="2_hcklp"]
+
+[node name="RocketLauncher" type="Node2D" unique_id=1929053549]
+script = ExtResource("1_d3ibk")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1745824347]
+position = Vector2(20, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624955685]
+scale = Vector2(2, 2)
+texture = ExtResource("2_hcklp")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=91205410]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
