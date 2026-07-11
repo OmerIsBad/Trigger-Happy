@@ -7,7 +7,7 @@
 script = ExtResource("1_d3ibk")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1745824347]
-position = Vector2(20, -6)
+position = Vector2(39, -3)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624955685]
 scale = Vector2(2, 2)

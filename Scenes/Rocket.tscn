@@ -34,5 +34,3 @@ texture = ExtResource("2_pp8mc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1716274123]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_cupxa")
-
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

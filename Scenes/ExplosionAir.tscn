@@ -65,14 +65,14 @@ animations = [{
 script = ExtResource("1_si51q")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2129692434]
-collision_mask = 255
+collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=232186683]
-position = Vector2(5, -50)
+position = Vector2(0, -50)
 shape = SubResource("CircleShape2D_npw3m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1182401847]
-position = Vector2(0, -50)
+position = Vector2(-5.9604645e-08, -50)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_npw3m")
 animation = &"Explode"

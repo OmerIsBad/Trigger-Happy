@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dy4if5s71q07k"]
+
+[ext_resource type="Script" uid="uid://78sfc8chcxlt" path="res://Scripts/MissileLauncher.gd" id="1_ob2d1"]
+[ext_resource type="Texture2D" uid="uid://do6h3l0rjxrcf" path="res://Assets/MissileLauncher_In_Hand.png" id="2_gjbrb"]
+
+[node name="MissileLauncher" type="Node2D" unique_id=237884179]
+script = ExtResource("1_ob2d1")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1779384197]
+position = Vector2(39, -3)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=259583690]
+scale = Vector2(2, 2)
+texture = ExtResource("2_gjbrb")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1757994257]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

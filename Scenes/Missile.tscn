@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ci0xqbibd0soi"]
+
+[ext_resource type="Script" uid="uid://c2ih3yt1orry5" path="res://Scripts/Missile.gd" id="1_3yf48"]
+[ext_resource type="Texture2D" uid="uid://dyb2mdr21ug6v" path="res://Assets/Missile.png" id="1_kfcgg"]
+
+[sub_resource type="Curve" id="Curve_3yf48"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0tsf4"]
+colors = PackedColorArray(0.99215686, 0.22352941, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yf48"]
+radius = 7.0
+height = 38.0
+
+[node name="Missile" type="Node2D" unique_id=1596941060]
+script = ExtResource("1_3yf48")
+
+[node name="TrailingEnd" type="Marker2D" parent="." unique_id=1334164217]
+position = Vector2(-18, 0)
+
+[node name="Trail" type="Line2D" parent="." unique_id=955144454]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_3yf48")
+gradient = SubResource("Gradient_0tsf4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=480191454]
+scale = Vector2(2, 2)
+texture = ExtResource("1_kfcgg")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=162814491]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1445224478]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3yf48")
+
+[node name="FuelTimer" type="Timer" parent="." unique_id=1320985086]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="FuelTimer" to="." method="_on_fuel_timer_timeout"]
