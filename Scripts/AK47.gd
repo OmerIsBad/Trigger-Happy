@@ -43,7 +43,7 @@ func IdentifyPlayerShoot():
 	print(get_parent().get_parent().get_parent().name)
 	if get_parent().get_parent().get_parent().name == "Player1":
 		ShootButton = "SHOOT"
-		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_pareant().get_parent().name)
+		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)
 	elif get_parent().get_parent().get_parent().name == "Player2":
 		ShootButton = "SHOOT_2"
 		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://brxsd17k37suo"]
+
+[ext_resource type="Script" uid="uid://dn12ykpxwttew" path="res://Scripts/GrenadeLauncher.gd" id="1_3a3n0"]
+[ext_resource type="Texture2D" uid="uid://bsj645i03wwtt" path="res://Assets/GrenadeLauncher_In_Hand.png" id="2_v6vey"]
+
+[node name="GrenadeLauncher" type="Node2D" unique_id=693367144]
+script = ExtResource("1_3a3n0")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=2140118325]
+position = Vector2(33, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1994585060]
+scale = Vector2(2, 2)
+texture = ExtResource("2_v6vey")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1098430262]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dgdpgsvupls6h"]
+
+[ext_resource type="Script" uid="uid://bjvjgf5uvhcxl" path="res://Scripts/WeaponCrate.gd" id="1_jv64r"]
+[ext_resource type="Texture2D" uid="uid://dia77alkvwajx" path="res://icon.svg" id="1_lui6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
+size = Vector2(64, 64)
+
+[node name="WeaponCrate" type="Node2D" unique_id=404992232]
+script = ExtResource("1_jv64r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1737166056]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_lui6a")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1234030427]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=501875485]
+shape = SubResource("RectangleShape2D_npw3m")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://caavupfmnolax"]
+
+[ext_resource type="Script" uid="uid://b0gip37bjmrid" path="res://Scripts/CrateSpawner.gd" id="1_mqx4l"]
+
+[node name="CrateSpawner" type="Node2D" unique_id=599620663]
+script = ExtResource("1_mqx4l")
+
+[node name="SpawnInTimer" type="Timer" parent="." unique_id=1721303693]
+one_shot = true
+
+[node name="SpawnMarker" type="Marker2D" parent="." unique_id=1481201811]
+position = Vector2(0, -32)
+
+[connection signal="timeout" from="SpawnInTimer" to="." method="_on_spawn_in_timer_timeout"]

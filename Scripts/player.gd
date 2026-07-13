@@ -29,8 +29,8 @@ var Stock = 3
 var CounterSteerBoost = 10
 
 var YBoundary = 1500
-var LeftBoundary = -1000
-var RightBoundary = 3000
+var LeftBoundary = -500
+var RightBoundary = 2500
 
 func IdentifyPlayer():
 	if name == "Player1":

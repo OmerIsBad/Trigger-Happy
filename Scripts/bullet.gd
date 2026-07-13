@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var BulletLifeTimer = $BulletLifeTimer
 @onready var TrailNode = $Trail
-
+var TrailLength = 2
 var Speed
 var Lifetime
 var Knockback
@@ -10,7 +10,7 @@ var Direction
 var PrevPos
 var FirstPos
 
-var TrailLength = 2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

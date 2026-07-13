@@ -31,6 +31,7 @@ func _ready() -> void:
 			if position.distance_to(Player.position) < DistanceToClosestPlayer:
 				DistanceToClosestPlayer = position.distance_to(Player.position)
 				TargetPlayer = Player
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -62,6 +63,8 @@ func _physics_process(delta: float) -> void:
 		
 		PrevPos = position
 		position += Velocity * delta
+		
+		rotation += 0.1
 	
 
 

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d4nbh7f3kajhj"]
+
+[ext_resource type="Script" uid="uid://8ib6cabhrnw0" path="res://Scripts/ExplosiveBullet.gd" id="1_eyhip"]
+[ext_resource type="Texture2D" uid="uid://csn7rhhiytthu" path="res://Assets/ExplosiveBullet.png" id="2_86yeh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5rrr5"]
+bounce = 0.5
+
+[sub_resource type="Curve" id="Curve_eyhip"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_86yeh"]
+colors = PackedColorArray(0.99215686, 0.22352941, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eyhip"]
+radius = 5.0
+height = 22.0
+
+[node name="ExplosiveBullet" type="RigidBody2D" unique_id=1026185351]
+collision_layer = 128
+collision_mask = 129
+physics_material_override = SubResource("PhysicsMaterial_5rrr5")
+script = ExtResource("1_eyhip")
+
+[node name="Trail" type="Line2D" parent="." unique_id=847672714]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_eyhip")
+gradient = SubResource("Gradient_86yeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347753416]
+scale = Vector2(2, 2)
+texture = ExtResource("2_86yeh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=592013345]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_eyhip")
+
+[node name="Timer" type="Timer" parent="." unique_id=663988500]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=1884115490]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
