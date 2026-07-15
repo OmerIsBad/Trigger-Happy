@@ -27,6 +27,7 @@ var SpeedDegradation = 5
 var RespawnPosition
 var Stock = 3
 var CounterSteerBoost = 10
+var LastShot = 0
 
 var YBoundary = 1500
 var LeftBoundary = -500

@@ -61,6 +61,7 @@ func Shoot():
 	Grenade.global_position = $Muzzle.global_position
 	Grenade.Direction = GrenadeDirection
 	Grenade.Speed = GrenadeSpeed
+	Grenade.ShotByGun = GunName
 	get_tree().current_scene.add_child(Grenade)
 	
 	if MagSize == 0:

@@ -67,6 +67,7 @@ func Shoot():
 	Missile.Lifetime = MissileLifeTime
 	Missile.Knockback = MissileKnockback
 	Missile.ShotBy = MissileShotBy
+	Missile.ShotByGun = GunName
 	get_tree().current_scene.add_child(Missile)
 	
 	if MagSize == 0:

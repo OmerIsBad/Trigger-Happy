@@ -127,14 +127,11 @@ position = Vector2(580, 942)
 [node name="CrateSpawner3" parent="CrateSpawners" unique_id=1963759749 instance=ExtResource("7_ienac")]
 position = Vector2(1340, 940)
 
-[node name="CrateSpawner4" parent="CrateSpawners" unique_id=2086651923 instance=ExtResource("7_ienac")]
-position = Vector2(580, 558)
-
-[node name="CrateSpawner5" parent="CrateSpawners" unique_id=579182355 instance=ExtResource("7_ienac")]
-position = Vector2(1340, 558)
-
 [node name="CrateSpawner6" parent="CrateSpawners" unique_id=1273534288 instance=ExtResource("7_ienac")]
 position = Vector2(430, 404)
 
 [node name="CrateSpawner7" parent="CrateSpawners" unique_id=1403212314 instance=ExtResource("7_ienac")]
 position = Vector2(1490, 404)
+
+[node name="CrateSpawner8" parent="CrateSpawners" unique_id=2015390030 instance=ExtResource("7_ienac")]
+position = Vector2(580, 558)

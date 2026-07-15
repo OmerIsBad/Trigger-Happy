@@ -56,6 +56,7 @@ func IdentifyPlayerShoot():
 		print("Shoot button set as ", ShootButton, " FOR ", get_parent().get_parent().get_parent().name)
 
 func Shoot():
+	global.CameraShake(7.0,0.15)
 	if MagSize != -1: #Check if this gun has infinite ammo
 		MagSize -= 1
 	var Bullet = BulletScene.instantiate()
@@ -65,6 +66,7 @@ func Shoot():
 	Bullet.Speed = BulletSpeed
 	Bullet.Lifetime = BulletLifeTime
 	Bullet.Knockback = BulletKnockback
+	Bullet.ShotByGun = GunName
 	get_tree().current_scene.add_child(Bullet)
 	
 	if MagSize == 0:

@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var CrateLifetime = $CrateLifetime
+
 #NEEDS FUNCTIONALITY TO DISAPEAR AFTER A WHILE
 
 var Weapons = {
@@ -39,15 +41,8 @@ var Weapons = {
 		"MissileLauncher": preload("res://Scenes/MissileLauncher.tscn")
 		}
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	add_to_group("WeaponCrates")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players"):
@@ -65,7 +60,32 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var NewGun = Weapons[ChosenGun].instantiate()
 		WeaponHolder.add_child(NewGun)
 		
+		#Fixing the missing spaces
+		#This is a stupid solution but it works
+		var SpacedGunName = ""
+		if ChosenGun == "AWMSniper":
+			SpacedGunName = "AWM Sniper"
+		if ChosenGun == "AK47":
+			SpacedGunName = "AK47"
+		else:
+			for letter in ChosenGun:
+				if letter == letter.to_upper() and letter != letter.to_lower():
+					if SpacedGunName != "":
+						SpacedGunName += " "
+				SpacedGunName += letter
+		print(SpacedGunName)
+		var GunNameText = global.SummonText(str(SpacedGunName),global_position, -1, -1)
+		get_tree().current_scene.add_child(GunNameText)
+		
 		print("Erased Gun: ", OldGun, " And Given Gun: ", ChosenGun)
 		
+		#RESTARTING THE SPAWNER TIMER
 		get_parent().RestartCrateShenanigans()
+		
+		#COMMITING SUICIDE
 		queue_free()
+
+
+func _on_crate_lifetime_timeout() -> void:
+	get_parent().RestartCrateShenanigans()
+	queue_free()

@@ -10,7 +10,10 @@ var Direction
 var PrevPos
 var FirstPos
 
+var ShotByGun
 
+var PlayerHit
+var PistolTextOdds = 4 #One in whatever
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,10 +43,19 @@ func _physics_process(delta: float) -> void:
 	if Result:
 		var body = Result.collider
 		if body.is_in_group("players"):
+			PlayerHit = body
+			ManageTextThrow()
+			body.LastShot = Time.get_ticks_msec()
 			body.ApplyKnockback(Knockback, Direction)
-		queue_free()
-
-
+			queue_free()
 
 func _on_bullet_life_timer_timeout() -> void:
 	queue_free()
+
+func ManageTextThrow():
+	if global.ShotGunList.has(ShotByGun):
+		var PwnedText = global.SummonText("Pwned!", global_position, 20, -1)
+		get_tree().current_scene.add_child(PwnedText)
+	if global.SniperList.has(ShotByGun):
+		var SnipedText = global.SummonText("Sniped!", global_position, 20, -1)
+		get_tree().current_scene.add_child(SnipedText)

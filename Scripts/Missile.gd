@@ -17,7 +17,9 @@ var TurnRate = 3  # radians per second
 var HasFuel = true
 var Velocity = Vector2.ZERO
 var Gravity = 2500.0     
-var Drag = 1.0       
+var Drag = 1.0     
+
+var ShotByGun  
 
 func _ready() -> void:
 	FirstPos = position

@@ -65,6 +65,7 @@ func Shoot():
 	Rocket.Speed = RocketSpeed
 	Rocket.Lifetime = RocketLifeTime
 	Rocket.Knockback = RocketKnockback
+	Rocket.ShotByGun = GunName
 	get_tree().current_scene.add_child(Rocket)
 	
 	if MagSize == 0:

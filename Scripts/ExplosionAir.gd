@@ -10,6 +10,10 @@ var SmallerHitbox = false
 var ExplosiveThingyReduction = 3
 
 func _ready() -> void:
+	var TextLabel = global.SummonText("BOOM!", global_position, 50, -1)
+	global.CameraShake(50.0,0.3)
+	get_tree().current_scene.add_child(TextLabel)
+	
 	if SmallerHitbox == true:
 		Area.scale = Vector2(0.5,0.5)
 	$AnimatedSprite2D.play("Explode")

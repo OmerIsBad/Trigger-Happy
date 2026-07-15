@@ -12,6 +12,8 @@ var Speed
 var UpwardsForce = -400
 var LastSecond = 0  
 
+var ShotByGun
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

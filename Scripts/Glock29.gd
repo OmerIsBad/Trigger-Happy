@@ -12,7 +12,7 @@ var BulletScene = preload("res://Scenes/bullet.tscn")
 var Recoil = 250.0
 var FireRate = 0.3
 var MagSize = -1 #-1 for infinite
-var GunName
+var GunName = "Glock29"
 var CanShoot = true
 
 #Bullet Stats
@@ -63,6 +63,7 @@ func Shoot():
 	Bullet.Speed = BulletSpeed
 	Bullet.Lifetime = BulletLifeTime
 	Bullet.Knockback = BulletKnockback
+	Bullet.ShotByGun = GunName
 	get_tree().current_scene.add_child(Bullet)
 	
 	

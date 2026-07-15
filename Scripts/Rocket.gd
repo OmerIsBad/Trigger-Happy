@@ -9,6 +9,8 @@ var Direction
 var PrevPos
 var FirstPos
 var TrailLength = 5
+
+var ShotByGun
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BulletLifeTimer.start(Lifetime)
