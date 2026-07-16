@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c0tc6d1muc6ao"]
+
+[ext_resource type="Script" uid="uid://cuag8rr7txru8" path="res://Scripts/Punch.gd" id="1_hbn8h"]
+[ext_resource type="Texture2D" uid="uid://54hogpdecjhf" path="res://Assets/PunchEffect.png" id="1_lnpyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbn8h"]
+atlas = ExtResource("1_lnpyu")
+region = Rect2(0, 0, 30, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6herc"]
+atlas = ExtResource("1_lnpyu")
+region = Rect2(0, 6, 30, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikvq"]
+atlas = ExtResource("1_lnpyu")
+region = Rect2(0, 12, 30, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7ruv"]
+atlas = ExtResource("1_lnpyu")
+region = Rect2(0, 18, 30, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wufr"]
+atlas = ExtResource("1_lnpyu")
+region = Rect2(0, 24, 30, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbn8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6herc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ikvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7ruv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wufr")
+}],
+"loop": 0,
+"name": &"Punch",
+"speed": 18.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npw3m"]
+radius = 3.0
+height = 27.999998
+
+[node name="Punch" type="Node2D" unique_id=1843685938]
+script = ExtResource("1_hbn8h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1886301425]
+position = Vector2(75, 15)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+animation = &"Punch"
+autoplay = "Punch"
+frame = 4
+frame_progress = 1.0
+
+[node name="HitBox" type="Area2D" parent="." unique_id=802765529]
+position = Vector2(81, 15)
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=192410000]
+position = Vector2(-16.999998, 0)
+rotation = 1.5707964
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_npw3m")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]

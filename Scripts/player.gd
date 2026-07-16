@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var WeaponHolderNode = $Hand/WeaponHolder
 @onready var CoyoteTimerNode = $CoyoteTimer
 @onready var AnimatedSprite = $AnimatedSprite2D
+@onready var PunchTimer = $PunchCoolDown
+
+var PunchingScene = preload("res://Scenes/Punch.tscn")
 
 var CoyoteTime = 0.15
 var CanJump = true
@@ -21,6 +24,7 @@ var MoveLeft
 var MoveRight
 var MoveDown
 var MoveJump
+var Secondary
 var Direction = -1.0 
 var InputDirection
 var SpeedDegradation = 5
@@ -28,6 +32,12 @@ var RespawnPosition
 var Stock = 3
 var CounterSteerBoost = 10
 var LastShot = 0
+
+var FirstPress = 0
+var HeldDown = false
+var HoldTime = 500
+var IsAPunch
+var CanPunch = true
 
 var YBoundary = 1500
 var LeftBoundary = -500
@@ -39,21 +49,25 @@ func IdentifyPlayer():
 		MoveRight = "RIGHT"
 		MoveDown = "DOWN"
 		MoveJump = "JUMP"
+		Secondary = "SECONDARY"
 	elif name == "Player2":
 		MoveLeft = "LEFT_2"
 		MoveRight = "RIGHT_2"
 		MoveDown = "DOWN_2"
 		MoveJump = "JUMP_2"
+		Secondary = "SECONDARY_2"
 	elif name == "Player3":
 		MoveLeft = "LEFT_3"
 		MoveRight = "RIGHT_3"
 		MoveDown = "DOWN_3"
 		MoveJump = "JUMP_3"
+		Secondary = "SECONDARY_3"
 	elif name == "Player4":
 		MoveLeft = "LEFT_4"
 		MoveRight = "RIGHT_4"
 		MoveDown = "DOWN_4"
 		MoveJump = "JUMP_4"
+		Secondary = "SECONDARY_4"
 	
 
 func _ready() -> void:
@@ -72,10 +86,30 @@ func _physics_process(delta: float) -> void:
 	#up the cameras average position 
 	if position.x > RightBoundary:
 		position.x = RightBoundary
+		velocity.x = 0
 		return
 	if position.x < LeftBoundary:
 		position.x = LeftBoundary
+		velocity.x = 0
 		return
+	
+	#Determine if press is held or tapped
+	
+#----=======--------=========---------=======-------======----=
+	if Input.is_action_just_pressed(Secondary):
+		FirstPress = Time.get_ticks_msec()
+		IsAPunch = true
+		HeldDown = true
+	
+	
+	if HeldDown and IsAPunch == true:
+		if (Time.get_ticks_msec() - FirstPress) > HoldTime:
+			IsAPunch = false
+	
+	if Input.is_action_just_released(Secondary):
+		HeldDown = false
+		if IsAPunch:
+			Punch()
 	
 		#Fall Down Through Platform
 	if Input.is_action_just_pressed(MoveDown):
@@ -191,6 +225,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 
+func Punch():
+	if CanPunch:
+		var Punch = PunchingScene.instantiate()
+		#Punch.global_position = global_position
+		Punch.Puncher = name
+		Punch.PunchDirection = Direction
+		
+		add_child(Punch)
+		
+		CanPunch = false
+		PunchTimer.start()
+
 func Jump():
 	velocity.y = -JumpForce
 	CanJump = false
@@ -233,3 +279,7 @@ func Respawn() -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	CanJump = false
+
+
+func _on_punch_cool_down_timeout() -> void:
+	CanPunch = true

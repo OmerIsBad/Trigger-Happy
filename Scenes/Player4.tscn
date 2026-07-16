@@ -121,4 +121,8 @@ position = Vector2(28, 19)
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=966266317]
 one_shot = true
 
+[node name="PunchCoolDown" type="Timer" parent="." unique_id=1193208689]
+one_shot = true
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]

@@ -4,7 +4,7 @@ var KillMe = false
 var Opacity = 1
 var FadeOutSpeed = 0.1
 
-var UpwardsBoostSpeed = 18 + randf_range(2, -2)
+var UpwardsBoostSpeed = 5 + randf_range(2, -2)
 var UpwardsDecay = 0.9  # multiply by this each frame; closer to 1 = slower decay
 
 var RotationSpeed = 0.05

@@ -13,7 +13,6 @@ var FirstPos
 var ShotByGun
 
 var PlayerHit
-var PistolTextOdds = 4 #One in whatever
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,9 +52,14 @@ func _on_bullet_life_timer_timeout() -> void:
 	queue_free()
 
 func ManageTextThrow():
+	if ShotByGun == "AWM_Sniper":
+		ShotByGun = "AWMSniper"
+	if ShotByGun == "Heavy_Sniper":
+		ShotByGun = "HeavySniper"
+	print(ShotByGun)
 	if global.ShotGunList.has(ShotByGun):
-		var PwnedText = global.SummonText("Pwned!", global_position, 20, -1)
+		var PwnedText = global.SummonText("Pwned!", global_position, -1, -1)
 		get_tree().current_scene.add_child(PwnedText)
 	if global.SniperList.has(ShotByGun):
-		var SnipedText = global.SummonText("Sniped!", global_position, 20, -1)
+		var SnipedText = global.SummonText("Sniped!", global_position, -1, -1)
 		get_tree().current_scene.add_child(SnipedText)

@@ -65,7 +65,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var SpacedGunName = ""
 		if ChosenGun == "AWMSniper":
 			SpacedGunName = "AWM Sniper"
-		if ChosenGun == "AK47":
+		elif ChosenGun == "AK47":
 			SpacedGunName = "AK47"
 		else:
 			for letter in ChosenGun:
