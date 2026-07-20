@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0knq47jntws5" path="res://Assets/Prototype.png" id="4_ienac"]
 [ext_resource type="PackedScene" uid="uid://d0moe1qvk0f81" path="res://Scenes/Player4.tscn" id="4_tj5wv"]
 [ext_resource type="PackedScene" uid="uid://caavupfmnolax" path="res://Scenes/CrateSpawner.tscn" id="7_ienac"]
+[ext_resource type="PackedScene" uid="uid://bmf1hrqslak1t" path="res://Scenes/Mine.tscn" id="8_5rrr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
 size = Vector2(511, 40)
@@ -115,6 +116,9 @@ texture = ExtResource("4_ienac")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform7" unique_id=1567310251]
 shape = SubResource("RectangleShape2D_npw3m")
 one_way_collision = true
+
+[node name="Mine" parent="." unique_id=1801035156 instance=ExtResource("8_5rrr5")]
+position = Vector2(996, 395)
 
 [node name="CrateSpawners" type="Node" parent="." unique_id=1217485087]
 

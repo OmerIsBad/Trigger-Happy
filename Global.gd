@@ -1,5 +1,7 @@
 extends Node
 
+var NormalTopSpeed
+var NormalAcc
 	
 var PistolsList = [
 	"Glock29",
@@ -41,6 +43,7 @@ var SpecialsList = [
 	"MissileLauncher",
 	"GrenadeLauncher",
 	]
+
 
 @onready var TextBox = preload("res://Scenes/TextThrowUp.tscn")
 

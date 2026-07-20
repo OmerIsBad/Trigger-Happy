@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bmf1hrqslak1t"]
+
+[ext_resource type="Texture2D" uid="uid://bq8m4bnicalik" path="res://Assets/Mine_FLASHING.png" id="1_es3sx"]
+[ext_resource type="Script" uid="uid://clmkk52oanhvw" path="res://Scripts/Mine.gd" id="1_lym1m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lym1m"]
+atlas = ExtResource("1_es3sx")
+region = Rect2(0, 0, 14, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaiip"]
+atlas = ExtResource("1_es3sx")
+region = Rect2(0, 9, 14, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaiip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lym1m")
+}],
+"loop": 1,
+"name": &"Blink",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
+size = Vector2(28, 14)
+
+[node name="Mine" type="Node2D" unique_id=1801035156]
+script = ExtResource("1_lym1m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=173856584]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+animation = &"Blink"
+frame_progress = 0.8876949
+
+[node name="Area2D" type="Area2D" parent="." unique_id=933503686]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=350607993]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_npw3m")
+
+[node name="StartUpTimer" type="Timer" parent="." unique_id=1246094013]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ShieldImmunity" type="Timer" parent="." unique_id=1876240601]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="StartUpTimer" to="." method="_on_start_up_timer_timeout"]
+[connection signal="timeout" from="ShieldImmunity" to="." method="_on_shield_immunity_timeout"]

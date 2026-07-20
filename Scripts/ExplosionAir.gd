@@ -9,6 +9,8 @@ var DoIt = true
 var SmallerHitbox = false
 var ExplosiveThingyReduction = 3
 
+var ShieldStrength = 3
+
 func _ready() -> void:
 	var TextLabel = global.SummonText("BOOM!", global_position, 50, -1)
 	global.CameraShake(50.0,0.3)
@@ -26,9 +28,10 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(Thing: Node2D) -> void:
-	if Thing.is_in_group("players") and DoIt:
+	if Thing.is_in_group("players") and DoIt and !Thing.has_node("SpawnShield"):
 	#This code is a fucking mess but it works so dont touch it
-		
+		var HasShield = Thing.has_node("ShieldManager") and Thing.get_node("ShieldManager").has_node("Shield")
+			
 		var DiffDirection = (Thing.global_position - global_position).normalized()
 		var RawVerticalKnockback = DiffDirection.y * TotalKnockback
 		var MaxVerticalKnockback = 400.0 
@@ -37,8 +40,14 @@ func _on_area_2d_body_entered(Thing: Node2D) -> void:
 		var HorizontalSign = sign(DiffDirection.x)
 		if HorizontalSign == 0:
 			HorizontalSign = 1  
-		Thing.velocity.x += (DiffDirection.x * TotalKnockback) + (VerticalOverflow * HorizontalSign)
-		Thing.velocity.y += ClampedVerticalKnockback
+			
+		if !HasShield:
+			Thing.velocity.x += (DiffDirection.x * TotalKnockback) + (VerticalOverflow * HorizontalSign)
+			Thing.velocity.y += ClampedVerticalKnockback
+		
+		else: 
+			Thing.velocity.x += ((DiffDirection.x * TotalKnockback) + (VerticalOverflow * HorizontalSign)) / ShieldStrength
+			Thing.velocity.y += ClampedVerticalKnockback/ShieldStrength
 		
 	
 	

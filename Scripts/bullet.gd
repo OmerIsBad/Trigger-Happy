@@ -39,13 +39,20 @@ func _physics_process(delta: float) -> void:
 	if TrailNode.get_point_count() > TrailLength:
 		TrailNode.remove_point(0)
 	
+	
 	if Result:
 		var body = Result.collider
 		if body.is_in_group("players"):
-			PlayerHit = body
-			ManageTextThrow()
-			body.LastShot = Time.get_ticks_msec()
-			body.ApplyKnockback(Knockback, Direction)
+			if !body.has_node("SpawnShield"):
+				PlayerHit = body
+				ManageTextThrow()
+				body.LastShot = Time.get_ticks_msec()
+				body.ApplyKnockback(Knockback, Direction)
+				queue_free()
+			else:
+				queue_free()
+				
+		elif body.name == "Shield":
 			queue_free()
 
 func _on_bullet_life_timer_timeout() -> void:

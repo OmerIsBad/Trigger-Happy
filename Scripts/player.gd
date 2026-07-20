@@ -5,7 +5,9 @@ extends CharacterBody2D
 @onready var CoyoteTimerNode = $CoyoteTimer
 @onready var AnimatedSprite = $AnimatedSprite2D
 @onready var PunchTimer = $PunchCoolDown
+@onready var ItemInstructor = $ItemInstructor
 
+var SpawnShieldScene = preload("res://Scenes/SpawnShield.tscn")
 var PunchingScene = preload("res://Scenes/Punch.tscn")
 
 var CoyoteTime = 0.15
@@ -32,12 +34,14 @@ var RespawnPosition
 var Stock = 3
 var CounterSteerBoost = 10
 var LastShot = 0
+var ShieldMaskOverride = false
 
 var FirstPress = 0
 var HeldDown = false
 var HoldTime = 500
 var IsAPunch
 var CanPunch = true
+var NodeOverridePunch = false
 
 var YBoundary = 1500
 var LeftBoundary = -500
@@ -68,12 +72,92 @@ func IdentifyPlayer():
 		MoveDown = "DOWN_4"
 		MoveJump = "JUMP_4"
 		Secondary = "SECONDARY_4"
+
+var LastUsedEvent = {}  
+
+func _input(event: InputEvent) -> void:
+	for ActionName in InputMap.get_actions():
+		if event.is_action(ActionName) and (event.is_pressed() or event is InputEventJoypadMotion):
+			LastUsedEvent[ActionName] = event
+
+func GetCleanEventText(Event: InputEvent) -> String:
+	if Event is InputEventKey:
+		var Keycode = Event.physical_keycode if Event.physical_keycode != 0 else Event.keycode
+		
+		match Keycode:
+			KEY_KP_0: return "0"
+			KEY_KP_1: return "1"
+			KEY_KP_2: return "2"
+			KEY_KP_3: return "3"
+			KEY_KP_4: return "4"
+			KEY_KP_5: return "5"
+			KEY_KP_6: return "6"
+			KEY_KP_7: return "7"
+			KEY_KP_8: return "8"
+			KEY_KP_9: return "9"
+			KEY_KP_PERIOD: return "."
+			KEY_KP_ADD: return "+"
+			KEY_KP_SUBTRACT: return "-"
+			KEY_KP_MULTIPLY: return "*"
+			KEY_KP_DIVIDE: return "/"
+			KEY_KP_ENTER: return "Enter"
+			_: return OS.get_keycode_string(Keycode)
 	
+	elif Event is InputEventJoypadButton:
+		return "Button " + str(Event.button_index)
+	elif Event is InputEventJoypadMotion:
+		return "Axis " + str(Event.axis)
+	elif Event is InputEventMouseButton:
+		return "Mouse " + str(Event.button_index)
+	
+	return Event.as_text()
+
+var KeypadNameOverrides = {
+	"KP Period": ".",
+	"KP Add": "+",
+	"KP Subtract": "-",
+	"KP Multiply": "*",
+	"KP Divide": "/",
+	"KP Enter": "Enter",
+	"KP 0": "0", "KP 1": "1", "KP 2": "2", "KP 3": "3", "KP 4": "4",
+	"KP 5": "5", "KP 6": "6", "KP 7": "7", "KP 8": "8", "KP 9": "9",
+}
+
+func CleanUpKeypadName(RawName: String) -> String:
+	if KeypadNameOverrides.has(RawName):
+		return KeypadNameOverrides[RawName]
+	return RawName
+
+func GetMappedInput(ActionName: String) -> String:
+	var Event
+	if LastUsedEvent.has(ActionName):
+		Event = LastUsedEvent[ActionName]
+	else:
+		var Events = InputMap.action_get_events(ActionName)
+		if Events.size() > 0:
+			Event = Events[0]
+		else:
+			return "Unbound"
+	
+	var CleanText = GetCleanEventText(Event)
+	return CleanUpKeypadName(CleanText)
 
 func _ready() -> void:
+	global.NormalAcc = Acceleration
+	global.NormalTopSpeed = TopSpeed
+	
 	IdentifyPlayer()
 	RespawnPosition = position
 	add_to_group("players")
+	
+	if name == "Player1":
+		ItemInstructor.add_theme_color_override("font_outline_color", Color("b51111"))
+	if name == "Player2":
+		ItemInstructor.add_theme_color_override("font_outline_color", Color("115bb5"))
+	if name == "Player3":
+		ItemInstructor.add_theme_color_override("font_outline_color", Color("33af22"))
+	if name == "Player4":
+		ItemInstructor.add_theme_color_override("font_outline_color", Color("ffdb00"))
 
 func _physics_process(delta: float) -> void:
 	if position.y > YBoundary:
@@ -93,9 +177,26 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		return
 	
-	#Determine if press is held or tapped
+	#Item Instructor:
+	#Mine:
+	if has_node("MinePlacerItem"):
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
+	elif has_node("ShieldManager"):
+		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Use"
+	else:
+		ItemInstructor.text = ""
 	
-#----=======--------=========---------=======-------======----=
+	if has_node("ShieldManager"):
+		set_collision_mask_value(7, false)
+	elif !ShieldMaskOverride:
+		set_collision_mask_value(7, true)
+	
+	#Determine if press is held or tapped
+	if has_node("MinePlacerItem") or has_node("ShieldManager"):
+		NodeOverridePunch = true
+	else:
+		NodeOverridePunch = false
+	
 	if Input.is_action_just_pressed(Secondary):
 		FirstPress = Time.get_ticks_msec()
 		IsAPunch = true
@@ -108,7 +209,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_released(Secondary):
 		HeldDown = false
-		if IsAPunch:
+		if IsAPunch and !NodeOverridePunch:
 			Punch()
 	
 		#Fall Down Through Platform
@@ -145,12 +246,12 @@ func _physics_process(delta: float) -> void:
 			if (velocity.x + Acceleration) < TopSpeed:
 				velocity.x += Acceleration
 			else:
-				velocity.x = 500
+				velocity.x = TopSpeed
 		elif InputDirection == -1:
 			if (velocity.x - Acceleration) > -TopSpeed:
 				velocity.x -= Acceleration
 			else:
-				velocity.x = -500
+				velocity.x = -TopSpeed
 	
 	#if player is above topspeed due to KNOCKBACK, let him slow down
 	elif InputDirection == 1 and velocity.x < 0:
@@ -259,9 +360,25 @@ func DropGun(GunName: String):
 	var Glock = GlockScene.instantiate()
 	WeaponHolderNode.add_child(Glock)
 
+func DropItem(ItemName: String):
+	var ItemSprite
+	if ItemName == "Shield":
+		ItemSprite = preload("res://Assets/Shield.png")
+	
+	var DroppedItemScene = preload("res://Scenes/DroppedGun.tscn")
+	var DroppedItem = DroppedItemScene.instantiate()
+	
+	DroppedItem.get_node("GunSprite").texture = ItemSprite
+	DroppedItem.position = position
+	
+	get_tree().current_scene.add_child(DroppedItem)
+	
+
 func Respawn() -> void:
 	Stock -= 1
 	if Stock > 0:
+		var SpawnShield = SpawnShieldScene.instantiate()
+		add_child(SpawnShield)
 		position = RespawnPosition
 		velocity = Vector2.ZERO
 		CanJump = false

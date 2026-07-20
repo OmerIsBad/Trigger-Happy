@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://5toaapbxf6gk"]
+
+[ext_resource type="Texture2D" uid="uid://bsiemwu4508mi" path="res://Assets/ShieldBubble.png" id="1_31pb3"]
+[ext_resource type="Script" uid="uid://b7rgeh2wrg721" path="res://Scripts/SpawnShield.gd" id="1_fkuhy"]
+
+[node name="SpawnShield" type="Node2D" unique_id=1681761214]
+script = ExtResource("1_fkuhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2028430675]
+modulate = Color(1, 1, 1, 0.5019608)
+scale = Vector2(2, 2)
+texture = ExtResource("1_31pb3")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=440435660]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

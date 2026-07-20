@@ -1,0 +1,47 @@
+extends Node2D
+
+var ExplosionScene = preload("res://Scenes/MineExplosion.tscn")
+@onready var MineSprite = $AnimatedSprite2D
+@onready var ShieldImmunity = $ShieldImmunity
+
+var Activated = false
+var Stepper
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("players") and Activated:
+		Activated = false
+		
+		body.ShieldMaskOverride = true
+		body.set_collision_mask_value(7, false)
+		
+		Stepper = body
+		ShieldImmunity.start()
+
+		
+		var Explosion = ExplosionScene.instantiate()
+		
+		Explosion.global_position = global_position
+		
+		get_tree().current_scene.add_child(Explosion)
+
+
+
+func _on_start_up_timer_timeout() -> void:
+	MineSprite.play("Blink")
+	Activated = true
+
+
+func _on_shield_immunity_timeout() -> void:
+	Stepper.set_collision_mask_value(7, true)
+	Stepper.ShieldMaskOverride = false
+	queue_free()
+
+func PrintCollisionInfo(node: CollisionObject2D) -> void:
+	print("--- ", node.name, " ---")
+	for i in range(1, 21):  # Godot supports up to 20 physics layers
+		if node.get_collision_layer_value(i):
+			print("  Layer ", i, ": ON")
+		if node.get_collision_mask_value(i):
+			print("  Mask ", i, ": ON")

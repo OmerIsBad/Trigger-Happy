@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://p4n8tipsbjxc"]
+
+[ext_resource type="Script" uid="uid://c2w02pbcn7p8a" path="res://Scripts/MinePlacerItem.gd" id="1_m3y6i"]
+[ext_resource type="Texture2D" uid="uid://bq8m4bnicalik" path="res://Assets/Mine_FLASHING.png" id="2_psung"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io7sx"]
+atlas = ExtResource("2_psung")
+region = Rect2(0, 0, 14, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io7sx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MinePlacerItem" type="Node2D" unique_id=2060322007]
+script = ExtResource("1_m3y6i")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=390647658]
+position = Vector2(-81, 45)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=564117746]
+position = Vector2(-81, 45)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+autoplay = "default"

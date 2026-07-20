@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://5lmy6tynqxob"]
+
+[ext_resource type="Script" uid="uid://4d4xncvccu6w" path="res://Scripts/Shield.gd" id="1_g6qfg"]
+[ext_resource type="Texture2D" uid="uid://bd2l8taceevv" path="res://Assets/Shield.png" id="1_xuq1u"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hjvw7"]
+a = Vector2(0, -45)
+b = Vector2(0, 45)
+
+[node name="Shield" type="CharacterBody2D" unique_id=198534130]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_g6qfg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795649974]
+position = Vector2(30, 7)
+scale = Vector2(2, 2)
+texture = ExtResource("1_xuq1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123096477]
+position = Vector2(30, 7)
+shape = SubResource("SegmentShape2D_hjvw7")

@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bnebx5nnj06ih" path="res://Assets/Player_Idle_BLUE.png" id="3_0bobp"]
 [ext_resource type="Texture2D" uid="uid://x5t68dqh8fpm" path="res://Assets/Player_Run_BLUE.png" id="4_01ocy"]
 [ext_resource type="PackedScene" uid="uid://dy4if5s71q07k" path="res://Scenes/MissileLauncher.tscn" id="5_3tsci"]
+[ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="6_0bobp"]
+[ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_01ocy"]
+[ext_resource type="PackedScene" uid="uid://cnqyy6q44rg6s" path="res://Scenes/ShieldManager.tscn" id="7_7m8ro"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
 atlas = ExtResource("2_3tsci")
@@ -97,6 +100,7 @@ height = 48.0
 
 [node name="Player2" type="CharacterBody2D" unique_id=1839866205]
 collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_dn4j3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1593381085]
@@ -124,6 +128,23 @@ one_shot = true
 
 [node name="PunchCoolDown" type="Timer" parent="." unique_id=1752892139]
 one_shot = true
+
+[node name="SpawnShield" parent="." unique_id=1681761214 instance=ExtResource("6_0bobp")]
+
+[node name="ShieldManager" parent="." unique_id=669167175 instance=ExtResource("7_7m8ro")]
+
+[node name="ItemInstructor" type="RichTextLabel" parent="." unique_id=1630730075]
+offset_left = -369.0
+offset_top = -69.0
+offset_right = 369.0
+offset_bottom = -47.0
+theme_override_colors/font_outline_color = Color(0.06666667, 0.35686275, 0.70980394, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("7_01ocy")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]
