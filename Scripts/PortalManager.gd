@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	
 	scale.x = get_parent().Direction * -1
 	
-	#last ededited sdjsdhsd
+	#Placement Logic
 	if Input.is_action_just_pressed(Secondary):
 		if PortalsLeft == 2:
 			var BluePortal = PortalBlueNode.instantiate()
@@ -53,5 +53,5 @@ func _process(delta: float) -> void:
 					Portal.Activated = true
 					Portal.Lifetime.start()
 			
-			get_parent().IsAPunch = false  # explicitly cancel the pending punch
+			get_parent().IsAPunch = false 
 			queue_free()

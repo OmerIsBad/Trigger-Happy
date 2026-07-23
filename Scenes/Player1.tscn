@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://brurq1gppfwel" path="res://Assets/Player_Idle_RED.png" id="3_i047d"]
 [ext_resource type="PackedScene" uid="uid://brxsd17k37suo" path="res://Scenes/GrenadeLauncher.tscn" id="5_2ale3"]
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="7_hjvw7"]
-[ext_resource type="PackedScene" uid="uid://dh014u2bcn8gy" path="res://Scenes/PortalManager.tscn" id="8_h0l6a"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="8_tchc4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
@@ -142,8 +141,6 @@ text = "
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PortalManager" parent="." unique_id=1671963474 instance=ExtResource("8_h0l6a")]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]

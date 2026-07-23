@@ -62,6 +62,10 @@ func SummonText(Text: String, pos: Vector2, Size: int, Speed:int):
 
 
 func CameraShake(ShakeStrength: float = 10.0, ShakeDuration: float = 0.2) -> void:
+	var IsLaser = false
+	if ShakeDuration == 69420: #This is such a dumb way to do it lol
+		IsLaser = true
+		ShakeDuration = 0.5
 	var Camera = get_tree().current_scene.get_node("Camera2D")
 	var OriginalOffset = Camera.offset
 	
@@ -79,3 +83,6 @@ func CameraShake(ShakeStrength: float = 10.0, ShakeDuration: float = 0.2) -> voi
 		ShakeTween.tween_property(Camera, "offset", RandomOffset, StepDuration)
 	
 	ShakeTween.tween_property(Camera, "offset", OriginalOffset, StepDuration)
+	
+	if IsLaser:
+		CameraShake(ShakeStrength, ShakeDuration)

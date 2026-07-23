@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c8avs2cq4pgji"]
+
+[ext_resource type="Texture2D" uid="uid://dkjacirsyuvy1" path="res://Assets/LaserWarning.png" id="1_cyhlv"]
+[ext_resource type="Script" uid="uid://2ae5153di27q" path="res://Scripts/OSL.gd" id="1_jyjyx"]
+[ext_resource type="Texture2D" uid="uid://c5dofsou8alx5" path="res://Assets/Laser.png" id="2_jyjyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34fye"]
+atlas = ExtResource("2_jyjyx")
+region = Rect2(0, 0, 208, 2400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw4ne"]
+atlas = ExtResource("2_jyjyx")
+region = Rect2(208, 0, 208, 2400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eprt"]
+atlas = ExtResource("2_jyjyx")
+region = Rect2(416, 0, 208, 2400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ueoic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cyhlv")
+}],
+"loop": 1,
+"name": &"Aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34fye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw4ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eprt")
+}],
+"loop": 1,
+"name": &"Laser",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
+size = Vector2(195, 2400)
+
+[node name="OSL" type="Node2D" unique_id=755086435]
+script = ExtResource("1_jyjyx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854186735]
+sprite_frames = SubResource("SpriteFrames_ueoic")
+animation = &"Aim"
+autoplay = "Aim"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D" unique_id=673129553]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D" unique_id=500692114]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_npw3m")
+
+[node name="LaserTimer" type="Timer" parent="." unique_id=1628160690]
+wait_time = 2.5
+one_shot = true
+
+[node name="AimingTimer" type="Timer" parent="." unique_id=18935364]
+one_shot = true
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="AimingTimer" to="." method="_on_aiming_timer_timeout"]

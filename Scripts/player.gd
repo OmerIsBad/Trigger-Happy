@@ -35,6 +35,7 @@ var Stock = 3
 var CounterSteerBoost = 10
 var LastShot = 0
 var ShieldMaskOverride = false
+var CanMove = true
 
 var FirstPress = 0
 var HeldDown = false
@@ -159,6 +160,9 @@ func _ready() -> void:
 	if name == "Player4":
 		ItemInstructor.add_theme_color_override("font_outline_color", Color("ffdb00"))
 
+
+
+
 func _physics_process(delta: float) -> void:
 	if position.y > YBoundary:
 		Respawn()
@@ -183,9 +187,14 @@ func _physics_process(delta: float) -> void:
 		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
 	elif has_node("ShieldManager"):
 		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Use"
+	elif has_node("PortalManager"):
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
+	elif has_node("OSL"):
+		CanMove = false
 	else:
 		ItemInstructor.text = ""
-	
+		CanMove = true
+		
 	if has_node("ShieldManager"):
 		if get_node("ShieldManager").has_node("Shield"):
 			set_collision_mask_value(7, false)
@@ -213,99 +222,113 @@ func _physics_process(delta: float) -> void:
 	else:
 		NodeOverridePunch = false
 	
-		#Fall Down Through Platform
-	if Input.is_action_just_pressed(MoveDown):
-		position.y += 1
-	
-	
-	InputDirection = Input.get_axis(MoveLeft, MoveRight)
-	if InputDirection != 0:
-		Direction = InputDirection
-	
-	#Start Coyote Timer if not on floor yuh
-	if !is_on_floor() and CoyoteTimerNode.is_stopped():
-		CoyoteTimerNode.start(CoyoteTime)
-	
-	#If he's on the floor we give em all jumping privilages 
-	elif is_on_floor():
-		CanJump = true
-		CanDoubleJump = true
-	
-	#Stop Coyote Timer if player lands before it finishes and shi yuh
-	if is_on_floor() and !CoyoteTimerNode.is_stopped():
-		CoyoteTimerNode.stop()
-	
-	#Double Jump
-	if Input.is_action_just_pressed(MoveJump):
-		if !CanJump and CanDoubleJump:
-			CanDoubleJump = false
-			Jump()
-
-	# Apply Acceeration if button pressed and player isnt above TS
-	if abs(velocity.x) < TopSpeed:
-		if InputDirection == 1:
-			if (velocity.x + Acceleration) < TopSpeed:
-				velocity.x += Acceleration
-			else:
-				velocity.x = TopSpeed
-		elif InputDirection == -1:
-			if (velocity.x - Acceleration) > -TopSpeed:
-				velocity.x -= Acceleration
-			else:
-				velocity.x = -TopSpeed
-	
-	#if player is above topspeed due to KNOCKBACK, let him slow down
-	elif InputDirection == 1 and velocity.x < 0:
-		velocity.x += CounterSteerBoost + ExtremeSpeedFriction
-	elif InputDirection == -1 and velocity.x > 0:
-		velocity.x -= CounterSteerBoost + ExtremeSpeedFriction
-	
-	if abs(velocity.x) > TopSpeed:
-		velocity.x -= SpeedDegradation * Direction
-
-	
-	#Apply Friction or Air Resistance if nothing is pressed
-	if is_on_floor():
-		#if extreme speed, increase friction, else use normal
-		var FrictionToUse = Friction
+	if Input.is_action_just_pressed("ui_accept") and name == "Player1" and !has_node("OSL"):
+		var poop = preload("res://Scenes/OSL.tscn").instantiate()
+		add_child(poop)
 		
-		if abs(velocity.x) > TopSpeed :
-			FrictionToUse = ExtremeSpeedFriction
+	if CanMove:
+			#Fall Down Through Platform
+		if Input.is_action_just_pressed(MoveDown):
+			position.y += 1
+		
+		
+		InputDirection = Input.get_axis(MoveLeft, MoveRight)
+		if InputDirection != 0:
+			Direction = InputDirection
+		
+		#Start Coyote Timer if not on floor yuh
+		if !is_on_floor() and CoyoteTimerNode.is_stopped():
+			CoyoteTimerNode.start(CoyoteTime)
+		
+		#If he's on the floor we give em all jumping privilages 
+		elif is_on_floor():
+			CanJump = true
+			CanDoubleJump = true
+		
+		#Stop Coyote Timer if player lands before it finishes and shi yuh
+		if is_on_floor() and !CoyoteTimerNode.is_stopped():
+			CoyoteTimerNode.stop()
+		
+		#Double Jump
+		if Input.is_action_just_pressed(MoveJump):
+			if !CanJump and CanDoubleJump:
+				CanDoubleJump = false
+				Jump()
+
+		# Apply Acceeration if button pressed and player isnt above TS
+		if abs(velocity.x) < TopSpeed:
+			if InputDirection == 1:
+				if (velocity.x + Acceleration) < TopSpeed:
+					velocity.x += Acceleration
+				else:
+					velocity.x = TopSpeed
+			elif InputDirection == -1:
+				if (velocity.x - Acceleration) > -TopSpeed:
+					velocity.x -= Acceleration
+				else:
+					velocity.x = -TopSpeed
+		
+		#if player is above topspeed due to KNOCKBACK, let him slow down
+		elif InputDirection == 1 and velocity.x < 0:
+			velocity.x += CounterSteerBoost + ExtremeSpeedFriction
+		elif InputDirection == -1 and velocity.x > 0:
+			velocity.x -= CounterSteerBoost + ExtremeSpeedFriction
+		
+		if abs(velocity.x) > TopSpeed:
+			velocity.x -= SpeedDegradation * Direction
+
+		
+		#Apply Friction or Air Resistance if nothing is pressed
+		if is_on_floor():
+			#if extreme speed, increase friction, else use normal
+			var FrictionToUse = Friction
+			
+			if abs(velocity.x) > TopSpeed :
+				FrictionToUse = ExtremeSpeedFriction
+			else:
+				FrictionToUse = Friction
+			
+			#To prevent pingponging, reset to zero
+			if InputDirection == 0.0 and abs(velocity.x) < FrictionToUse:
+				velocity.x = 0
+			#ACTUALLY applying friction
+			if InputDirection == 0.0 and velocity.x > 0.0:
+				velocity.x -= FrictionToUse
+			if InputDirection == 0.0 and velocity.x < 0.0:
+				velocity.x += FrictionToUse
+			
 		else:
-			FrictionToUse = Friction
+			#to prevent pingponging, reset to zero
+			if InputDirection == 0.0 and abs(velocity.x) < AirResistance:
+				velocity.x = 0
+			#ACTUALLY applying air resistance
+			elif InputDirection == 0.0 and velocity.x > 0.0:
+				velocity.x -= AirResistance
+			elif InputDirection == 0.0 and velocity.x < 0.0:
+				velocity.x += AirResistance
 		
-		#To prevent pingponging, reset to zero
-		if InputDirection == 0.0 and abs(velocity.x) < FrictionToUse:
-			velocity.x = 0
-		#ACTUALLY applying friction
-		if InputDirection == 0.0 and velocity.x > 0.0:
-			velocity.x -= FrictionToUse
-		if InputDirection == 0.0 and velocity.x < 0.0:
-			velocity.x += FrictionToUse
 		
+		#Jumpy
+		if Input.is_action_just_pressed(MoveJump) and CanJump == true:
+			Jump()
+		
+		#Upwards and downwards gravity
+		if velocity.y > 0 and !is_on_floor():
+			velocity.y += DownGravity
+		else:
+			velocity.y += UpGravity
+		
+		#Turn Gun to direction
+		HandNode.scale.x = Direction
+	
 	else:
-		#to prevent pingponging, reset to zero
-		if InputDirection == 0.0 and abs(velocity.x) < AirResistance:
-			velocity.x = 0
-		#ACTUALLY applying air resistance
-		elif InputDirection == 0.0 and velocity.x > 0.0:
-			velocity.x -= AirResistance
-		elif InputDirection == 0.0 and velocity.x < 0.0:
-			velocity.x += AirResistance
-	
-	
-	#Jumpy
-	if Input.is_action_just_pressed(MoveJump) and CanJump == true:
-		Jump()
-	
-	#Upwards and downwards gravity
-	if velocity.y > 0 and !is_on_floor():
-		velocity.y += DownGravity
-	else:
-		velocity.y += UpGravity
-	
-	#Turn Gun to direction
-	HandNode.scale.x = Direction
+		velocity = Vector2(0,0)
+		InputDirection = 0
+		Direction = 0
+		if has_node("SpawnShield") == false:
+			var Shield = SpawnShieldScene.instantiate()
+			add_child(Shield)
+		
 
 	#-----ANIMATIONS!-----
 	if InputDirection == 0:
