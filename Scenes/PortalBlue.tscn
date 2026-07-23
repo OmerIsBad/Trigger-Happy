@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bexjxwxisa376"]
+
+[ext_resource type="Script" uid="uid://cbneriwclefao" path="res://Scripts/Portal.gd" id="1_4jupp"]
+[ext_resource type="Texture2D" uid="uid://dv3lc0spvg3m3" path="res://Assets/portalsSpriteSheet .png" id="2_swyce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txjwq"]
+atlas = ExtResource("2_swyce")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_074lm"]
+atlas = ExtResource("2_swyce")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_updvs"]
+atlas = ExtResource("2_swyce")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycofv"]
+atlas = ExtResource("2_swyce")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txjwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_updvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycofv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npw3m"]
+radius = 27.0
+height = 86.0
+
+[node name="PortalBLUE" type="Node2D" unique_id=95847714]
+script = ExtResource("1_4jupp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222116957]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+autoplay = "default"
+frame_progress = 0.17450428
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1842254450]
+collision_mask = 159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1612949964]
+shape = SubResource("CapsuleShape2D_npw3m")
+
+[node name="MarkerRight" type="Marker2D" parent="." unique_id=2094018801]
+position = Vector2(33, 0)
+
+[node name="MarkerLeft" type="Marker2D" parent="." unique_id=415515023]
+position = Vector2(-33, 0)
+
+[node name="Lifetime" type="Timer" parent="." unique_id=149342207]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

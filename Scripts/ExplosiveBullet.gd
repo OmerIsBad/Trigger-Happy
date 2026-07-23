@@ -6,6 +6,7 @@ var ExplosionScene = preload("res://Scenes/ExplosionAir.tscn")
 @onready var Sprite = $Sprite2D
 @onready var TrailNode = $Trail
 var TrailLength = 20
+var TrailPaused = false
 
 var Direction
 var Speed
@@ -17,6 +18,7 @@ var ShotByGun
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("Bullets")
 	add_to_group("ExplosiveThingiesThatShouldAlsoBeMovedByExplosions")
 	apply_impulse(Vector2(Speed * Direction, UpwardsForce))
 	apply_torque((-10000.0 * Direction)+ randi_range(-2500, 2500))
@@ -28,9 +30,13 @@ func _process(delta: float) -> void:
 		LastSecond = CurrentSecond
 		FlashTimer.start()
 	
-	TrailNode.add_point(global_position)
-	if TrailNode.get_point_count() > TrailLength:
-		TrailNode.remove_point(0)
+	if !TrailPaused:
+		TrailNode.add_point(global_position)
+		if TrailNode.get_point_count() > TrailLength:
+			TrailNode.remove_point(0)
+	
+	if TrailPaused:
+		TrailPaused = false
 
 func _on_timer_timeout() -> void:
 	var Explosion = ExplosionScene.instantiate()
@@ -41,3 +47,7 @@ func _on_timer_timeout() -> void:
 
 func _on_flash_timer_timeout() -> void:
 	Sprite.modulate = Color(1, 1, 1, 1)
+
+func EmptyTrail():
+	TrailPaused = true
+	TrailNode.clear_points()

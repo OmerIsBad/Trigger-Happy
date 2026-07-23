@@ -4,10 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dxsh7qrupoxrn" path="res://Assets/Player_Air_YELLOW.png" id="2_obhlv"]
 [ext_resource type="Texture2D" uid="uid://cek37gn6lflfl" path="res://Assets/Player_Idle_YELLOW.png" id="3_qqxj0"]
 [ext_resource type="Texture2D" uid="uid://bsdmoqaauoc3d" path="res://Assets/Player_Run_YELLOW.png" id="4_lnsv8"]
-[ext_resource type="PackedScene" uid="uid://d4n21yc82y8kn" path="res://Scenes/Minigun.tscn" id="5_obhlv"]
+[ext_resource type="PackedScene" uid="uid://ch7jjj0qi2bbs" path="res://Scenes/RocketLauncher.tscn" id="5_qqxj0"]
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="6_obhlv"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_qqxj0"]
-[ext_resource type="PackedScene" uid="uid://cnqyy6q44rg6s" path="res://Scenes/ShieldManager.tscn" id="8_lnsv8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_625rw"]
 atlas = ExtResource("2_obhlv")
@@ -120,7 +119,7 @@ scale = Vector2(-1, 1)
 [node name="WeaponHolder" type="Node2D" parent="Hand" unique_id=1040076102]
 position = Vector2(28, 19)
 
-[node name="Minigun" parent="Hand/WeaponHolder" unique_id=660639381 instance=ExtResource("5_obhlv")]
+[node name="RocketLauncher" parent="Hand/WeaponHolder" unique_id=1929053549 instance=ExtResource("5_qqxj0")]
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=966266317]
 one_shot = true
@@ -129,7 +128,6 @@ one_shot = true
 one_shot = true
 
 [node name="SpawnShield" parent="." unique_id=1681761214 instance=ExtResource("6_obhlv")]
-visible = false
 
 [node name="ItemInstructor" type="RichTextLabel" parent="." unique_id=1429062639]
 offset_left = -369.0
@@ -143,8 +141,6 @@ text = "
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ShieldManager" parent="." unique_id=669167175 instance=ExtResource("8_lnsv8")]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]

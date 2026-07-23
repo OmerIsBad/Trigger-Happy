@@ -16,6 +16,7 @@ var PlayerHit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("Bullets")
 	BulletLifeTimer.start(Lifetime)
 	FirstPos = position
 	TrailNode.add_point(FirstPos)
@@ -32,8 +33,8 @@ func _physics_process(delta: float) -> void:
 	position.x += Speed * Direction 
 	var SpaceState = get_world_2d().direct_space_state
 	var Query = PhysicsRayQueryParameters2D.create(PrevPos, position)
+	Query.collide_with_areas = true
 	var Result = SpaceState.intersect_ray(Query)
-	
 	
 	TrailNode.add_point(global_position)
 	if TrailNode.get_point_count() > TrailLength:
@@ -54,6 +55,16 @@ func _physics_process(delta: float) -> void:
 				
 		elif body.name == "Shield":
 			queue_free()
+		
+		elif body.get_parent().is_in_group("Portals"):
+			TrailNode.clear_points()
+			for Portal in get_tree().get_nodes_in_group("Portals"):
+				if Portal.name != body.get_parent().name:
+					if Direction == 1:
+						Portal.TeleportToMarker("Right", self)
+					else:
+						Portal.TeleportToMarker("Left", self)
+
 
 func _on_bullet_life_timer_timeout() -> void:
 	queue_free()

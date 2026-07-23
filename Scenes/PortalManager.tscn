@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dh014u2bcn8gy"]
+
+[ext_resource type="Texture2D" uid="uid://dv3lc0spvg3m3" path="res://Assets/portalsSpriteSheet .png" id="1_3p56g"]
+[ext_resource type="Script" uid="uid://byccc6bn8lom7" path="res://Scripts/PortalManager.gd" id="1_qvbui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvbui"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bu4v"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi27p"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnvyo"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nvo3"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_attar"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(32, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qokp2"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(64, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta4m6"]
+atlas = ExtResource("1_3p56g")
+region = Rect2(96, 48, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdvnu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bu4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi27p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnvyo")
+}],
+"loop": 1,
+"name": &"Blue",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nvo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_attar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qokp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta4m6")
+}],
+"loop": 1,
+"name": &"Orange",
+"speed": 10.0
+}]
+
+[node name="PortalManager" type="Node2D" unique_id=1671963474]
+script = ExtResource("1_qvbui")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=944246794]
+position = Vector2(-81, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1789528186]
+position = Vector2(-81, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kdvnu")
+animation = &"Orange"

@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://70vm4h0tt2ts" path="res://Scenes/AWMSniper.tscn" id="5_k2kem"]
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="6_tq74v"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_68fft"]
-[ext_resource type="PackedScene" uid="uid://cnqyy6q44rg6s" path="res://Scenes/ShieldManager.tscn" id="7_83nsc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mn57n"]
 atlas = ExtResource("2_tq74v")
@@ -129,8 +128,6 @@ one_shot = true
 one_shot = true
 
 [node name="SpawnShield" parent="." unique_id=1681761214 instance=ExtResource("6_tq74v")]
-
-[node name="ShieldManager" parent="." unique_id=669167175 instance=ExtResource("7_83nsc")]
 
 [node name="ItemInstructor" type="RichTextLabel" parent="." unique_id=1867820145]
 offset_left = -369.0

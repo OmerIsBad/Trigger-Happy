@@ -187,16 +187,12 @@ func _physics_process(delta: float) -> void:
 		ItemInstructor.text = ""
 	
 	if has_node("ShieldManager"):
-		set_collision_mask_value(7, false)
-	elif !ShieldMaskOverride:
-		set_collision_mask_value(7, true)
-	
+		if get_node("ShieldManager").has_node("Shield"):
+			set_collision_mask_value(7, false)
+		elif !ShieldMaskOverride:
+			set_collision_mask_value(7, true)
+
 	#Determine if press is held or tapped
-	if has_node("MinePlacerItem") or has_node("ShieldManager"):
-		NodeOverridePunch = true
-	else:
-		NodeOverridePunch = false
-	
 	if Input.is_action_just_pressed(Secondary):
 		FirstPress = Time.get_ticks_msec()
 		IsAPunch = true
@@ -211,6 +207,11 @@ func _physics_process(delta: float) -> void:
 		HeldDown = false
 		if IsAPunch and !NodeOverridePunch:
 			Punch()
+	
+	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager"):
+		NodeOverridePunch = true
+	else:
+		NodeOverridePunch = false
 	
 		#Fall Down Through Platform
 	if Input.is_action_just_pressed(MoveDown):

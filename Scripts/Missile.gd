@@ -22,6 +22,7 @@ var Drag = 1.0
 var ShotByGun  
 
 func _ready() -> void:
+	add_to_group("Bullets")
 	FirstPos = position
 	TrailNode.add_point(FirstPos)
 	
@@ -92,6 +93,18 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		Explosion.SmallerHitbox = true
 		get_tree().current_scene.add_child(Explosion)
 		queue_free()
+	if area.get_parent().is_in_group("Portals") and !self.is_in_group("ExemptPlayers"):
+		add_to_group("ExemptPlayers")
+		TrailNode.clear_points()
+		var PortalEntered = area.get_parent()
+		for Portal in get_tree().get_nodes_in_group("Portals"):
+					if Portal.name != PortalEntered.name:
+						if Direction.x == 1:
+							Portal.TeleportToMarker("Right", self)
+						else:
+							Portal.TeleportToMarker("Left", self)
+	else:
+		remove_from_group("ExemptPlayers")
 
 func _on_fuel_timer_timeout() -> void:
 	HasFuel = false
