@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://b6rqyfone2hlq"]
+
+[ext_resource type="Texture2D" uid="uid://sr37f88lgutg" path="res://Assets/LaserExplosion.png" id="1_x5hl6"]
+[ext_resource type="Script" uid="uid://bwlmf76ej3hnj" path="res://Scripts/LaserExplosion.gd" id="2_bohoh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bohoh"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwn1p"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8myf"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc1pn"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_algiu"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho2d4"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 640, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts72h"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 768, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgysw"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 896, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh2pm"]
+atlas = ExtResource("1_x5hl6")
+region = Rect2(0, 1024, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bohoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwn1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8myf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc1pn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_algiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho2d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts72h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgysw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh2pm")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="LaserExplosion" type="AnimatedSprite2D" unique_id=1514493427]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+autoplay = "default"
+script = ExtResource("2_bohoh")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

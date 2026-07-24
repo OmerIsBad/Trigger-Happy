@@ -189,8 +189,13 @@ func _physics_process(delta: float) -> void:
 		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Use"
 	elif has_node("PortalManager"):
 		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
+	
 	elif has_node("OSL"):
-		CanMove = false
+		if get_node("OSL").CurrentState == "Off":
+			ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Order \n Orbital Strike Laser"
+		elif get_node("OSL").CurrentState == "Aiming":
+			ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Fire"
+			CanMove = false
 	else:
 		ItemInstructor.text = ""
 		CanMove = true

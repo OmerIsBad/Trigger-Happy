@@ -21,15 +21,12 @@ global="*uid://btu8i0v1c26yf"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=4
 window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/Omer Ahmed/Documents/GitHub/simple-gun-test/Movie6.avi"
+movie_writer/movie_file="C:/Users/Omer Ahmed/Documents/GitHub/simple-gun-test/DuckWaddle.avi"
 
 [input]
 

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0knq47jntws5" path="res://Assets/Prototype.png" id="4_ienac"]
 [ext_resource type="PackedScene" uid="uid://d0moe1qvk0f81" path="res://Scenes/Player4.tscn" id="4_tj5wv"]
 [ext_resource type="PackedScene" uid="uid://caavupfmnolax" path="res://Scenes/CrateSpawner.tscn" id="7_ienac"]
-[ext_resource type="PackedScene" uid="uid://bmf1hrqslak1t" path="res://Scenes/Mine.tscn" id="8_5rrr5"]
+[ext_resource type="PackedScene" uid="uid://dip2lmvla0y37" path="res://Scenes/DuckBomb.tscn" id="9_or7tv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
 size = Vector2(511, 40)
@@ -117,9 +117,6 @@ texture = ExtResource("4_ienac")
 shape = SubResource("RectangleShape2D_npw3m")
 one_way_collision = true
 
-[node name="Mine" parent="." unique_id=1801035156 instance=ExtResource("8_5rrr5")]
-position = Vector2(996, 395)
-
 [node name="CrateSpawners" type="Node" parent="." unique_id=1217485087]
 
 [node name="CrateSpawner" parent="CrateSpawners" unique_id=599620663 instance=ExtResource("7_ienac")]
@@ -139,3 +136,6 @@ position = Vector2(1490, 404)
 
 [node name="CrateSpawner8" parent="CrateSpawners" unique_id=2015390030 instance=ExtResource("7_ienac")]
 position = Vector2(580, 558)
+
+[node name="DuckBomb" parent="." unique_id=1461960780 instance=ExtResource("9_or7tv")]
+position = Vector2(460, 532)

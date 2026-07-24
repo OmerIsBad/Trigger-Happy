@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dip2lmvla0y37"]
+
+[ext_resource type="Script" uid="uid://bi0xwtknkb4bv" path="res://Scripts/DuckBomb.gd" id="1_5aq5g"]
+[ext_resource type="Texture2D" uid="uid://d1i0yoe7rwt74" path="res://Assets/RubberDuckyBomb.png" id="2_5nheg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aq5g"]
+atlas = ExtResource("2_5nheg")
+region = Rect2(0, 0, 23, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nheg"]
+atlas = ExtResource("2_5nheg")
+region = Rect2(0, 26, 23, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asbrv"]
+atlas = ExtResource("2_5nheg")
+region = Rect2(0, 52, 23, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elwmk"]
+atlas = ExtResource("2_5nheg")
+region = Rect2(0, 78, 23, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aq5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nheg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asbrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elwmk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_npw3m"]
+radius = 21.0
+
+[node name="DuckBomb" type="Node2D" unique_id=1461960780]
+script = ExtResource("1_5aq5g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=560691864]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+autoplay = "default"
+frame_progress = 0.5581899
+
+[node name="Area2D" type="Area2D" parent="." unique_id=182271338]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=455421581]
+shape = SubResource("CircleShape2D_npw3m")
+
+[node name="StartUpTimer" type="Timer" parent="." unique_id=36197850]
+one_shot = true
+autostart = true
+
+[node name="ShieldImmunity" type="Timer" parent="." unique_id=1250390562]
+wait_time = 0.1
+one_shot = true
+
+[node name="LeftCast" type="RayCast2D" parent="." unique_id=387818119]
+position = Vector2(-23, 18)
+
+[node name="RightCast" type="RayCast2D" parent="." unique_id=410367195]
+position = Vector2(23, 18)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="StartUpTimer" to="." method="_on_start_up_timer_timeout"]
+[connection signal="timeout" from="ShieldImmunity" to="." method="_on_shield_immunity_timeout"]

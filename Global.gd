@@ -62,19 +62,16 @@ func SummonText(Text: String, pos: Vector2, Size: int, Speed:int):
 
 
 func CameraShake(ShakeStrength: float = 10.0, ShakeDuration: float = 0.2) -> void:
-	var IsLaser = false
-	if ShakeDuration == 69420: #This is such a dumb way to do it lol
-		IsLaser = true
-		ShakeDuration = 0.5
 	var Camera = get_tree().current_scene.get_node("Camera2D")
 	var OriginalOffset = Camera.offset
 	
 	var ShakeTween = create_tween()
-	var Steps = 10
+	var StepsPerSecond = 15.0  
+	var Steps = max(int(ShakeDuration * StepsPerSecond), 1)
 	var StepDuration = ShakeDuration / Steps
 	
 	for i in range(Steps):
-#Decay strength over time so the shake tapers off type shi
+		#Decay strength over time so the shake tapers off
 		var CurrentStrength = ShakeStrength * (1.0 - float(i) / Steps)
 		var RandomOffset = Vector2(
 			randf_range(-CurrentStrength, CurrentStrength),
@@ -83,6 +80,3 @@ func CameraShake(ShakeStrength: float = 10.0, ShakeDuration: float = 0.2) -> voi
 		ShakeTween.tween_property(Camera, "offset", RandomOffset, StepDuration)
 	
 	ShakeTween.tween_property(Camera, "offset", OriginalOffset, StepDuration)
-	
-	if IsLaser:
-		CameraShake(ShakeStrength, ShakeDuration)

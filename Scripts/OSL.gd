@@ -15,10 +15,10 @@ var BlinkSpeed = 0.025
 var IsVisible = true
 var TimeyTimey = 0.0
 var OscillationSpeed = 10
-
 @onready var AnimatedSprite = $AnimatedSprite2D
 @onready var AimingTimer = $AimingTimer
 @onready var LaserTimer = $LaserTimer
+var Explosion = preload("res://Scenes/LaserExplosion.tscn")
 
 func _ready() -> void:
 	Daddy = get_parent()
@@ -26,14 +26,21 @@ func _ready() -> void:
 	Left = Daddy.MoveLeft
 	Right = Daddy.MoveRight
 	Secondary = Daddy.Secondary
-	AnimatedSprite.play("Aim")
-	CurrentState = "Aiming"
+	AnimatedSprite.modulate = Color(0, 0, 0, 0)
+	CurrentState = "Off"
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(Secondary) and CurrentState == "Aiming":
+	if Input.is_action_just_pressed(Secondary) and CurrentState == "Off":
+		CurrentState = "Aiming"
+		AnimatedSprite.play("Aim")
+	
+	elif Input.is_action_just_pressed(Secondary) and CurrentState == "Aiming":
 		CurrentState = "Warning"
 		AnimatedSprite.modulate = Color.RED
 		AimingTimer.start()
+	
+	if CurrentState == "Off":
+		return
 	
 	if CurrentState == "Aiming":
 		TimeyTimey += delta
@@ -67,18 +74,20 @@ func _process(delta: float) -> void:
 			AnimatedSprite.modulate = Color(1, 0, 0, 1) if IsVisible else Color(0, 0, 0, 0)
 			Last = Current
 
-
 func _on_aiming_timer_timeout() -> void:
 	CurrentState = "Shooting"
 	AnimatedSprite.modulate = Color(1,1,1,1)
 	AnimatedSprite.play("Laser")
 	LaserTimer.start()
-	global.CameraShake(75,69420)
+	global.CameraShake(30,2)
 	reparent(Daddy.get_parent())
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if CurrentState == "Shooting" and body.is_in_group("players") and !body.is_in_group("PlayersThatEitherShotOrAreHitByTheLaserTypeShi"):
+		
+		var Kaboom = Explosion.instantiate()
+		Kaboom.global_position = body.global_position
+		get_tree().current_scene.add_child(Kaboom)
 		
 		PushDirection = sign(body.global_position.x - global_position.x)
 		if PushDirection == 0:
@@ -88,8 +97,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.velocity.y -= 1500
 		body.add_to_group("PlayersThatEitherShotOrAreHitByTheLaserTypeShi")
 
-
-
 func _on_laser_timer_timeout() -> void:
 	Daddy.CanMove = true
+	for Player in get_tree().get_nodes_in_group("PlayersThatEitherShotOrAreHitByTheLaserTypeShi"):
+		Player.remove_from_group("PlayersThatEitherShotOrAreHitByTheLaserTypeShi")
 	queue_free()

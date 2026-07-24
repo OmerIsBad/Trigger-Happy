@@ -133,14 +133,13 @@ one_shot = true
 offset_left = -369.0
 offset_top = -69.0
 offset_right = 369.0
-offset_bottom = -47.0
+offset_bottom = 1.0
 theme_override_colors/font_outline_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("8_tchc4")
 text = "
 "
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]
