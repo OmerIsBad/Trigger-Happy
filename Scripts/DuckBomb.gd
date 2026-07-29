@@ -4,7 +4,7 @@ var ExplosionScene = preload("res://Scenes/MineExplosion.tscn")
 @onready var DuckSprite = $AnimatedSprite2D
 @onready var ShieldImmunity = $ShieldImmunity
 @onready var LeftCast = $LeftCast
-@onready var RightCast: RayCast2D = $RightCast
+@onready var RightCast = $RightCast
 
 var Activated = false
 var Stepper
@@ -56,6 +56,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var Explosion = ExplosionScene.instantiate()
 		
 		Explosion.global_position = global_position
+		Explosion.ExplodeText = "QUACK!"
 		
 		get_tree().current_scene.add_child(Explosion)
 

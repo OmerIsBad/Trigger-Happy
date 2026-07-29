@@ -189,6 +189,12 @@ func _physics_process(delta: float) -> void:
 		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Use"
 	elif has_node("PortalManager"):
 		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
+	elif has_node("DuckBombManager"):
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
+	elif has_node("JetPack"):
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Fly"
+	elif has_node("GrenadeManager"):
+		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Throw"
 	
 	elif has_node("OSL"):
 		if get_node("OSL").CurrentState == "Off":
@@ -222,7 +228,7 @@ func _physics_process(delta: float) -> void:
 		if IsAPunch and !NodeOverridePunch:
 			Punch()
 	
-	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager"):
+	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager") or has_node("OSL") or has_node("DuckBombManager") or has_node("JetPack") or has_node("GrenadeManager"):
 		NodeOverridePunch = true
 	else:
 		NodeOverridePunch = false

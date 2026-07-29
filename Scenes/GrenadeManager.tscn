@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://btkhxjynn7v4k"]
+
+[ext_resource type="Script" uid="uid://7slr22uuy84m" path="res://Scripts/GrenadeManager.gd" id="1_lw53m"]
+[ext_resource type="Texture2D" uid="uid://drbbga5n3i0sr" path="res://Assets/ProgressBarFill.png" id="2_seuhs"]
+[ext_resource type="Texture2D" uid="uid://dj5adh7rj652y" path="res://Assets/ProgressBarOutline.png" id="3_5ebnn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dv35l"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("2_seuhs")
+
+[node name="GrenadeManager" type="Node2D" unique_id=1057855040]
+script = ExtResource("1_lw53m")
+
+[node name="PowerBar" type="ProgressBar" parent="." unique_id=1081353499]
+offset_left = -75.0
+offset_top = -105.0
+offset_right = 75.0
+offset_bottom = -77.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_dv35l")
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerBar" unique_id=331221490]
+position = Vector2(75, 14)
+scale = Vector2(2, 2)
+texture = ExtResource("3_5ebnn")

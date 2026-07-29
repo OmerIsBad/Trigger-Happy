@@ -3,6 +3,7 @@ extends Node2D
 @onready var Marker = $Marker2D
 @onready var Sprite = $AnimatedSprite2D
 @onready var StartUpTimer = $StartUpTimer
+@onready var RayCast = $RayCast2D
 
 var MineNode = preload("res://Scenes/Mine.tscn")
 
@@ -33,8 +34,7 @@ func _process(delta: float) -> void:
 	
 	scale.x = get_parent().Direction * -1
 	
-	#last ededited sdjsdhsd
-	if Input.is_action_just_pressed(Secondary) and get_parent().is_on_floor():
+	if Input.is_action_just_pressed(Secondary) and RayCast.is_colliding():
 		TotalMines -= 1
 		var Mine = MineNode.instantiate()
 		Mine.global_position = Marker.global_position

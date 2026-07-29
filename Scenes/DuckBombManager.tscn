@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dfbwwgy5e1bgh"]
+
+[ext_resource type="Script" uid="uid://df3mke0l851vk" path="res://Scripts/DuckBombManager.gd" id="1_04qyf"]
+[ext_resource type="Texture2D" uid="uid://bib4ibaweo237" path="res://Assets/RubberDuckyBomb.png" id="1_xv5q1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04qyf"]
+atlas = ExtResource("1_xv5q1")
+region = Rect2(0, 0, 23, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jkjy"]
+atlas = ExtResource("1_xv5q1")
+region = Rect2(0, 26, 23, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcngo"]
+atlas = ExtResource("1_xv5q1")
+region = Rect2(0, 52, 23, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr27x"]
+atlas = ExtResource("1_xv5q1")
+region = Rect2(0, 78, 23, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac4gd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04qyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jkjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcngo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr27x")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="DuckBombManager" type="Node2D" unique_id=73307486]
+script = ExtResource("1_04qyf")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1688130037]
+position = Vector2(-100, 28)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1116326345]
+position = Vector2(-100, 28)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ac4gd")
+autoplay = "default"
+frame_progress = 0.895087
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1083214463]
+position = Vector2(-100, 28)
+target_position = Vector2(0, 33)

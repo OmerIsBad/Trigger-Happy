@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cesd8p07k2blk"]
+
+[ext_resource type="Script" uid="uid://d1chnpm2rdrgv" path="res://Scripts/JetPack.gd" id="1_gg8rp"]
+[ext_resource type="Texture2D" uid="uid://dnbmxkd1n204w" path="res://Assets/JetPack_Sprite_Sheet.png" id="2_rucgm"]
+[ext_resource type="Texture2D" uid="uid://drbbga5n3i0sr" path="res://Assets/ProgressBarFill.png" id="3_hdhg1"]
+[ext_resource type="Texture2D" uid="uid://dj5adh7rj652y" path="res://Assets/ProgressBarOutline.png" id="4_5hvtc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdhg1"]
+atlas = ExtResource("2_rucgm")
+region = Rect2(0, 26, 13, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hvtc"]
+atlas = ExtResource("2_rucgm")
+region = Rect2(0, 0, 13, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n7lg"]
+atlas = ExtResource("2_rucgm")
+region = Rect2(13, 0, 13, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eixrf"]
+atlas = ExtResource("2_rucgm")
+region = Rect2(26, 0, 13, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdhg1")
+}],
+"loop": 1,
+"name": &"Off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hvtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n7lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eixrf")
+}],
+"loop": 1,
+"name": &"On",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1n7lg"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("3_hdhg1")
+
+[node name="JetPack" type="Node2D" unique_id=2123770371]
+script = ExtResource("1_gg8rp")
+
+[node name="SpriteHolder" type="Node2D" parent="." unique_id=2144792365]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteHolder" unique_id=168076504]
+z_index = -1
+position = Vector2(28, 35)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+animation = &"Off"
+autoplay = "Off"
+frame_progress = 0.9933316
+
+[node name="FuelTimer" type="Timer" parent="." unique_id=1669217231]
+wait_time = 3.5
+
+[node name="FuelBar" type="ProgressBar" parent="." unique_id=1486533100]
+offset_left = -75.0
+offset_top = -105.0
+offset_right = 75.0
+offset_bottom = -77.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_1n7lg")
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="FuelBar" unique_id=1234431251]
+position = Vector2(75, 14)
+scale = Vector2(2, 2)
+texture = ExtResource("4_5hvtc")
+
+[connection signal="timeout" from="FuelTimer" to="." method="_on_fuel_timer_timeout"]

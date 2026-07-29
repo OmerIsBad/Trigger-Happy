@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b6brhncb0lb4i"]
+
+[ext_resource type="Script" uid="uid://v7dvvdo3d8gb" path="res://Scripts/Grenade.gd" id="1_t2ec2"]
+[ext_resource type="Texture2D" uid="uid://bltxcfe18ga4t" path="res://Assets/Grenade.png" id="2_6rbch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jest"]
+atlas = ExtResource("2_6rbch")
+region = Rect2(0, 0, 8, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jest")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_npw3m"]
+radius = 8.0
+
+[sub_resource type="Curve" id="Curve_ou7vq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qqlsr"]
+colors = PackedColorArray(0.99215686, 0.22352941, 0, 1, 1, 1, 0, 1)
+
+[node name="Grenade" type="RigidBody2D" unique_id=1351058842]
+collision_layer = 128
+collision_mask = 129
+mass = 0.509
+script = ExtResource("1_t2ec2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=513802310]
+position = Vector2(2, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_npw3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=3300707]
+shape = SubResource("CircleShape2D_npw3m")
+
+[node name="Timer" type="Timer" parent="." unique_id=1727570021]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Trail" type="Line2D" parent="." unique_id=1130774263]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_ou7vq")
+gradient = SubResource("Gradient_qqlsr")
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=1855486461]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

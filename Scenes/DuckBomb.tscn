@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dip2lmvla0y37"]
 
 [ext_resource type="Script" uid="uid://bi0xwtknkb4bv" path="res://Scripts/DuckBomb.gd" id="1_5aq5g"]
-[ext_resource type="Texture2D" uid="uid://d1i0yoe7rwt74" path="res://Assets/RubberDuckyBomb.png" id="2_5nheg"]
+[ext_resource type="Texture2D" uid="uid://bib4ibaweo237" path="res://Assets/RubberDuckyBomb.png" id="2_5nheg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5aq5g"]
 atlas = ExtResource("2_5nheg")
@@ -55,6 +55,7 @@ frame_progress = 0.5581899
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=455421581]
+visible = false
 shape = SubResource("CircleShape2D_npw3m")
 
 [node name="StartUpTimer" type="Timer" parent="." unique_id=36197850]
@@ -67,9 +68,11 @@ one_shot = true
 
 [node name="LeftCast" type="RayCast2D" parent="." unique_id=387818119]
 position = Vector2(-23, 18)
+target_position = Vector2(0, 14)
 
 [node name="RightCast" type="RayCast2D" parent="." unique_id=410367195]
 position = Vector2(23, 18)
+target_position = Vector2(0, 14)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StartUpTimer" to="." method="_on_start_up_timer_timeout"]

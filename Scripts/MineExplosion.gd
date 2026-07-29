@@ -8,11 +8,12 @@ var YDirection
 var DoIt = true
 var SmallerHitbox = false
 var ExplosiveThingyReduction = 3
+var ExplodeText = "BOOM!"
 
 var ShieldStrength = 3
 
 func _ready() -> void:
-	var TextLabel = global.SummonText("BOOM!", global_position, 50, -1)
+	var TextLabel = global.SummonText(ExplodeText, global_position, 50, -1)
 	global.CameraShake(50.0,0.3)
 	get_tree().current_scene.add_child(TextLabel)
 	
