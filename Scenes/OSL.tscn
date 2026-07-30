@@ -53,7 +53,7 @@ animation = &"Aim"
 autoplay = "Aim"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D" unique_id=673129553]
-collision_mask = 31
+collision_mask = 287
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D" unique_id=500692114]
 position = Vector2(1.5, 0)

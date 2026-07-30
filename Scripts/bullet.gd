@@ -52,7 +52,17 @@ func _physics_process(delta: float) -> void:
 				queue_free()
 			else:
 				queue_free()
-				
+		
+		elif body.is_in_group("Turrets"):
+			var KnockBackToTimeRate = 500 #How much KB is 1 second
+			var TimeDamage = Knockback / float(KnockBackToTimeRate)
+			
+			var NewTime = max(0.001, body.LifeTimer.time_left - TimeDamage)
+			body.LifeTimer.start(NewTime)
+			
+			queue_free()
+
+			
 		elif body.name == "Shield":
 			queue_free()
 		

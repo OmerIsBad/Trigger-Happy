@@ -167,6 +167,7 @@ func _physics_process(delta: float) -> void:
 	if position.y > YBoundary:
 		Respawn()
 		return
+
 	
 	#To prevent inconsistent death times after being shot off
 	#the map, we let Yboundary kill the player, and keep
@@ -195,7 +196,8 @@ func _physics_process(delta: float) -> void:
 		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Fly"
 	elif has_node("GrenadeManager"):
 		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Throw"
-	
+	elif has_node("TurretManager"):
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
 	elif has_node("OSL"):
 		if get_node("OSL").CurrentState == "Off":
 			ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Order \n Orbital Strike Laser"
@@ -228,7 +230,7 @@ func _physics_process(delta: float) -> void:
 		if IsAPunch and !NodeOverridePunch:
 			Punch()
 	
-	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager") or has_node("OSL") or has_node("DuckBombManager") or has_node("JetPack") or has_node("GrenadeManager"):
+	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager") or has_node("OSL") or has_node("DuckBombManager") or has_node("JetPack") or has_node("GrenadeManager") or has_node("TurretManager"):
 		NodeOverridePunch = true
 	else:
 		NodeOverridePunch = false
@@ -435,3 +437,4 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_punch_cool_down_timeout() -> void:
 	CanPunch = true
+	

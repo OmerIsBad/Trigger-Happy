@@ -96,6 +96,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.ApplyKnockback(Knockback, PushDirection)
 		body.velocity.y -= 1500
 		body.add_to_group("PlayersThatEitherShotOrAreHitByTheLaserTypeShi")
+	
+	if CurrentState == "Shooting" and body.is_in_group("Turrets"):
+		body.Shatter()
+		body.queue_free()
 
 func _on_laser_timer_timeout() -> void:
 	Daddy.CanMove = true

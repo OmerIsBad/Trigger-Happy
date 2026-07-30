@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://brurq1gppfwel" path="res://Assets/Player_Idle_RED.png" id="3_i047d"]
 [ext_resource type="PackedScene" uid="uid://brxsd17k37suo" path="res://Scenes/GrenadeLauncher.tscn" id="5_2ale3"]
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="7_hjvw7"]
-[ext_resource type="PackedScene" uid="uid://btkhxjynn7v4k" path="res://Scenes/GrenadeManager.tscn" id="8_h0l6a"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="8_tchc4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
@@ -141,8 +140,6 @@ theme_override_fonts/normal_font = ExtResource("8_tchc4")
 text = "
 "
 horizontal_alignment = 1
-
-[node name="GrenadeManager" parent="." unique_id=1057855040 instance=ExtResource("8_h0l6a")]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]

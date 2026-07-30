@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://d20xcyx2mqgdd"]
+
+[ext_resource type="Script" uid="uid://peum3f3084w8" path="res://Scripts/Turret.gd" id="1_64uvh"]
+[ext_resource type="Texture2D" uid="uid://ry41tt1ovdrb" path="res://Assets/OnlyGuns/Turret.png" id="2_i4wwf"]
+[ext_resource type="Texture2D" uid="uid://drbbga5n3i0sr" path="res://Assets/ProgressBarFill.png" id="3_tljqb"]
+[ext_resource type="Texture2D" uid="uid://dj5adh7rj652y" path="res://Assets/ProgressBarOutline.png" id="4_xbcpg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
+size = Vector2(116, 73)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_on43c"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("3_tljqb")
+
+[node name="Turret" type="CharacterBody2D" unique_id=1099061943]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_64uvh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=415903930]
+scale = Vector2(2, 2)
+texture = ExtResource("2_i4wwf")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=1506002166]
+position = Vector2(34, -12.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=973084626]
+visible = false
+position = Vector2(15, 1.5)
+shape = SubResource("RectangleShape2D_npw3m")
+
+[node name="RightCast" type="RayCast2D" parent="." unique_id=2120642621]
+position = Vector2(0, -25)
+target_position = Vector2(3836, 0)
+collision_mask = 30
+
+[node name="LeftCast" type="RayCast2D" parent="." unique_id=1508596098]
+position = Vector2(0, -25)
+target_position = Vector2(-3836, 0)
+collision_mask = 30
+
+[node name="LifeBar" type="ProgressBar" parent="." unique_id=1811863313]
+offset_left = -75.0
+offset_top = -78.0
+offset_right = 75.0
+offset_bottom = -50.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_on43c")
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="LifeBar" unique_id=523833689]
+position = Vector2(75, 14)
+scale = Vector2(2, 2)
+texture = ExtResource("4_xbcpg")
+
+[node name="LifeTime" type="Timer" parent="." unique_id=1283588766]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1048194109]
+wait_time = 0.2
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

@@ -64,6 +64,9 @@ func _on_area_2d_body_entered(Thing: Node2D) -> void:
 			ClampedVerticalKnockback
 		)
 		Thing.apply_impulse(KnockbackVector / ExplosiveThingyReduction)
-
+		
+	if Thing.is_in_group("Turrets"):
+		Thing.Shatter()
+		Thing.queue_free()
 		
 		

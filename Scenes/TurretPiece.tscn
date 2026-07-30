@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ei7vilpeqqwx"]
+
+[ext_resource type="Script" uid="uid://dcatb7oncqou1" path="res://Scripts/TurretPiece.gd" id="1_dfl5d"]
+[ext_resource type="Texture2D" uid="uid://ry41tt1ovdrb" path="res://Assets/OnlyGuns/Turret.png" id="2_r8yqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtlrd"]
+atlas = ExtResource("2_r8yqc")
+region = Rect2(0, 19, 39, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp44o"]
+atlas = ExtResource("2_r8yqc")
+region = Rect2(39, 19, 39, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2oci"]
+atlas = ExtResource("2_r8yqc")
+region = Rect2(0, 0, 39, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts8h0"]
+atlas = ExtResource("2_r8yqc")
+region = Rect2(39, 0, 39, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtlrd")
+}],
+"loop": 1,
+"name": &"BL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp44o")
+}],
+"loop": 1,
+"name": &"BR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2oci")
+}],
+"loop": 1,
+"name": &"TL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts8h0")
+}],
+"loop": 1,
+"name": &"TR",
+"speed": 5.0
+}]
+
+[node name="TurretPiece" type="Node2D" unique_id=1365309378]
+script = ExtResource("1_dfl5d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1554739671]
+sprite_frames = SubResource("SpriteFrames_npw3m")
+animation = &"TR"

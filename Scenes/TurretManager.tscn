@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ksh8fu23q5mb"]
+
+[ext_resource type="Script" uid="uid://c1vhmy5hwke4n" path="res://Scripts/TurretManager.gd" id="1_ygwyq"]
+[ext_resource type="Texture2D" uid="uid://ry41tt1ovdrb" path="res://Assets/OnlyGuns/Turret.png" id="2_qt0e3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fb2vb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qt0e3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="TurretManager" type="Node2D" unique_id=446871768]
+script = ExtResource("1_ygwyq")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=589530750]
+position = Vector2(-100, 15)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=189035637]
+position = Vector2(-100, 15)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fb2vb")
+autoplay = "default"
+flip_h = true
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1635252643]
+position = Vector2(-100, 28)
+target_position = Vector2(0, 31)
