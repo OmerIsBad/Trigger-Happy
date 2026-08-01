@@ -15,7 +15,9 @@ var CanJump = true
 
 var CanDoubleJump = false
 var Acceleration = 40.0
+var NormalAccel = Acceleration
 var TopSpeed = 500.0
+var NormalTopSpeed = TopSpeed
 var Friction = 25
 var ExtremeSpeedFriction = 80
 var AirResistance = 15
@@ -36,6 +38,15 @@ var CounterSteerBoost = 10
 var LastShot = 0
 var ShieldMaskOverride = false
 var CanMove = true
+var IsSpeedBoosted = false
+var IsDashing = false
+var DashSpeed = 3732.0
+var DashDuration = 0.1
+var DashTimer = 0.0
+var DashDirectionVector = Vector2.ZERO
+var DashGhostShader = preload("res://Shaders/TrailTint.gdshader")
+var DashGhostTimer = 0.0
+var DashGhostInterval = 0.001
 
 var FirstPress = 0
 var HeldDown = false
@@ -169,6 +180,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	
+	
 	#To prevent inconsistent death times after being shot off
 	#the map, we let Yboundary kill the player, and keep
 	#the player at the Xboundaries so they dont mess
@@ -198,6 +210,8 @@ func _physics_process(delta: float) -> void:
 		ItemInstructor.text = "Hold [" + str(GetMappedInput(Secondary)) + "] To Throw"
 	elif has_node("TurretManager"):
 		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
+	elif has_node("DashManager"):
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Dash\n " + str(get_node("DashManager").DashesRemaining) + "/3"
 	elif has_node("OSL"):
 		if get_node("OSL").CurrentState == "Off":
 			ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Order \n Orbital Strike Laser"
@@ -220,7 +234,6 @@ func _physics_process(delta: float) -> void:
 		IsAPunch = true
 		HeldDown = true
 	
-	
 	if HeldDown and IsAPunch == true:
 		if (Time.get_ticks_msec() - FirstPress) > HoldTime:
 			IsAPunch = false
@@ -230,7 +243,16 @@ func _physics_process(delta: float) -> void:
 		if IsAPunch and !NodeOverridePunch:
 			Punch()
 	
-	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager") or has_node("OSL") or has_node("DuckBombManager") or has_node("JetPack") or has_node("GrenadeManager") or has_node("TurretManager"):
+	if has_node("SpeedManager") and !IsSpeedBoosted:
+		IsSpeedBoosted = true
+		TopSpeed = NormalTopSpeed * get_node("SpeedManager").BoostedSpeed
+		Acceleration = NormalAccel * get_node("SpeedManager").BoostedAccel
+	elif not has_node("SpeedManager") and IsSpeedBoosted:
+		IsSpeedBoosted = false
+		TopSpeed = NormalTopSpeed
+		Acceleration = NormalAccel
+	
+	if has_node("MinePlacerItem") or has_node("ShieldManager") or has_node("PortalManager") or has_node("OSL") or has_node("DuckBombManager") or has_node("JetPack") or has_node("GrenadeManager") or has_node("TurretManager") or has_node("DashManager"):
 		NodeOverridePunch = true
 	else:
 		NodeOverridePunch = false
@@ -239,7 +261,18 @@ func _physics_process(delta: float) -> void:
 		var poop = preload("res://Scenes/OSL.tscn").instantiate()
 		add_child(poop)
 		
-	if CanMove:
+	if IsDashing:
+		DashTimer -= delta
+		velocity = DashDirectionVector * DashSpeed
+		
+		DashGhostTimer += delta
+		if DashGhostTimer >= DashGhostInterval:
+			DashGhostTimer = 0.0
+			SpawnDashGhost()
+		
+		if DashTimer <= 0.0:
+			EndDash()
+	elif CanMove:
 			#Fall Down Through Platform
 		if Input.is_action_just_pressed(MoveDown):
 			position.y += 1
@@ -361,7 +394,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
-	
 
 func Punch():
 	if CanPunch:
@@ -378,10 +410,63 @@ func Punch():
 func Jump():
 	velocity.y = -JumpForce
 	CanJump = false
+
+func StartDash() -> void:
+	if IsDashing or !CanMove:
+		return
 	
+	var DashDir = Vector2.ZERO
+	if Input.is_action_pressed(MoveLeft):
+		DashDir.x -= 1
+	if Input.is_action_pressed(MoveRight):
+		DashDir.x += 1
+	if Input.is_action_pressed(MoveDown):
+		DashDir.y += 1
+	if Input.is_action_pressed(MoveJump):
+		DashDir.y -= 1
+	
+	if DashDir == Vector2.ZERO:
+		DashDir.x = Direction
+	
+	DashDirectionVector = DashDir.normalized()
+	IsDashing = true
+	DashTimer = DashDuration
+	add_to_group("DashInvincible")
+
+func EndDash() -> void:
+	IsDashing = false
+	velocity = DashDirectionVector * TopSpeed
+	remove_from_group("DashInvincible")
+
+func SpawnDashGhost() -> void:
+	var Ghost = Sprite2D.new()
+	Ghost.texture = AnimatedSprite.sprite_frames.get_frame_texture(AnimatedSprite.animation, AnimatedSprite.frame)
+	Ghost.global_position = AnimatedSprite.global_position
+	Ghost.global_rotation = AnimatedSprite.global_rotation
+	Ghost.scale = AnimatedSprite.scale * scale
+	Ghost.flip_h = AnimatedSprite.flip_h
+	Ghost.z_index = AnimatedSprite.z_index - 1
+	
+	var GhostMat = ShaderMaterial.new()
+	GhostMat.shader = DashGhostShader
+	GhostMat.set_shader_parameter("opacity", 0.5)
+	GhostMat.set_shader_parameter("r", 0.1)
+	GhostMat.set_shader_parameter("g", 0.4)
+	GhostMat.set_shader_parameter("b", 1.0)
+	GhostMat.set_shader_parameter("mix_color", 0.85)
+	Ghost.material = GhostMat
+	
+	get_tree().current_scene.add_child(Ghost)
+	
+	var FadeTween = Ghost.create_tween()
+	FadeTween.tween_property(Ghost, "modulate:a", 0.0, 0.3)
+	FadeTween.tween_callback(Ghost.queue_free)
+
 func ApplyKnockback(Knockback, PushDirection):
-	print("knockback of ", Knockback)
-	velocity.x += Knockback * PushDirection
+	if !has_node("SpawnShield"):
+		if IsDashing:
+			return
+		velocity.x += Knockback * PushDirection
 
 func DropGun(GunName: String):
 	var DroppedGunScene = preload("res://Scenes/DroppedGun.tscn")
@@ -437,4 +522,3 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_punch_cool_down_timeout() -> void:
 	CanPunch = true
-	
