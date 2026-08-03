@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bahtd5e4j1lnl"
+path="res://.godot/imported/Ambient Wind Loop 1.wav-463a674c61f80f33d209646334d05aa9.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Ambient Wind Loop 1.wav"
+dest_files=["res://.godot/imported/Ambient Wind Loop 1.wav-463a674c61f80f33d209646334d05aa9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

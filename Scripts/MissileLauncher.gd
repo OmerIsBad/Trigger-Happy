@@ -5,6 +5,7 @@ var ShootButton
 var MissileScene = preload("res://Scenes/Missile.tscn")
 @onready var FireRateTimer = $FireRateTimer
 @onready var PlayerHand = get_parent().get_parent()
+@onready var GunShotSFX = $GunShotSFX
 
 
 
@@ -69,6 +70,8 @@ func Shoot():
 	Missile.ShotBy = MissileShotBy
 	Missile.ShotByGun = GunName
 	get_tree().current_scene.add_child(Missile)
+	
+	GunShotSFX.play(0.03)
 	
 	if MagSize == 0:
 		DestroyGun()

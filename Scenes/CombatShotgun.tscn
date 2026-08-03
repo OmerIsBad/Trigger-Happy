@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vm2uou5kfiv6" path="res://Scripts/CombatShotgun.gd" id="1_i1ina"]
 [ext_resource type="Texture2D" uid="uid://p5qhpkmhdgny" path="res://Assets/OnlyGuns/CombatShotgun.png" id="2_w654l"]
+[ext_resource type="AudioStream" uid="uid://bortl737aw8wf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/MP3/20 Gauge Single Isolated.mp3" id="3_w654l"]
 
 [node name="CombatShotgun" type="Node2D" unique_id=651752013]
 script = ExtResource("1_i1ina")
@@ -15,5 +16,9 @@ texture = ExtResource("2_w654l")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=933999000]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1120599567]
+stream = ExtResource("3_w654l")
+volume_db = 13.715
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b2c7n622s62s" path="res://Scripts/BoltAction.gd" id="1_jwq04"]
 [ext_resource type="Texture2D" uid="uid://bdfpr20ywrb3m" path="res://Assets/BoltActionSniper_In_Hand.png" id="2_oh4h4"]
+[ext_resource type="AudioStream" uid="uid://b3l5b77sey600" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Full Sound/7.62x54R/MP3/762x54r Single MP3.mp3" id="3_t7d3n"]
+[ext_resource type="AudioStream" uid="uid://d4aepn4bjk8rj" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Reloads, Cycling & More/MP3/Mosin Bolt Cycle MP3.mp3" id="4_1fqmc"]
 
 [node name="BoltAction" type="Node2D" unique_id=394721350]
 script = ExtResource("1_jwq04")
@@ -16,4 +18,16 @@ texture = ExtResource("2_oh4h4")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1438244540]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1028180873]
+stream = ExtResource("3_t7d3n")
+pitch_scale = 2.41
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1830845823]
+stream = ExtResource("4_1fqmc")
+pitch_scale = 0.78
+
+[node name="CockTimer" type="Timer" parent="." unique_id=1711967776]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

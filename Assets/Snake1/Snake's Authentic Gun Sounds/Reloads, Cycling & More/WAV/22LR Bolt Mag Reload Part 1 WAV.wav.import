@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dl5vokicwexo"
+path="res://.godot/imported/22LR Bolt Mag Reload Part 1 WAV.wav-d0becaa547ca31d6796652b5c9136b35.sample"
+
+[deps]
+
+source_file="res://Assets/Snake1/Snake's Authentic Gun Sounds/Reloads, Cycling & More/WAV/22LR Bolt Mag Reload Part 1 WAV.wav"
+dest_files=["res://.godot/imported/22LR Bolt Mag Reload Part 1 WAV.wav-d0becaa547ca31d6796652b5c9136b35.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

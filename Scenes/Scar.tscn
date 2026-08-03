@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bphmf5rvuovyo" path="res://Assets/Scar_In_Hand.png" id="1_1q5uh"]
 [ext_resource type="Script" uid="uid://ddko0bohw3m1q" path="res://Scripts/Scar.gd" id="1_4b1x6"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_jxmgt"]
 
 [node name="Scar" type="Node2D" unique_id=1880770622]
 script = ExtResource("1_4b1x6")
@@ -15,5 +16,8 @@ texture = ExtResource("1_1q5uh")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=895905566]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1919026251]
+stream = ExtResource("3_jxmgt")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

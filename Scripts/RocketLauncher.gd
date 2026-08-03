@@ -5,6 +5,7 @@ var ShootButton
 var RocketScene = preload("res://Scenes/Rocket.tscn")
 @onready var FireRateTimer = $FireRateTimer
 @onready var PlayerHand = get_parent().get_parent()
+@onready var GunShotSFX = $GunShotSFX
 
 
 
@@ -17,7 +18,7 @@ var CanShoot = true
 
 #Rocket Stats
 var RocketSpeed = 20
-var RocketLifeTime = 30.0
+var RocketLifeTime = 5.0
 var RocketKnockback = 0
 var RocketDirection = -1
 
@@ -67,6 +68,8 @@ func Shoot():
 	Rocket.Knockback = RocketKnockback
 	Rocket.ShotByGun = GunName
 	get_tree().current_scene.add_child(Rocket)
+	
+	GunShotSFX.play(0.03)
 	
 	if MagSize == 0:
 		DestroyGun()

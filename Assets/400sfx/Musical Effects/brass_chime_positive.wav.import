@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bny23o26wwsyy"
+path="res://.godot/imported/brass_chime_positive.wav-8c7831398e2950cf858c17fd34b89e9c.sample"
+
+[deps]
+
+source_file="res://Assets/400sfx/Musical Effects/brass_chime_positive.wav"
+dest_files=["res://.godot/imported/brass_chime_positive.wav-8c7831398e2950cf858c17fd34b89e9c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

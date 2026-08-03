@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bk8nvd6shixmh" path="res://Scripts/BullPup.gd" id="1_msgpm"]
 [ext_resource type="Texture2D" uid="uid://d1ui3d1omfgif" path="res://Assets/Bullpup_In_Hand.png" id="1_xvpyu"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_a3jt0"]
 
 [node name="BullPup" type="Node2D" unique_id=626914864]
 script = ExtResource("1_msgpm")
@@ -15,5 +16,8 @@ texture = ExtResource("1_xvpyu")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=691856599]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=151898856]
+stream = ExtResource("3_a3jt0")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bqcrkxns8yi0a" path="res://Scripts/Glock29.gd" id="1_71ye7"]
 [ext_resource type="Texture2D" uid="uid://hpd5qcntoygh" path="res://Assets/Glock26_In_Hand.png" id="2_hblro"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_wi3b8"]
+[ext_resource type="AudioStream" uid="uid://dlxcxua4bocxh" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Slide Release.mp3" id="4_3dnka"]
 
 [node name="Glock29" type="Node2D" unique_id=40949958]
 script = ExtResource("1_71ye7")
@@ -16,4 +18,20 @@ position = Vector2(17, -8)
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1312687347]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=2124234351]
+stream = ExtResource("3_wi3b8")
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1100338520]
+stream = ExtResource("4_3dnka")
+
+[node name="CockTimer" type="Timer" parent="." unique_id=2087330208]
+one_shot = true
+
+[node name="ActivationTimer" type="Timer" parent="." unique_id=1464169247]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]
+[connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]

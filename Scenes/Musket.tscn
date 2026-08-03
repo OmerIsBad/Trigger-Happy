@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cb7xjw2jtjqn" path="res://Scripts/Musket.gd" id="1_v1wfh"]
 [ext_resource type="Texture2D" uid="uid://byuuckejj5pr6" path="res://Assets/Musket_In_Hand.png" id="2_4ifba"]
+[ext_resource type="AudioStream" uid="uid://b1fo5i4kmx5o3" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Full Sound/5.56/WAV/556 Single WAV.wav" id="3_r0tb5"]
+[ext_resource type="AudioStream" uid="uid://ebalw4ix6hy" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Rack Full.mp3" id="4_r0tb5"]
 
 [node name="Musket" type="Node2D" unique_id=934410586]
 script = ExtResource("1_v1wfh")
@@ -16,4 +18,15 @@ texture = ExtResource("2_4ifba")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=520592049]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=144857063]
+stream = ExtResource("3_r0tb5")
+volume_db = 10.0
+
+[node name="CockTimer" type="Timer" parent="." unique_id=500771222]
+one_shot = true
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1919849135]
+stream = ExtResource("4_r0tb5")
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

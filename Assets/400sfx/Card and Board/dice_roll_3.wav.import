@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brl2xyate6b2l"
+path="res://.godot/imported/dice_roll_3.wav-3a8c5bd3fcb5864e2d762c43bbf54e85.sample"
+
+[deps]
+
+source_file="res://Assets/400sfx/Card and Board/dice_roll_3.wav"
+dest_files=["res://.godot/imported/dice_roll_3.wav-3a8c5bd3fcb5864e2d762c43bbf54e85.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

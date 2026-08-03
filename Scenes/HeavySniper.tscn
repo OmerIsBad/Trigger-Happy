@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://biwl75efye6xq" path="res://Scripts/HeavySniper.gd" id="1_t50bq"]
 [ext_resource type="Texture2D" uid="uid://b8l0t1q46ccn1" path="res://Assets/Heavy_Sniper_In_Hand.png" id="2_4npfs"]
+[ext_resource type="AudioStream" uid="uid://b3l5b77sey600" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Full Sound/7.62x54R/MP3/762x54r Single MP3.mp3" id="3_vxffy"]
+[ext_resource type="AudioStream" uid="uid://ebalw4ix6hy" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Rack Full.mp3" id="4_vxffy"]
 
 [node name="HeavySniper" type="Node2D" unique_id=1385280375]
 script = ExtResource("1_t50bq")
@@ -16,4 +18,16 @@ texture = ExtResource("2_4npfs")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=2056636794]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1874689979]
+stream = ExtResource("3_vxffy")
+pitch_scale = 2.41
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1729751280]
+stream = ExtResource("4_vxffy")
+pitch_scale = 0.78
+
+[node name="CockTimer" type="Timer" parent="." unique_id=701618304]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

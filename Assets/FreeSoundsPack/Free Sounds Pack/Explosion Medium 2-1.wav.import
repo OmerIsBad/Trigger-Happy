@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b76hjysuysdi5"
+path="res://.godot/imported/Explosion Medium 2-1.wav-714dd4050d3e5f4389fd8d712ae30dcb.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Explosion Medium 2-1.wav"
+dest_files=["res://.godot/imported/Explosion Medium 2-1.wav-714dd4050d3e5f4389fd8d712ae30dcb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

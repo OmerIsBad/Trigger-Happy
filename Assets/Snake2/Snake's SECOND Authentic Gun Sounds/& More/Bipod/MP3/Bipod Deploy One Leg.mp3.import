@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6c1846xx1tr7"
+path="res://.godot/imported/Bipod Deploy One Leg.mp3-6412724199a5eaf2ca87b666bc97246b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Bipod/MP3/Bipod Deploy One Leg.mp3"
+dest_files=["res://.godot/imported/Bipod Deploy One Leg.mp3-6412724199a5eaf2ca87b666bc97246b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

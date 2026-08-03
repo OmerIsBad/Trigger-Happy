@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cpof31tt46vqh"
+path="res://.godot/imported/Sawing Wood 1-1.wav-f3f7d8e273d49f393971de8059cb205a.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Sawing Wood 1-1.wav"
+dest_files=["res://.godot/imported/Sawing Wood 1-1.wav-f3f7d8e273d49f393971de8059cb205a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

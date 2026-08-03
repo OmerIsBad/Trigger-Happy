@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsn8kq02vbank" path="res://Scripts/AK47.gd" id="1_0d5bk"]
 [ext_resource type="Texture2D" uid="uid://b6wp014rr28nd" path="res://Assets/AK47_In_Hand.png" id="2_w1jls"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_w1jls"]
 
 [node name="AK47" type="Node2D" unique_id=1749951757]
 script = ExtResource("1_0d5bk")
@@ -15,5 +16,8 @@ position = Vector2(34, -5)
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1394480441]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1084379816]
+stream = ExtResource("3_w1jls")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

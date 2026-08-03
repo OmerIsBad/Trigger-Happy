@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnto32dl1jd0m"
+path="res://.godot/imported/Single Shot Reload Part 2 WAV.wav-4a883ba4b7caa3eff0cf2d42b87e193b.sample"
+
+[deps]
+
+source_file="res://Assets/Snake1/Snake's Authentic Gun Sounds/Reloads, Cycling & More/WAV/Single Shot Reload Part 2 WAV.wav"
+dest_files=["res://.godot/imported/Single Shot Reload Part 2 WAV.wav-4a883ba4b7caa3eff0cf2d42b87e193b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

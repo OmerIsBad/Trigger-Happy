@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d12oectag5ewa"
+path="res://.godot/imported/AR Charging Handle MP3.mp3-364cbba014d5bb2bc38e4d4068a624fc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Snake1/Snake's Authentic Gun Sounds/Reloads, Cycling & More/MP3/AR Charging Handle MP3.mp3"
+dest_files=["res://.godot/imported/AR Charging Handle MP3.mp3-364cbba014d5bb2bc38e4d4068a624fc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

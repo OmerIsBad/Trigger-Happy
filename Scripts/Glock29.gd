@@ -5,6 +5,11 @@ var ShootButton
 var BulletScene = preload("res://Scenes/bullet.tscn")
 @onready var FireRateTimer = $FireRateTimer
 @onready var PlayerHand = get_parent().get_parent()
+@onready var GunShotSFX = $GunShotSFX
+@onready var CockSFX = $CockSFX
+@onready var CockTimer = $CockTimer
+@onready var ActivationTimer = $ActivationTimer
+var IsActivated = false
 
 
 
@@ -34,7 +39,7 @@ func _process(delta: float) -> void:
 		BulletDirection = get_parent().get_parent().get_parent().Direction
 	
 	
-	if Input.is_action_pressed(ShootButton) and CanShoot:
+	if Input.is_action_pressed(ShootButton) and CanShoot and IsActivated:
 		Shoot()
 		ApplyRecoil()
 
@@ -66,6 +71,12 @@ func Shoot():
 	Bullet.ShotByGun = GunName
 	get_tree().current_scene.add_child(Bullet)
 	
+	var PitchMin = 0.8
+	var PitchMax = 1.2
+	
+	GunShotSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+	GunShotSFX.play()
+	CockTimer.start(FireRate - 0.1)
 	
 	StartCooldown()
 
@@ -87,3 +98,11 @@ func StartCooldown():
 func _on_fire_rate_timer_timeout() -> void:
 	CanShoot = true
 	
+
+
+func _on_cock_timer_timeout() -> void:
+	CockSFX.play()
+
+
+func _on_activation_timer_timeout() -> void:
+	IsActivated = true

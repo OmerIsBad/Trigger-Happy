@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dk3m5jb8rkhp8" path="res://Scripts/M16.gd" id="1_i7uae"]
 [ext_resource type="Texture2D" uid="uid://q2s7435202hy" path="res://Assets/M16_In_Hand.png" id="2_rj08p"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_rj08p"]
 
 [node name="M16" type="Node2D" unique_id=2146042130]
 script = ExtResource("1_i7uae")
@@ -15,5 +16,8 @@ texture = ExtResource("2_rj08p")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1570175413]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1372444834]
+stream = ExtResource("3_rj08p")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

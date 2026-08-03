@@ -5,6 +5,7 @@ var ShootButton
 var GrenadeScene = preload("res://Scenes/ExplosiveBullet.tscn")
 @onready var FireRateTimer = $FireRateTimer
 @onready var PlayerHand = get_parent().get_parent()
+@onready var GunShotSFX = $GunShotSFX
 
 
 
@@ -63,6 +64,8 @@ func Shoot():
 	Grenade.Speed = GrenadeSpeed
 	Grenade.ShotByGun = GunName
 	get_tree().current_scene.add_child(Grenade)
+	
+	GunShotSFX.play(0.03)
 	
 	if MagSize == 0:
 		DestroyGun()

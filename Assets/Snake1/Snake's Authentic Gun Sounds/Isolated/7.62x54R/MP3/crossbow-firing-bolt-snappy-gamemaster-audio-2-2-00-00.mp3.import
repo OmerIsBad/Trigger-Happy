@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qbktsq8naswm"
+path="res://.godot/imported/crossbow-firing-bolt-snappy-gamemaster-audio-2-2-00-00.mp3-6ab2c2b30b1762821ca79782fd70d9b5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Snake1/Snake's Authentic Gun Sounds/Isolated/7.62x54R/MP3/crossbow-firing-bolt-snappy-gamemaster-audio-2-2-00-00.mp3"
+dest_files=["res://.godot/imported/crossbow-firing-bolt-snappy-gamemaster-audio-2-2-00-00.mp3-6ab2c2b30b1762821ca79782fd70d9b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

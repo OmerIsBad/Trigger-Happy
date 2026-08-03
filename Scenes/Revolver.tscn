@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cjq4b7htu15vn" path="res://Scripts/Revolver.gd" id="1_njmpp"]
 [ext_resource type="Texture2D" uid="uid://clwc7yrex7qsh" path="res://Assets/Revolver_In_Hand.png" id="2_8k6ue"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_v74wd"]
+[ext_resource type="AudioStream" uid="uid://wx5dwo5fo8ia" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Revolver/44 Magnum/MP3/44 Magnum Eject Part 1 With Floor Impact.mp3" id="4_u0wly"]
 
 [node name="Revolver" type="Node2D" unique_id=316541468]
 script = ExtResource("1_njmpp")
@@ -16,4 +18,14 @@ texture = ExtResource("2_8k6ue")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=25589608]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=341800934]
+stream = ExtResource("3_v74wd")
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=2122664404]
+stream = ExtResource("4_u0wly")
+
+[node name="CockTimer" type="Timer" parent="." unique_id=1440373585]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dg777h30uou2y" path="res://Scripts/Crossbow.gd" id="1_76d8c"]
 [ext_resource type="Texture2D" uid="uid://cwos31ulcdw31" path="res://Assets/CrossBow_In_Hand.png" id="2_ckaav"]
+[ext_resource type="AudioStream" uid="uid://qbktsq8naswm" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Isolated/7.62x54R/MP3/crossbow-firing-bolt-snappy-gamemaster-audio-2-2-00-00.mp3" id="3_5fw22"]
+[ext_resource type="AudioStream" uid="uid://degcs6g5d5xso" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Isolated/7.62x54R/MP3/Bow String Pull Sound Effect.mp3" id="4_nt60b"]
 
 [node name="CrossBow" type="Node2D" unique_id=1592152949]
 script = ExtResource("1_76d8c")
@@ -16,4 +18,16 @@ texture = ExtResource("2_ckaav")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1949334565]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1163934491]
+stream = ExtResource("3_5fw22")
+pitch_scale = 2.41
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1896721554]
+stream = ExtResource("4_nt60b")
+volume_db = 11.428
+
+[node name="CockTimer" type="Timer" parent="." unique_id=1303775266]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

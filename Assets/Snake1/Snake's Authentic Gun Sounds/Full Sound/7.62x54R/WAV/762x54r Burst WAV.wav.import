@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ceuhwl7wpjwqm"
+path="res://.godot/imported/762x54r Burst WAV.wav-d7e10c1119862744430b4d0b95efe437.sample"
+
+[deps]
+
+source_file="res://Assets/Snake1/Snake's Authentic Gun Sounds/Full Sound/7.62x54R/WAV/762x54r Burst WAV.wav"
+dest_files=["res://.godot/imported/762x54r Burst WAV.wav-d7e10c1119862744430b4d0b95efe437.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

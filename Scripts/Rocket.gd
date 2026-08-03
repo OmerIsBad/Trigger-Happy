@@ -1,6 +1,7 @@
 extends Node2D
 @onready var BulletLifeTimer = $RocketLifeTimer
 @onready var TrailNode = $Trail
+@onready var BurnBabyBurn = $BurnBabyBurn
 var ExplosionAir = preload("res://Scenes/ExplosionAir.tscn")
 var Speed
 var Lifetime
@@ -9,6 +10,7 @@ var Direction
 var PrevPos
 var FirstPos
 var TrailLength = 5
+var StartShuttingTheFuckUp = false
 
 var ShotByGun
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +21,12 @@ func _ready() -> void:
 	TrailNode.add_point(FirstPos)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if BulletLifeTimer.time_left < 2.00:
+		StartShuttingTheFuckUp = true
+	
+	if StartShuttingTheFuckUp:
+		BurnBabyBurn.volume_db -= 1
+	
 	PrevPos = position
 	
 	position.x += Speed * Direction 

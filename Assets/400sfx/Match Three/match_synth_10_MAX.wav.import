@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://by1itxquvlchw"
+path="res://.godot/imported/match_synth_10_MAX.wav-921caec2c1b1829e04bfc159f39e0046.sample"
+
+[deps]
+
+source_file="res://Assets/400sfx/Match Three/match_synth_10_MAX.wav"
+dest_files=["res://.godot/imported/match_synth_10_MAX.wav-921caec2c1b1829e04bfc159f39e0046.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

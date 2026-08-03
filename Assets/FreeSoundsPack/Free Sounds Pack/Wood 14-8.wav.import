@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w5jf0dnsp5iu"
+path="res://.godot/imported/Wood 14-8.wav-bda5348f0d5ba6468a5cc3f1c76e484f.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Wood 14-8.wav"
+dest_files=["res://.godot/imported/Wood 14-8.wav-bda5348f0d5ba6468a5cc3f1c76e484f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

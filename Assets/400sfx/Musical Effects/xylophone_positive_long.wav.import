@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7ernuxn134bs"
+path="res://.godot/imported/xylophone_positive_long.wav-5e406b0a8ec331e233297f37fb6de063.sample"
+
+[deps]
+
+source_file="res://Assets/400sfx/Musical Effects/xylophone_positive_long.wav"
+dest_files=["res://.godot/imported/xylophone_positive_long.wav-5e406b0a8ec331e233297f37fb6de063.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

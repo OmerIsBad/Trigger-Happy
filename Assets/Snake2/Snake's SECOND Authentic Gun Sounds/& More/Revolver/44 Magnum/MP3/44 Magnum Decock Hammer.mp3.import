@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwuxrobxlrkev"
+path="res://.godot/imported/44 Magnum Decock Hammer.mp3-8994fee94bd95e58ab7f1f1a691eb0ca.mp3str"
+
+[deps]
+
+source_file="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Revolver/44 Magnum/MP3/44 Magnum Decock Hammer.mp3"
+dest_files=["res://.godot/imported/44 Magnum Decock Hammer.mp3-8994fee94bd95e58ab7f1f1a691eb0ca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

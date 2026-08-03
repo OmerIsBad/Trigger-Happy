@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpi75141hscaa" path="res://Scripts/P90.gd" id="1_vh0uv"]
 [ext_resource type="Texture2D" uid="uid://qq58i1ckwews" path="res://Assets/P90_In_Hand.png" id="2_1it12"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_1it12"]
 
 [node name="P90" type="Node2D" unique_id=154209015]
 script = ExtResource("1_vh0uv")
@@ -15,5 +16,8 @@ texture = ExtResource("2_1it12")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=519358902]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1662412346]
+stream = ExtResource("3_1it12")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

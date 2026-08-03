@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dkjy1rk0pe3el"
+path="res://.godot/imported/Rock Large Debris 1-3.wav-0771434b8165aeabd05ab5433095364b.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Rock Large Debris 1-3.wav"
+dest_files=["res://.godot/imported/Rock Large Debris 1-3.wav-0771434b8165aeabd05ab5433095364b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

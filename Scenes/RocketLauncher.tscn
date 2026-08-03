@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwglulhs204y3" path="res://Scripts/RocketLauncher.gd" id="1_d3ibk"]
 [ext_resource type="Texture2D" uid="uid://bowae7souxyx7" path="res://Assets/RocketLauncher_In_Hand.png" id="2_hcklp"]
+[ext_resource type="AudioStream" uid="uid://kvftgw51phpm" path="res://Assets/400sfx/UI/pop_1.wav" id="3_hcklp"]
 
 [node name="RocketLauncher" type="Node2D" unique_id=1929053549]
 script = ExtResource("1_d3ibk")
@@ -15,5 +16,10 @@ texture = ExtResource("2_hcklp")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=91205410]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=654613573]
+stream = ExtResource("3_hcklp")
+volume_db = 15.0
+pitch_scale = 0.2
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

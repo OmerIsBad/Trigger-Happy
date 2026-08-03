@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvkj0aalepykp"
+path="res://.godot/imported/22LR Bolt Cycle WAV.wav-525326e2ec6d0470a105a1dba0e95f5f.sample"
+
+[deps]
+
+source_file="res://Assets/Snake1/Snake's Authentic Gun Sounds/Reloads, Cycling & More/WAV/22LR Bolt Cycle WAV.wav"
+dest_files=["res://.godot/imported/22LR Bolt Cycle WAV.wav-525326e2ec6d0470a105a1dba0e95f5f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

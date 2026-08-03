@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crwnjdfd5v66q" path="res://Assets/Ace_In_Hand.png" id="1_ora38"]
 [ext_resource type="Script" uid="uid://cjmiwu378k8s6" path="res://Scripts/Ace.gd" id="1_v2bwv"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_m68jb"]
 
 [node name="Ace" type="Node2D" unique_id=242118462]
 script = ExtResource("1_v2bwv")
@@ -15,5 +16,8 @@ texture = ExtResource("1_ora38")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=190077161]
 one_shot = true
+
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1339729164]
+stream = ExtResource("3_m68jb")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

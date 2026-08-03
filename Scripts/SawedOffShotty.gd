@@ -5,7 +5,9 @@ var ShootButton
 var BulletScene = preload("res://Scenes/bullet.tscn")
 @onready var FireRateTimer = $FireRateTimer
 @onready var PlayerHand = get_parent().get_parent()
-
+@onready var GunShotSFX = $GunShotSFX
+@onready var CockSFX = $CockSFX
+@onready var CockTimer = $CockTimer
 
 
 #Gun Stats
@@ -38,6 +40,8 @@ func _process(delta: float) -> void:
 		Shoot()
 		if MagSize != 0:
 			ApplyRecoil()
+	
+	
 
 func IdentifyPlayerShoot():
 	print(get_parent().get_parent().get_parent().name)
@@ -68,6 +72,13 @@ func Shoot():
 	Bullet.ShotByGun = GunName
 	get_tree().current_scene.add_child(Bullet)
 	
+	var PitchMin = 0.8
+	var PitchMax = 1.2
+	
+	GunShotSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+	GunShotSFX.play()
+	CockTimer.start(0.001)
+	
 	if MagSize == 0:
 		DestroyGun()
 	else:
@@ -93,3 +104,7 @@ func DestroyGun():
 
 func _on_fire_rate_timer_timeout() -> void:
 	CanShoot = true
+
+
+func _on_cock_timer_timeout() -> void:
+	CockSFX.play()

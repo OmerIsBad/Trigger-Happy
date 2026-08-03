@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c6hwdvr1217xv" path="res://Scripts/GoldenEagle.gd" id="1_4i5d6"]
 [ext_resource type="Texture2D" uid="uid://bgex5ktemjb1y" path="res://Assets/GoldenEagle_In_Hand.png" id="2_iu0ix"]
+[ext_resource type="AudioStream" uid="uid://brox51u8y4fjf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Full Sounds/9mm/MP3/9mm Single.mp3" id="3_0qil1"]
+[ext_resource type="AudioStream" uid="uid://dlxcxua4bocxh" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Slide Release.mp3" id="4_4af77"]
 
 [node name="GoldenEagle" type="Node2D" unique_id=484975760]
 script = ExtResource("1_4i5d6")
@@ -16,4 +18,15 @@ texture = ExtResource("2_iu0ix")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1999277286]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1169821848]
+stream = ExtResource("3_0qil1")
+stream_paused = true
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1528206134]
+stream = ExtResource("4_4af77")
+
+[node name="CockTimer" type="Timer" parent="." unique_id=828144759]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

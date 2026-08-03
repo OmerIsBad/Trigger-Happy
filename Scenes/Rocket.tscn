@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cq4tggyrpkjsp" path="res://Scripts/Rocket.gd" id="1_m1lyg"]
 [ext_resource type="Texture2D" uid="uid://c4dr0h2h15gmv" path="res://Assets/Rocket.png" id="2_pp8mc"]
+[ext_resource type="AudioStream" uid="uid://dok5a7xj55s0l" path="res://Assets/400sfx/Other/white_noise_long.wav" id="3_pp8mc"]
 
 [sub_resource type="Curve" id="Curve_tm07d"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -34,3 +35,9 @@ texture = ExtResource("2_pp8mc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1716274123]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_cupxa")
+
+[node name="BurnBabyBurn" type="AudioStreamPlayer2D" parent="." unique_id=385297391]
+stream = ExtResource("3_pp8mc")
+volume_db = 11.429
+pitch_scale = 0.21
+autoplay = true

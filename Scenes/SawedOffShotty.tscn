@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cibfosbcwdviv" path="res://Scripts/SawedOffShotty.gd" id="1_8v68j"]
 [ext_resource type="Texture2D" uid="uid://buxjgmp0xueii" path="res://Assets/SawedOffShotty_In_Hand.png" id="1_a0jn0"]
+[ext_resource type="AudioStream" uid="uid://bortl737aw8wf" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/Isolated/20 Gauge/MP3/20 Gauge Single Isolated.mp3" id="3_66dui"]
+[ext_resource type="AudioStream" uid="uid://blkt34glx0b08" path="res://Assets/Snake1/Snake's Authentic Gun Sounds/Reloads, Cycling & More/MP3/Pump Reload Full MP3.mp3" id="4_4lapq"]
 
 [node name="SawedOffShotty" type="Node2D" unique_id=521668168]
 script = ExtResource("1_8v68j")
@@ -16,4 +18,15 @@ texture = ExtResource("1_a0jn0")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1439123950]
 one_shot = true
 
+[node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=585298807]
+stream = ExtResource("3_66dui")
+volume_db = 13.715
+
+[node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=826530227]
+stream = ExtResource("4_4lapq")
+
+[node name="CockTimer" type="Timer" parent="." unique_id=1851927297]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="CockTimer" to="." method="_on_cock_timer_timeout"]

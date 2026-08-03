@@ -5,6 +5,7 @@ var ShootButton
 var BulletScene = preload("res://Scenes/bullet.tscn")
 @onready var FireRateTimer = $FireRateTimer
 @onready var PlayerHand = get_parent().get_parent()
+@onready var GunShotSFX = $GunShotSFX
 
 
 
@@ -66,6 +67,12 @@ func Shoot():
 	Bullet.Knockback = BulletKnockback
 	Bullet.ShotByGun = GunName
 	get_tree().current_scene.add_child(Bullet)
+	
+	var PitchMin = 0.8
+	var PitchMax = 1.2
+	
+	GunShotSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+	GunShotSFX.play()
 	
 	if MagSize == 0:
 		DestroyGun()

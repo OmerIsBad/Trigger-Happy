@@ -1,6 +1,8 @@
 extends Node2D
 @onready var TrailNode = $Trail
 @onready var TrailingEnd = $TrailingEnd
+@onready var BurnBabyBurn = $BurnBabyBurn
+
 var ExplosionAir = preload("res://Scenes/ExplosionAir.tscn")
 var Speed
 var Lifetime
@@ -13,7 +15,7 @@ var TargetPlayer
 var TrailLength = 15
 var IdealDirectionVector
 var Step
-var TurnRate = 3  # radians per second
+var TurnRate = 3  # This is in radians not degree you idiot
 var HasFuel = true
 var Velocity = Vector2.ZERO
 var Gravity = 2500.0     
@@ -49,7 +51,6 @@ func _physics_process(delta: float) -> void:
 		PrevPos = position
 		position += Step
 		
-		#Keep Velocity up to date while fueled, so it's ready the instant fuel runs out
 		Velocity = Direction * Speed
 		
 		rotation = Direction.angle()
@@ -61,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		# ouuu shit we outta fuel
+		BurnBabyBurn.volume_db = 0
 		Velocity.y += Gravity * delta
 		Velocity *= Drag
 		
