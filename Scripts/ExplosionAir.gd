@@ -1,5 +1,6 @@
 extends Node2D
 @onready var Area = $Area2D
+@onready var SFX = $SFX
 
 var TotalKnockback = 3000
 
@@ -12,6 +13,9 @@ var ExplosiveThingyReduction = 3
 var ShieldStrength = 3
 
 func _ready() -> void:
+	SFX.play()
+	SFX.reparent(get_tree().current_scene)
+	SFX.finished.connect(SFX.queue_free)
 	var TextLabel = global.SummonText("BOOM!", global_position, 50, -1)
 	global.CameraShake(50.0,0.3)
 	get_tree().current_scene.add_child(TextLabel)

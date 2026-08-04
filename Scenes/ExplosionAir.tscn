@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bv7eraenhgemg" path="res://Assets/AirExplosion/SimpleExplosionC_09.png" id="10_6dd0q"]
 [ext_resource type="Texture2D" uid="uid://majbffpe0ho0" path="res://Assets/AirExplosion/SimpleExplosionC_10.png" id="11_40pr6"]
 [ext_resource type="Texture2D" uid="uid://dj11abm8a6ygk" path="res://Assets/AirExplosion/SimpleExplosionC_11.png" id="12_owaq1"]
+[ext_resource type="AudioStream" uid="uid://gv0jr4a0x7hh" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Explosion Large 1-1.wav" id="14_pjl1q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_npw3m"]
 radius = 184.0
@@ -76,5 +77,9 @@ position = Vector2(-5.9604645e-08, -50)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_npw3m")
 animation = &"Explode"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=511990646]
+stream = ExtResource("14_pjl1q")
+volume_db = 12.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

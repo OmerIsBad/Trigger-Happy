@@ -83,6 +83,8 @@ func ApplyRecoil():
 	RecoilTween.tween_property(PlayerHand, "position", RestPosition, 0.1)
 
 func DestroyGun():
+	GunShotSFX.reparent(get_tree().current_scene)
+	GunShotSFX.finished.connect(GunShotSFX.queue_free)
 	get_parent().get_parent().get_parent().DropGun(GunName)
 	queue_free()
 

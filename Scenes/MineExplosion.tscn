@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://d4n2ttcxbgaw4" path="res://Assets/MineExplosion/LargeExplosionB_12.png" id="14_dp05k"]
 [ext_resource type="Texture2D" uid="uid://kyvu7qmgqd5" path="res://Assets/MineExplosion/LargeExplosionB_13.png" id="15_l8aj3"]
 [ext_resource type="Texture2D" uid="uid://cse4gw1mi5r6g" path="res://Assets/MineExplosion/LargeExplosionB_14.png" id="16_ydejg"]
+[ext_resource type="AudioStream" uid="uid://gv0jr4a0x7hh" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Explosion Large 1-1.wav" id="17_11bkx"]
+[ext_resource type="AudioStream" uid="uid://drx8vxfty6alf" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Duck Quack sound effect  No Copyright.mp3" id="18_ag5u6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npw3m"]
 radius = 65.0
@@ -91,5 +93,13 @@ sprite_frames = SubResource("SpriteFrames_wb16f")
 animation = &"Explode"
 frame = 14
 frame_progress = 1.0
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1877546416]
+stream = ExtResource("17_11bkx")
+volume_db = 12.5
+
+[node name="QuackSFX" type="AudioStreamPlayer2D" parent="." unique_id=341847347]
+stream = ExtResource("18_ag5u6")
+volume_db = 8.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

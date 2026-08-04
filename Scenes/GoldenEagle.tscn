@@ -20,7 +20,6 @@ one_shot = true
 
 [node name="GunShotSFX" type="AudioStreamPlayer" parent="." unique_id=1169821848]
 stream = ExtResource("3_0qil1")
-stream_paused = true
 
 [node name="CockSFX" type="AudioStreamPlayer2D" parent="." unique_id=1528206134]
 stream = ExtResource("4_4af77")

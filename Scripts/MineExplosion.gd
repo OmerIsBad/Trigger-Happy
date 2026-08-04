@@ -1,5 +1,7 @@
 extends Node2D
 @onready var Area = $Area2D
+@onready var SFX = $SFX
+@onready var QuackSFX = $QuackSFX
 
 var TotalKnockback = 3000
 
@@ -13,6 +15,11 @@ var ExplodeText = "BOOM!"
 var ShieldStrength = 3
 
 func _ready() -> void:
+	if ExplodeText == "QUACK!":
+		QuackSFX.play(0.8)
+	SFX.play()
+	SFX.reparent(get_tree().current_scene)
+	SFX.finished.connect(SFX.queue_free)
 	var TextLabel = global.SummonText(ExplodeText, global_position, 50, -1)
 	global.CameraShake(50.0,0.3)
 	get_tree().current_scene.add_child(TextLabel)
