@@ -3,6 +3,7 @@ extends Node2D
 @onready var MarkerLeft = $MarkerLeft
 @onready var MarkerRight = $MarkerRight
 @onready var Lifetime = $Lifetime
+@onready var EnterSFX = $EnterSFX
 
 var Activated = false
 
@@ -16,6 +17,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if Activated:
 		if (body.is_in_group("players") and !body.is_in_group("ExemptPlayers")):
 			body.add_to_group("ExemptPlayers")
+			EnterSFX.play()
 			for Portal in get_tree().get_nodes_in_group("Portals"):
 				if Portal.name != name:
 					if body.velocity.x > 0:

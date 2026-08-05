@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b4aodux7rxrnc" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://dpchoq3u5ke3q" path="res://Assets/Bullet.png" id="2_oduel"]
+[ext_resource type="AudioStream" uid="uid://kvftgw51phpm" path="res://Assets/400sfx/UI/pop_1.wav" id="3_6afsh"]
+[ext_resource type="AudioStream" uid="uid://ccg3vq8ollwgd" path="res://Assets/400sfx/Materials/metal_blunt_tap.wav" id="4_6afsh"]
 
 [sub_resource type="Curve" id="Curve_oduel"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -34,6 +36,16 @@ texture = ExtResource("2_oduel")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=412678726]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ycag2")
+
+[node name="HitSFX" type="AudioStreamPlayer" parent="." unique_id=1191530091]
+stream = ExtResource("3_6afsh")
+volume_db = -80.0
+pitch_scale = 0.27
+
+[node name="TurretHitSFX" type="AudioStreamPlayer2D" parent="." unique_id=1870550765]
+stream = ExtResource("4_6afsh")
+volume_db = 13.621
+pitch_scale = 2.67
 
 [connection signal="timeout" from="BulletLifeTimer" to="." method="_on_bullet_life_timer_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

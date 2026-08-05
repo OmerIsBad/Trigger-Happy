@@ -1,7 +1,11 @@
 extends Node2D
 
+@onready var HitSFX: AudioStreamPlayer = $HitSFX
 @onready var BulletLifeTimer = $BulletLifeTimer
 @onready var TrailNode = $Trail
+@onready var TurretHitSFX = $TurretHitSFX
+
+
 var TrailLength = 2
 var Speed
 var Lifetime
@@ -49,6 +53,15 @@ func _physics_process(delta: float) -> void:
 				ManageTextThrow()
 				body.LastShot = Time.get_ticks_msec()
 				body.ApplyKnockback(Knockback, Direction)
+				
+				var PitchMin = 0.20
+				var PitchMax = 0.25
+				
+				HitSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+				
+				HitSFX.play()
+				HitSFX.reparent(get_tree().current_scene)
+				HitSFX.finished.connect(HitSFX.queue_free)
 				queue_free()
 			else:
 				queue_free()
@@ -60,10 +73,24 @@ func _physics_process(delta: float) -> void:
 			var NewTime = max(0.001, body.LifeTimer.time_left - TimeDamage)
 			body.LifeTimer.start(NewTime)
 			
+			var PitchMin = 1.8
+			var PitchMax = 2.8
+			
+			TurretHitSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+			TurretHitSFX.play()
+			TurretHitSFX.reparent(get_tree().current_scene)
+			TurretHitSFX.finished.connect(TurretHitSFX.queue_free)
+			
 			queue_free()
 
 			
 		elif body.name == "Shield":
+			var PitchMin = 1.8
+			var PitchMax = 2.8
+			TurretHitSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+			TurretHitSFX.play()
+			TurretHitSFX.reparent(get_tree().current_scene)
+			TurretHitSFX.finished.connect(TurretHitSFX.queue_free)
 			queue_free()
 		
 		elif body.get_parent().is_in_group("Portals"):

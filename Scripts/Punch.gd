@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var AnimatedSprite = $AnimatedSprite2D
+@onready var MissSFX: AudioStreamPlayer2D = $MissSFX
+@onready var HitSFX: AudioStreamPlayer2D = $HitSFX
+
 
 var ExemptPlayers = []
 var Puncher
@@ -12,6 +15,9 @@ var HitTexts: Array[String] = ["Wham!", "Bam!", "Pow!", "Ouchie!", "Ouch!"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MissSFX.play()
+	MissSFX.reparent(get_tree().current_scene)
+	MissSFX.finished.connect(MissSFX.queue_free)
 	ExemptPlayers.append(Puncher)
 	if PunchDirection == -1:
 		scale.x = PunchDirection
@@ -28,6 +34,7 @@ func _process(delta: float) -> void:
 
 
 var TextAlreadyShown = false
+var HitSFXPlayed = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players") and not ExemptPlayers.has(body.name):
@@ -41,3 +48,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 			body.velocity.x = PunchKnockbackX * PunchDirection
 			body.velocity.y = PunchKnockbackY
+
+			if !HitSFXPlayed:
+				HitSFXPlayed = true
+				HitSFX.play()
+				HitSFX.reparent(get_tree().current_scene)
+				HitSFX.finished.connect(HitSFX.queue_free)

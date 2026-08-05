@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var CrateLifetime = $CrateLifetime
+@onready var EquipSFX = $EquipSFX
 
-#NEEDS FUNCTIONALITY TO DISAPEAR AFTER A WHILE
 
 var Weapons = {
 		#Pistols
@@ -79,10 +79,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		print("Erased Gun: ", OldGun, " And Given Gun: ", ChosenGun)
 		
-		#RESTARTING THE SPAWNER TIMER
 		get_parent().RestartCrateShenanigans()
 		
-		#COMMITING SUICIDE
+		EquipSFX.play()
+		EquipSFX.reparent(get_tree().current_scene)
+		EquipSFX.finished.connect(EquipSFX.queue_free)
+		
 		queue_free()
 
 

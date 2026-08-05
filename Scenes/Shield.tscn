@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4d4xncvccu6w" path="res://Scripts/Shield.gd" id="1_g6qfg"]
 [ext_resource type="Texture2D" uid="uid://bd2l8taceevv" path="res://Assets/Shield.png" id="1_xuq1u"]
+[ext_resource type="AudioStream" uid="uid://cpu54lb52g4vh" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Whoosh 1-1.wav" id="3_f84if"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hjvw7"]
 a = Vector2(0, -45)
@@ -20,3 +21,8 @@ texture = ExtResource("1_xuq1u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123096477]
 position = Vector2(30, 7)
 shape = SubResource("SegmentShape2D_hjvw7")
+
+[node name="EquipSFX" type="AudioStreamPlayer2D" parent="." unique_id=370013536]
+stream = ExtResource("3_f84if")
+volume_db = 24.0
+pitch_scale = 0.47

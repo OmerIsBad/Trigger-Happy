@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://560lbm2ape4m"
+path="res://.godot/imported/Short Beep - Sound Effect.mp3-888f424aaa9ff6b713bf230dc90d4d22.mp3str"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Short Beep - Sound Effect.mp3"
+dest_files=["res://.godot/imported/Short Beep - Sound Effect.mp3-888f424aaa9ff6b713bf230dc90d4d22.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

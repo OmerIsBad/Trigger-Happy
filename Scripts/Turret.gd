@@ -7,6 +7,16 @@ extends CharacterBody2D
 @onready var LifeTimer = $LifeTime
 @onready var Marker = $Sprite2D/Marker2D
 @onready var FireRateTimer = $FireRateTimer
+@onready var GunShotSFX = $GunShotSFX
+#Set Up Sfx
+@onready var ClangSFX: AudioStreamPlayer2D = $ClangSFX
+@onready var CreakSFX: AudioStreamPlayer2D = $CreakSFX
+@onready var LoadSFX: AudioStreamPlayer2D = $LoadSFX
+#Break SFX
+@onready var ScrapeSFX: AudioStreamPlayer2D = $ScrapeSFX
+@onready var SnapSFX: AudioStreamPlayer2D = $SnapSFX
+@onready var ExplodeSFX: AudioStreamPlayer2D = $ExplodeSFX
+
 
 #Bullet Stats
 var BulletSpeed = 85
@@ -24,6 +34,9 @@ var CanShoot = true
 var MaxTime
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ClangSFX.play()
+	CreakSFX.play()
+	LoadSFX.play()
 	print("My Owner is ", TurretOwner)
 	MaxTime = LifeTimer.wait_time
 	add_to_group("Turrets")
@@ -87,6 +100,12 @@ func _process(delta: float) -> void:
 		Bullet.ShotByGun = "Turret"
 		
 		get_tree().current_scene.add_child(Bullet)
+		
+		var PitchMin = 0.8
+		var PitchMax = 1.2
+		
+		GunShotSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+		GunShotSFX.play()
 	
 func Shatter() -> void:
 	var Positions = ["TL", "TR", "BL", "BR"]
@@ -97,6 +116,21 @@ func Shatter() -> void:
 		get_tree().current_scene.add_child(Piece)
 
 func _on_life_time_timeout() -> void:
+	GunShotSFX.reparent(get_tree().current_scene)
+	GunShotSFX.finished.connect(GunShotSFX.queue_free)
+	
+	SnapSFX.play()
+	SnapSFX.reparent(get_tree().current_scene)
+	SnapSFX.finished.connect(SnapSFX.queue_free)
+	
+	ScrapeSFX.play()
+	ScrapeSFX.reparent(get_tree().current_scene)
+	ScrapeSFX.finished.connect(ScrapeSFX.queue_free)
+	
+	ExplodeSFX.play()
+	ExplodeSFX.reparent(get_tree().current_scene)
+	ExplodeSFX.finished.connect(ExplodeSFX.queue_free)
+	
 	Shatter()
 	queue_free()
 

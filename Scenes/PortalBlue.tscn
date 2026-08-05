@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbneriwclefao" path="res://Scripts/Portal.gd" id="1_4jupp"]
 [ext_resource type="Texture2D" uid="uid://dv3lc0spvg3m3" path="res://Assets/portalsSpriteSheet .png" id="2_swyce"]
+[ext_resource type="AudioStream" uid="uid://dwbbh7f8xpuqu" path="res://Assets/400sfx/Retro/wobble.wav" id="3_swyce"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txjwq"]
 atlas = ExtResource("2_swyce")
@@ -67,6 +68,9 @@ position = Vector2(-33, 0)
 [node name="Lifetime" type="Timer" parent="." unique_id=149342207]
 wait_time = 15.0
 one_shot = true
+
+[node name="EnterSFX" type="AudioStreamPlayer2D" parent="." unique_id=2115190117]
+stream = ExtResource("3_swyce")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

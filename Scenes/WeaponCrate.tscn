@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dgdpgsvupls6h"]
 
 [ext_resource type="Script" uid="uid://bjvjgf5uvhcxl" path="res://Scripts/WeaponCrate.gd" id="1_jv64r"]
-[ext_resource type="Texture2D" uid="uid://dia77alkvwajx" path="res://icon.svg" id="1_lui6a"]
+[ext_resource type="Texture2D" uid="uid://boqejm26tdc7f" path="res://Assets/WeaponCrate.png" id="2_jv64r"]
+[ext_resource type="AudioStream" uid="uid://ebalw4ix6hy" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Rack Full.mp3" id="3_qfcus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
 size = Vector2(64, 64)
@@ -10,8 +11,9 @@ size = Vector2(64, 64)
 script = ExtResource("1_jv64r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1737166056]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_lui6a")
+position = Vector2(0, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("2_jv64r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1234030427]
 collision_mask = 31
@@ -23,6 +25,10 @@ shape = SubResource("RectangleShape2D_npw3m")
 wait_time = 20.0
 one_shot = true
 autostart = true
+
+[node name="EquipSFX" type="AudioStreamPlayer2D" parent="." unique_id=46553859]
+stream = ExtResource("3_qfcus")
+pitch_scale = 0.78
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="CrateLifetime" to="." method="_on_crate_lifetime_timeout"]
