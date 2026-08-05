@@ -18,6 +18,11 @@ var OscillationSpeed = 10
 @onready var AnimatedSprite = $AnimatedSprite2D
 @onready var AimingTimer = $AimingTimer
 @onready var LaserTimer = $LaserTimer
+@onready var SirenSFX = $SirenSFX
+@onready var LockOnSFX = $LockOnSFX
+@onready var LaserSFX = $LaserSFX
+@onready var PsshSFX = $PsshSFX
+
 var Explosion = preload("res://Scenes/LaserExplosion.tscn")
 
 func _ready() -> void:
@@ -31,10 +36,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(Secondary) and CurrentState == "Off":
+		SirenSFX.play()
 		CurrentState = "Aiming"
 		AnimatedSprite.play("Aim")
 	
 	elif Input.is_action_just_pressed(Secondary) and CurrentState == "Aiming":
+		SirenSFX.stop()
+		LockOnSFX.play()
 		CurrentState = "Warning"
 		AnimatedSprite.modulate = Color.RED
 		AimingTimer.start()
@@ -75,6 +83,10 @@ func _process(delta: float) -> void:
 			Last = Current
 
 func _on_aiming_timer_timeout() -> void:
+	LockOnSFX.stop()
+	LaserSFX.play()
+	PsshSFX.play()
+	
 	CurrentState = "Shooting"
 	AnimatedSprite.modulate = Color(1,1,1,1)
 	AnimatedSprite.play("Laser")

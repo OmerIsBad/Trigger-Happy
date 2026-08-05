@@ -1,8 +1,9 @@
 extends Node2D
 
-var DashesRemaining = 3
+var DashesRemaining = 5
 var Secondary = ""
 var Knockback = 3000
+@onready var DashSFX = $DashSFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,10 +20,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(Secondary):
+		DashSFX.play()
 		get_parent().StartDash()
 		DashesRemaining -= 1
 	
 	if DashesRemaining == 0:
+		DashSFX.reparent(get_tree().current_scene)
+		DashSFX.finished.connect(DashSFX.queue_free)
 		queue_free()
 
 

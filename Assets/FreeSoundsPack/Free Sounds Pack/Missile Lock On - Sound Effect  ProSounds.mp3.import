@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://doaoj0fgnt70o"
+path="res://.godot/imported/Missile Lock On - Sound Effect  ProSounds.mp3-3b0c21f0268aa20ef7c263494a4917c0.mp3str"
+
+[deps]
+
+source_file="res://Assets/FreeSoundsPack/Free Sounds Pack/Missile Lock On - Sound Effect  ProSounds.mp3"
+dest_files=["res://.godot/imported/Missile Lock On - Sound Effect  ProSounds.mp3-3b0c21f0268aa20ef7c263494a4917c0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

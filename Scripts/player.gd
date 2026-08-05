@@ -211,7 +211,7 @@ func _physics_process(delta: float) -> void:
 	elif has_node("TurretManager"):
 		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Place"
 	elif has_node("DashManager"):
-		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Dash\n " + str(get_node("DashManager").DashesRemaining) + "/3"
+		ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Dash\n " + str(get_node("DashManager").DashesRemaining) + "/5"
 	elif has_node("OSL"):
 		if get_node("OSL").CurrentState == "Off":
 			ItemInstructor.text = "Press [" + str(GetMappedInput(Secondary)) + "] To Order \n Orbital Strike Laser"
