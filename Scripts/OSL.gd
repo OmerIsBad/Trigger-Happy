@@ -22,6 +22,7 @@ var OscillationSpeed = 10
 @onready var LockOnSFX = $LockOnSFX
 @onready var LaserSFX = $LaserSFX
 @onready var PsshSFX = $PsshSFX
+@onready var BoomSFX = $BoomSFX
 
 var Explosion = preload("res://Scenes/LaserExplosion.tscn")
 
@@ -86,6 +87,7 @@ func _on_aiming_timer_timeout() -> void:
 	LockOnSFX.stop()
 	LaserSFX.play()
 	PsshSFX.play()
+	BoomSFX.play()
 	
 	CurrentState = "Shooting"
 	AnimatedSprite.modulate = Color(1,1,1,1)

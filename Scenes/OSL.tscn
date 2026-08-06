@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c5dofsou8alx5" path="res://Assets/Laser.png" id="2_jyjyx"]
 [ext_resource type="AudioStream" uid="uid://cxl7rvktf2xk1" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Sci-Fi Gun 1-1.wav" id="4_34fye"]
 [ext_resource type="AudioStream" uid="uid://dok5a7xj55s0l" path="res://Assets/400sfx/Other/white_noise_long.wav" id="5_mw4ne"]
+[ext_resource type="AudioStream" uid="uid://b76hjysuysdi5" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Explosion Medium 2-1.wav" id="6_8eprt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34fye"]
 atlas = ExtResource("2_jyjyx")
@@ -92,6 +93,10 @@ pitch_scale = 0.12
 stream = ExtResource("5_mw4ne")
 volume_db = 5.403
 pitch_scale = 0.07
+
+[node name="BoomSFX" type="AudioStreamPlayer2D" parent="." unique_id=1211631296]
+stream = ExtResource("6_8eprt")
+volume_db = 5.714
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]

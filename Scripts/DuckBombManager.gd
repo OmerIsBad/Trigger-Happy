@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 		TotalDucks -= 1
 		var Duck = DuckNode.instantiate()
 		Duck.global_position = Marker.global_position
+		Duck.Direction = get_parent().Direction
 		get_tree().current_scene.add_child(Duck)
 	
 	if TotalDucks == 0:

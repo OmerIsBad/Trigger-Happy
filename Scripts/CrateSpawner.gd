@@ -1,16 +1,16 @@
 extends Node2D
-
 @onready var SpawnInTimer = $SpawnInTimer
 @onready var SpawnMarker = $SpawnMarker
-
 var WeaponsCrate = preload("res://Scenes/WeaponCrate.tscn")
-
+var ItemCrate = preload("res://Scenes/ItemCrate.tscn")
 var MaxCrates: int = 2
 var MinSpawnDelay: int = 10
 var MaxSpawnDelay: int = 60
 var SpawnJitterRange: int = 150
 var CrateGroupName: String = "WeaponCrates"
+var ItemCrateGroupName: String = "ItemCrates"
 var OriginPosition: Vector2
+var ItemBoxChance = 4 # One in X chance type shi
 
 func _ready() -> void:
 	OriginPosition = global_position
@@ -22,10 +22,16 @@ func RestartCrateShenanigans() -> void:
 	SpawnInTimer.start(timer_time)
 
 func _on_spawn_in_timer_timeout() -> void:
-	var number_of_crates = get_tree().get_nodes_in_group(CrateGroupName).size()
-	if number_of_crates < MaxCrates:
-		var weapon_box = WeaponsCrate.instantiate()
-		add_child(weapon_box)
-		weapon_box.position = SpawnMarker.position
+	var TotalCrates = get_tree().get_nodes_in_group(CrateGroupName).size() + get_tree().get_nodes_in_group(ItemCrateGroupName).size()
+	
+	if TotalCrates < MaxCrates:
+		var CrateToSpawn
+		if randi_range(1, ItemBoxChance) == 1:
+			CrateToSpawn = WeaponsCrate.instantiate()
+		else:
+			CrateToSpawn = ItemCrate.instantiate()
+		
+		add_child(CrateToSpawn)
+		CrateToSpawn.position = SpawnMarker.position
 	else:
 		RestartCrateShenanigans()

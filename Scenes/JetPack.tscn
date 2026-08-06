@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dnbmxkd1n204w" path="res://Assets/JetPack_Sprite_Sheet.png" id="2_rucgm"]
 [ext_resource type="Texture2D" uid="uid://drbbga5n3i0sr" path="res://Assets/ProgressBarFill.png" id="3_hdhg1"]
 [ext_resource type="Texture2D" uid="uid://dj5adh7rj652y" path="res://Assets/ProgressBarOutline.png" id="4_5hvtc"]
+[ext_resource type="AudioStream" uid="uid://dok5a7xj55s0l" path="res://Assets/400sfx/Other/white_noise_long.wav" id="5_5hvtc"]
+[ext_resource type="AudioStream" uid="uid://c0ferpvohttw4" path="res://Assets/FreeSoundsPack/Free Sounds Pack/Fire Whoosh 2-15.wav" id="6_1n7lg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdhg1"]
 atlas = ExtResource("2_rucgm")
@@ -68,7 +70,7 @@ autoplay = "Off"
 frame_progress = 0.9933316
 
 [node name="FuelTimer" type="Timer" parent="." unique_id=1669217231]
-wait_time = 3.5
+wait_time = 5.0
 
 [node name="FuelBar" type="ProgressBar" parent="." unique_id=1486533100]
 offset_left = -75.0
@@ -82,5 +84,15 @@ show_percentage = false
 position = Vector2(75, 14)
 scale = Vector2(2, 2)
 texture = ExtResource("4_5hvtc")
+
+[node name="BurnBabyBurn" type="AudioStreamPlayer2D" parent="." unique_id=346771751]
+stream = ExtResource("5_5hvtc")
+volume_db = 5.714
+pitch_scale = 0.21
+autoplay = true
+
+[node name="FireSFX" type="AudioStreamPlayer2D" parent="." unique_id=1593213715]
+stream = ExtResource("6_1n7lg")
+volume_db = 24.0
 
 [connection signal="timeout" from="FuelTimer" to="." method="_on_fuel_timer_timeout"]

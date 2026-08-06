@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="6_0bobp"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_01ocy"]
 [ext_resource type="PackedScene" uid="uid://ksh8fu23q5mb" path="res://Scenes/TurretManager.tscn" id="8_7m8ro"]
+[ext_resource type="AudioStream" uid="uid://cpfxv2vx0p8c7" path="res://Assets/400sfx/Weapons/harsh_thud.wav" id="9_niw6a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
 atlas = ExtResource("2_3tsci")
@@ -131,20 +132,24 @@ one_shot = true
 
 [node name="SpawnShield" parent="." unique_id=1681761214 instance=ExtResource("6_0bobp")]
 
-[node name="ItemInstructor" type="RichTextLabel" parent="." unique_id=1630730075]
+[node name="ItemInstructor" type="RichTextLabel" parent="." unique_id=377085876]
 offset_left = -369.0
 offset_top = -69.0
 offset_right = 369.0
-offset_bottom = -47.0
-theme_override_colors/font_outline_color = Color(0.06666667, 0.35686275, 0.70980394, 1)
+offset_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("7_01ocy")
 text = "
 "
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TurretManager" parent="." unique_id=446871768 instance=ExtResource("8_7m8ro")]
+
+[node name="LandSFX" type="AudioStreamPlayer2D" parent="." unique_id=1076592203]
+stream = ExtResource("9_niw6a")
+volume_db = -3.0
+pitch_scale = 0.43
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]

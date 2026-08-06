@@ -7,7 +7,8 @@ var MaxSpeed = 750.0
 @onready var AnimatedSprite = $SpriteHolder/AnimatedSprite2D
 @onready var FuelBar = $FuelBar
 @onready var SpriteHolder = $SpriteHolder
-
+@onready var BurnSFX = $BurnBabyBurn
+@onready var FireSFX = $FireSFX
 var Secondary = ""
 
 
@@ -37,13 +38,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	FuelBar.value = (FuelTimer.time_left / FuelTimer.wait_time) * 100
-
 	if Input.is_action_pressed(Secondary):
+		if !BurnSFX.playing:
+			BurnSFX.play()
+			FireSFX.play(0.2)
 		FuelTimer.paused = false
 		AnimatedSprite.play("On")
 		if get_parent().velocity.y > -MaxSpeed:
 			get_parent().velocity.y -= Power
 	else:
+		if BurnSFX.playing:
+			BurnSFX.stop()
 		FuelTimer.paused = true
 		AnimatedSprite.play("Off")
 	

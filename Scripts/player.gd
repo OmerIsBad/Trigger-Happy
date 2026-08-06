@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var AnimatedSprite = $AnimatedSprite2D
 @onready var PunchTimer = $PunchCoolDown
 @onready var ItemInstructor = $ItemInstructor
+@onready var LandSFX = $LandSFX
 
 var SpawnShieldScene = preload("res://Scenes/SpawnShield.tscn")
 var PunchingScene = preload("res://Scenes/Punch.tscn")
@@ -47,6 +48,7 @@ var DashDirectionVector = Vector2.ZERO
 var DashGhostShader = preload("res://Shaders/TrailTint.gdshader")
 var DashGhostTimer = 0.0
 var DashGhostInterval = 0.001
+var WasOnLand = false
 
 var FirstPress = 0
 var HeldDown = false
@@ -228,6 +230,18 @@ func _physics_process(delta: float) -> void:
 		elif !ShieldMaskOverride:
 			set_collision_mask_value(7, true)
 
+	if WasOnLand == false and is_on_floor() == true:
+		var PitchMin = 0.4
+		var PitchMax = 0.5
+		
+		LandSFX.pitch_scale = randf_range(PitchMin, PitchMax)
+		LandSFX.play()
+		
+	if is_on_floor():
+		WasOnLand = true
+	else:
+		WasOnLand = false
+	
 	#Determine if press is held or tapped
 	if Input.is_action_just_pressed(Secondary):
 		FirstPress = Time.get_ticks_msec()
@@ -506,6 +520,11 @@ func Respawn() -> void:
 		CanJump = false
 		CanDoubleJump = true
 		get_child(2).get_child(0).get_child(0).queue_free()
+		
+		var ItemNodeNames = ["DashManager", "DuckBombManager", "GrenadeManager", "JetPack", "MinePlacerItem", "PortalManager", "TurretManager", "SpeedManager", "ShieldManager", "OSL"]
+		for ItemNodeName in ItemNodeNames:
+			if has_node(ItemNodeName):
+				get_node(ItemNodeName).queue_free()
 		
 		#Give Player Basic Glock
 		var GlockScene = preload("res://Scenes/Glock29.tscn")

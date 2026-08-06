@@ -19,6 +19,7 @@ texture = ExtResource("2_jv64r")
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=501875485]
+visible = false
 shape = SubResource("RectangleShape2D_npw3m")
 
 [node name="CrateLifetime" type="Timer" parent="." unique_id=1251555600]
