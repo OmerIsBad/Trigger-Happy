@@ -33,25 +33,30 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(Thing: Node2D) -> void:
 	if Thing.is_in_group("players") and DoIt and !Thing.has_node("SpawnShield"):
-	#This code is a fucking mess but it works so dont touch it
 		var HasShield = Thing.has_node("ShieldManager") and Thing.get_node("ShieldManager").has_node("Shield")
-			
+		
 		var DiffDirection = (Thing.global_position - global_position).normalized()
 		var RawVerticalKnockback = DiffDirection.y * TotalKnockback
-		var MaxVerticalKnockback = 400.0 
-		var ClampedVerticalKnockback = clamp(RawVerticalKnockback, -MaxVerticalKnockback, MaxVerticalKnockback)
-		var VerticalOverflow = abs(RawVerticalKnockback) - abs(ClampedVerticalKnockback)
+		var MaxVerticalKnockback = 400.0
+		
+		var FinalVerticalKnockback = RawVerticalKnockback
+		var VerticalOverflow = 0.0
+		
+		#Only clamp downward force, and only if the player is grounded (wasted force otherwise)
+		if RawVerticalKnockback > 0 and Thing.is_on_floor():
+			FinalVerticalKnockback = min(RawVerticalKnockback, MaxVerticalKnockback)
+			VerticalOverflow = RawVerticalKnockback - FinalVerticalKnockback
+		
 		var HorizontalSign = sign(DiffDirection.x)
 		if HorizontalSign == 0:
-			HorizontalSign = 1  
-			
+			HorizontalSign = 1
+		
 		if !HasShield:
 			Thing.velocity.x += (DiffDirection.x * TotalKnockback) + (VerticalOverflow * HorizontalSign)
-			Thing.velocity.y += ClampedVerticalKnockback
-		
-		else: 
+			Thing.velocity.y += FinalVerticalKnockback
+		else:
 			Thing.velocity.x += ((DiffDirection.x * TotalKnockback) + (VerticalOverflow * HorizontalSign)) / ShieldStrength
-			Thing.velocity.y += ClampedVerticalKnockback/ShieldStrength
+			Thing.velocity.y += FinalVerticalKnockback / ShieldStrength
 		
 	
 	

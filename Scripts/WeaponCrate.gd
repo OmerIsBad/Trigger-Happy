@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var CrateLifetime = $CrateLifetime
 @onready var EquipSFX = $EquipSFX
+@onready var ItemCrateSpawningSprite= $PreItemCrate
+@onready var WeaponCrateSpawningSprite = $PreWeaponCrate
 
 
 var Weapons = {

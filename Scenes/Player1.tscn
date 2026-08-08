@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1x86yqbkxojk" path="res://Scenes/TommyGun.tscn" id="5_tchc4"]
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="7_hjvw7"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="8_tchc4"]
-[ext_resource type="PackedScene" uid="uid://ksh8fu23q5mb" path="res://Scenes/TurretManager.tscn" id="9_gv6sk"]
+[ext_resource type="PackedScene" uid="uid://p4n8tipsbjxc" path="res://Scenes/MinePlacerItem.tscn" id="9_gv6sk"]
 [ext_resource type="AudioStream" uid="uid://cpfxv2vx0p8c7" path="res://Assets/400sfx/Weapons/harsh_thud.wav" id="9_h0l6a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
@@ -148,7 +148,7 @@ stream = ExtResource("9_h0l6a")
 volume_db = -3.0
 pitch_scale = 0.43
 
-[node name="TurretManager" parent="." unique_id=446871768 instance=ExtResource("9_gv6sk")]
+[node name="MinePlacerItem" parent="." unique_id=2060322007 instance=ExtResource("9_gv6sk")]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]

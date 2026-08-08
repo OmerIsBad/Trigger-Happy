@@ -8,7 +8,7 @@ var Shield = null
 var Secondary = ""
 
 var OldTopSpeed 
-var OldAcc
+
 
 var SlowedSpeed = 250
 var SlowedAcc = 5
@@ -80,3 +80,6 @@ func _on_shield_duration_timeout() -> void:
 	get_parent().DropItem("Shield")
 	
 	queue_free()
+
+func _exit_tree() -> void:
+	get_parent().TopSpeed = OldTopSpeed

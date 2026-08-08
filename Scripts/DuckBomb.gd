@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 	else:
 		DuckSprite.flip_h = false
 
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players") and Activated:
 		Activated = false
@@ -57,6 +58,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		Explosion.global_position = global_position
 		Explosion.ExplodeText = "QUACK!"
+		Explosion.DirectVictim = body
 		
 		get_tree().current_scene.add_child(Explosion)
 

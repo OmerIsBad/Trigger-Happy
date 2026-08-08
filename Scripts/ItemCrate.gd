@@ -31,7 +31,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var OldItem = null
 		for ItemName in ItemNodeNames:
 			if body.has_node(ItemName):
-				print("YOOO SHIT THIS MF GREEDY ASH TRYNNA HAVE 2 ITEMS")
 				OldItem = ItemName
 				body.get_node(ItemName).queue_free()
 		
