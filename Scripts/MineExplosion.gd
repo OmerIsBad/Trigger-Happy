@@ -27,7 +27,7 @@ func _ready() -> void:
 	if SmallerHitbox == true:
 		Area.scale = Vector2(0.5,0.5)
 	
-	if DirectVictim != null and is_instance_valid(DirectVictim):
+	if DirectVictim != null and is_instance_valid(DirectVictim) and !DirectVictim.has_node("SpawnShield"):
 		ApplyDirectHit(DirectVictim)
 	
 	$AnimatedSprite2D.play("Explode")
@@ -35,12 +35,18 @@ func _ready() -> void:
 	queue_free()
 
 func ApplyDirectHit(Victim: Node2D) -> void:
+	var HasShield = Victim.has_node("ShieldManager") and Victim.get_node("ShieldManager").has_node("Shield")
+	
 	var LaunchDirection = sign(Victim.global_position.x - global_position.x)
 	if LaunchDirection == 0:
 		LaunchDirection = 1
 	
-	Victim.velocity.x += DirectHitHorizontalForce * LaunchDirection
-	Victim.velocity.y = DirectHitUpwardForce
+	if !HasShield:
+		Victim.velocity.x += DirectHitHorizontalForce * LaunchDirection
+		Victim.velocity.y = DirectHitUpwardForce
+	else:
+		Victim.velocity.x += (DirectHitHorizontalForce * LaunchDirection) / ShieldStrength
+		Victim.velocity.y = DirectHitUpwardForce / ShieldStrength
 
 func _process(delta: float) -> void:
 	if $AnimatedSprite2D.frame == 2:
@@ -49,10 +55,6 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(Thing: Node2D) -> void:
 	if Thing.is_in_group("players") and DoIt and !Thing.has_node("SpawnShield") and Thing != DirectVictim:
 		var HasShield = Thing.has_node("ShieldManager") and Thing.get_node("ShieldManager").has_node("Shield")
-		print("Does he have a manager: " + str(Thing.has_node("ShieldManager")))
-		#Check why this isnt working
-		if Thing.has_node("ShieldManager"):
-			print("Does he have a shield: " + str(Thing.has_node("Shield")))
 		var DiffDirection = (Thing.global_position - global_position).normalized()
 		var RawVerticalKnockback = DiffDirection.y * TotalKnockback
 		var MaxVerticalKnockback = 400.0

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://tntao7brfkn6" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-0.png" id="1_or7tv"]
 [ext_resource type="Texture2D" uid="uid://x1sifgjn8di1" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-1.png" id="2_fhlu0"]
 [ext_resource type="PackedScene" uid="uid://deth1no6loh1e" path="res://Scenes/Player2.tscn" id="2_xylue"]
-[ext_resource type="Texture2D" uid="uid://dhhks4kgupmvo" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-2.png" id="3_bktio"]
+[ext_resource type="Texture2D" uid="uid://dmnticxthuery" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-2.png" id="3_bktio"]
 [ext_resource type="Script" uid="uid://ddgdsmn7jk7a1" path="res://Scripts/Camera.gd" id="3_tj5wv"]
 [ext_resource type="PackedScene" uid="uid://dboxttpabx55w" path="res://Scenes/Player3.tscn" id="3_xylue"]
 [ext_resource type="Texture2D" uid="uid://d0knq47jntws5" path="res://Assets/Prototype.png" id="4_ienac"]
@@ -13,35 +13,47 @@
 [ext_resource type="Texture2D" uid="uid://d1agfmuwtmn7i" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-4.png" id="5_44tr1"]
 [ext_resource type="PackedScene" uid="uid://caavupfmnolax" path="res://Scenes/CrateSpawner.tscn" id="7_ienac"]
 [ext_resource type="PackedScene" uid="uid://dip2lmvla0y37" path="res://Scenes/DuckBomb.tscn" id="9_or7tv"]
+[ext_resource type="Texture2D" uid="uid://dyd1ifejnnjbo" path="res://Assets/GrasslandGullysDecor/GrassPlatform_MID.png" id="12_44tr1"]
+[ext_resource type="Texture2D" uid="uid://2i125tamtx6e" path="res://Assets/GrasslandGullysDecor/GrassPlatform_LEFT.png" id="13_pmxqn"]
+[ext_resource type="Texture2D" uid="uid://wxj5wbdgcqf" path="res://Assets/GrasslandGullysDecor/GrassPlatform_RIGHT.png" id="14_gs5q7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
-size = Vector2(511, 40)
+size = Vector2(512.5, 40)
 
 [node name="Level" type="Node2D" unique_id=860293535]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=419702330]
 scroll_scale = Vector2(0, 0)
-repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1858791624]
 z_index = -1
 position = Vector2(960, 540)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("1_or7tv")
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=954828809]
 scroll_scale = Vector2(0.1, 0.1)
-repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1921871225]
 z_index = -1
-position = Vector2(960, 540)
+position = Vector2(960, 541)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fhlu0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=1468296851]
+z_index = -1
+position = Vector2(-1088, 473)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fhlu0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D2" unique_id=1732741657]
+z_index = -1
+position = Vector2(3008, 609)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fhlu0")
 
 [node name="Parallax2D3" type="Parallax2D" parent="." unique_id=2032816378]
 scroll_scale = Vector2(0.3, 0.3)
-repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=1647435947]
 z_index = -1
@@ -49,9 +61,15 @@ position = Vector2(960, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("3_bktio")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3" unique_id=379200576]
+z_index = -1
+position = Vector2(2992, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("3_bktio")
+flip_h = true
+
 [node name="Parallax2D4" type="Parallax2D" parent="." unique_id=2062706197]
 scroll_scale = Vector2(0.6, 0.6)
-repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D4" unique_id=1752786983]
 z_index = -1
@@ -59,9 +77,24 @@ position = Vector2(960, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("4_nrlyp")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D4" unique_id=1636952705]
+z_index = -1
+position = Vector2(3008, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nrlyp")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D4" unique_id=721464406]
+z_index = -1
+position = Vector2(-1088, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nrlyp")
+flip_h = true
+
 [node name="Parallax2D5" type="Parallax2D" parent="." unique_id=465173101]
 scroll_scale = Vector2(0.8, 0.8)
-repeat_times = 3
+repeat_size = Vector2(2048, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D5" unique_id=1825222289]
 z_index = -1
@@ -73,10 +106,10 @@ texture = ExtResource("5_44tr1")
 position = Vector2(365, -500)
 
 [node name="Player2" parent="." unique_id=1067377693 instance=ExtResource("2_xylue")]
-position = Vector2(753, -500)
+position = Vector2(-1070, 408)
 
 [node name="Player3" parent="." unique_id=594716813 instance=ExtResource("3_xylue")]
-position = Vector2(1167, -500)
+position = Vector2(-656, 408)
 
 [node name="Player4" parent="." unique_id=421116224 instance=ExtResource("4_tj5wv")]
 position = Vector2(1556, -500)
@@ -87,42 +120,6 @@ script = ExtResource("3_tj5wv")
 
 [node name="Platforms" type="Node2D" parent="." unique_id=849574418]
 z_index = -1
-
-[node name="Platform" type="StaticBody2D" parent="Platforms" unique_id=1081622047]
-position = Vector2(580, 950)
-scale = Vector2(1, 0.39999998)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform" unique_id=782663237]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform" unique_id=1357366294]
-shape = SubResource("RectangleShape2D_npw3m")
-one_way_collision = true
-
-[node name="Platform2" type="StaticBody2D" parent="Platforms" unique_id=1709327983]
-position = Vector2(1340, 948)
-scale = Vector2(1, 0.39999998)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2" unique_id=103298439]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2" unique_id=1250391896]
-shape = SubResource("RectangleShape2D_npw3m")
-one_way_collision = true
-
-[node name="Platform3" type="StaticBody2D" parent="Platforms" unique_id=612689674]
-position = Vector2(960, 851)
-scale = Vector2(1, 0.39999998)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3" unique_id=1475936841]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3" unique_id=357687714]
-shape = SubResource("RectangleShape2D_npw3m")
-one_way_collision = true
 
 [node name="Platform4" type="StaticBody2D" parent="Platforms" unique_id=2133316420]
 position = Vector2(960, 734)
@@ -148,27 +145,123 @@ texture = ExtResource("4_ienac")
 shape = SubResource("RectangleShape2D_npw3m")
 one_way_collision = true
 
-[node name="Platform6" type="StaticBody2D" parent="Platforms" unique_id=894993449]
-position = Vector2(1340, 566.00006)
-scale = Vector2(1, 0.39999998)
+[node name="GrassPlatform" type="StaticBody2D" parent="Platforms" unique_id=1215527633]
+position = Vector2(580, 566)
 
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6" unique_id=470809305]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform" unique_id=1588808833]
+position = Vector2(0.5000329, 0)
+scale = Vector2(481, 2)
+texture = ExtResource("12_44tr1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform6" unique_id=708522626]
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform" unique_id=1003977476]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform" unique_id=638935675]
+position = Vector2(249, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform" unique_id=1858816435]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
 shape = SubResource("RectangleShape2D_npw3m")
 one_way_collision = true
 
-[node name="Platform7" type="StaticBody2D" parent="Platforms" unique_id=896627172]
-position = Vector2(580, 566)
-scale = Vector2(1, 0.39999998)
+[node name="GrassPlatform2" type="StaticBody2D" parent="Platforms" unique_id=1332783735]
+position = Vector2(1340, 566)
 
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7" unique_id=215014635]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform2" unique_id=507575400]
+position = Vector2(0.5000329, 0)
+scale = Vector2(481, 2)
+texture = ExtResource("12_44tr1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform7" unique_id=1567310251]
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform2" unique_id=1641630611]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform2" unique_id=1177672971]
+position = Vector2(249, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform2" unique_id=1593013491]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="GrassPlatform3" type="StaticBody2D" parent="Platforms" unique_id=2013154872]
+position = Vector2(1340, 950)
+
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform3" unique_id=466405729]
+position = Vector2(0.5000329, 0)
+scale = Vector2(481, 2)
+texture = ExtResource("12_44tr1")
+
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform3" unique_id=1615256257]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform3" unique_id=1813526514]
+position = Vector2(249, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform3" unique_id=786420049]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="GrassPlatform4" type="StaticBody2D" parent="Platforms" unique_id=5335953]
+position = Vector2(580, 950)
+
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform4" unique_id=1122310303]
+position = Vector2(0.5000329, 0)
+scale = Vector2(481, 2)
+texture = ExtResource("12_44tr1")
+
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform4" unique_id=227452407]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform4" unique_id=493247339]
+position = Vector2(249, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform4" unique_id=1553093590]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("RectangleShape2D_npw3m")
+one_way_collision = true
+
+[node name="GrassPlatform5" type="StaticBody2D" parent="Platforms" unique_id=357598920]
+position = Vector2(960, 851)
+
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform5" unique_id=481498899]
+position = Vector2(0.5000329, 0)
+scale = Vector2(481, 2)
+texture = ExtResource("12_44tr1")
+
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform5" unique_id=334242390]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform5" unique_id=643067181]
+position = Vector2(249, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform5" unique_id=937498695]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
 shape = SubResource("RectangleShape2D_npw3m")
 one_way_collision = true
 

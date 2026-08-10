@@ -5,12 +5,15 @@ var WeaponsCrate = preload("res://Scenes/WeaponCrate.tscn")
 var ItemCrate = preload("res://Scenes/ItemCrate.tscn")
 var MaxCrates: int = 2
 var MinSpawnDelay: int = 10
-var MaxSpawnDelay: int = 60
+var MaxSpawnDelay: int = 30
 var SpawnJitterRange: int = 150
 var CrateGroupName: String = "WeaponCrates"
 var ItemCrateGroupName: String = "ItemCrates"
 var OriginPosition: Vector2
 var ItemBoxChance = 4 # One in X chance type shi
+
+var SpawningWeaponCrateSprite = preload("res://Assets/WeaponCrate.png")
+var SpawningItemCrate = preload("res://Assets/RustyItemCrate.png")
 
 func _ready() -> void:
 	OriginPosition = global_position

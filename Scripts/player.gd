@@ -34,7 +34,7 @@ var Direction = -1.0
 var InputDirection
 var SpeedDegradation = 5
 var RespawnPosition
-var Stock = 3
+var Stock = 10
 var CounterSteerBoost = 10
 var LastShot = 0
 var ShieldMaskOverride = false
