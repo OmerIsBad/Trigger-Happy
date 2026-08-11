@@ -95,8 +95,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oixfn"]
-height = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4pvc"]
+size = Vector2(20, 47)
 
 [node name="Player4" type="CharacterBody2D" unique_id=1839866205]
 collision_layer = 16
@@ -108,11 +108,10 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2nr5l")
 animation = &"Run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438359013]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1167642926]
 position = Vector2(8, 6)
 scale = Vector2(2, 2)
-shape = SubResource("CapsuleShape2D_oixfn")
+shape = SubResource("RectangleShape2D_g4pvc")
 
 [node name="Hand" type="Node2D" parent="." unique_id=1504624748]
 scale = Vector2(-1, 1)

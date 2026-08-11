@@ -7,18 +7,98 @@
 [ext_resource type="Texture2D" uid="uid://dmnticxthuery" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-2.png" id="3_bktio"]
 [ext_resource type="Script" uid="uid://ddgdsmn7jk7a1" path="res://Scripts/Camera.gd" id="3_tj5wv"]
 [ext_resource type="PackedScene" uid="uid://dboxttpabx55w" path="res://Scenes/Player3.tscn" id="3_xylue"]
-[ext_resource type="Texture2D" uid="uid://d0knq47jntws5" path="res://Assets/Prototype.png" id="4_ienac"]
 [ext_resource type="Texture2D" uid="uid://cbtxasd4tp5ia" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-3.png" id="4_nrlyp"]
 [ext_resource type="PackedScene" uid="uid://d0moe1qvk0f81" path="res://Scenes/Player4.tscn" id="4_tj5wv"]
 [ext_resource type="Texture2D" uid="uid://d1agfmuwtmn7i" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-4.png" id="5_44tr1"]
 [ext_resource type="PackedScene" uid="uid://caavupfmnolax" path="res://Scenes/CrateSpawner.tscn" id="7_ienac"]
-[ext_resource type="PackedScene" uid="uid://dip2lmvla0y37" path="res://Scenes/DuckBomb.tscn" id="9_or7tv"]
 [ext_resource type="Texture2D" uid="uid://dyd1ifejnnjbo" path="res://Assets/GrasslandGullysDecor/GrassPlatform_MID.png" id="12_44tr1"]
 [ext_resource type="Texture2D" uid="uid://2i125tamtx6e" path="res://Assets/GrasslandGullysDecor/GrassPlatform_LEFT.png" id="13_pmxqn"]
 [ext_resource type="Texture2D" uid="uid://wxj5wbdgcqf" path="res://Assets/GrasslandGullysDecor/GrassPlatform_RIGHT.png" id="14_gs5q7"]
+[ext_resource type="Texture2D" uid="uid://x1k34cupltmn" path="res://Assets/GrasslandGullysDecor/Grass_1.png" id="15_pmxqn"]
+[ext_resource type="Texture2D" uid="uid://dapc1aw06et22" path="res://Assets/GrasslandGullysDecor/Grass_2.png" id="16_gs5q7"]
+[ext_resource type="Texture2D" uid="uid://bs3qc32opqbh" path="res://Assets/GrasslandGullysDecor/Grass_4.png" id="17_q24aw"]
+[ext_resource type="Texture2D" uid="uid://defaavlmpolys" path="res://Assets/GrasslandGullysDecor/Vine-4.png.png" id="18_32npc"]
+[ext_resource type="Texture2D" uid="uid://bkfuuoya68tdv" path="res://Assets/GrasslandGullysDecor/Vine-1.png.png" id="19_yyp3s"]
+[ext_resource type="Texture2D" uid="uid://5q5qmgp83am0" path="res://Assets/GrasslandGullysDecor/Vine-3.png.png" id="20_g4pvc"]
+[ext_resource type="Script" uid="uid://skjr81p4ig8q" path="res://addons/multimesh_baker_2d.gd" id="20_ifohm"]
+[ext_resource type="Texture2D" uid="uid://bpwsqhpm8xi0r" path="res://Assets/GrasslandGullysDecor/Vine-2.png.png" id="21_g4pvc"]
+[ext_resource type="Texture2D" uid="uid://xn1crtdxlhsy" path="res://Assets/GrasslandGullysDecor/Vine-5.png.png" id="22_ifohm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
-size = Vector2(512.5, 40)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7ldrn"]
+a = Vector2(-254.75, -17.5)
+b = Vector2(254.25, -17.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bktio"]
+a = Vector2(-847, -6)
+b = Vector2(849, -6)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_npw3m"]
+a = Vector2(-698, -6)
+b = Vector2(698, -6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ifohm"]
+size = Vector2(8, 4)
+
+[sub_resource type="MultiMesh" id="MultiMesh_17mqb"]
+instance_count = 27
+mesh = SubResource("QuadMesh_ifohm")
+buffer = PackedFloat32Array(2, 0, 0, 174, 0, -2, 0, 400, 2, 0, 0, 253, 0, -2, 0, 400, 2, 0, 0, 677, 0, -2, 0, 400, 2, 0, 0, 861, 0, -2, 0, 400, 2, 0, 0, 501, 0, -2, 0, 400, 2, 0, 0, 1792, 0, -2, 0, 400, 2, 0, 0, 969, 0, -2, 0, 400, 2, 0, 0, 1332, 0, -2, 0, 400, 2, 0, 0, 1580, 0, -2, 0, 400, 2, 0, 0, 400, 0, -2, 0, 554, 2, 0, 0, 650, 0, -2, 0, 554, 2, 0, 0, 1486, 0, -2, 0, 554, 2, 0, 0, 1236, 0, -2, 0, 554, 2, 0, 0, 751, 0, -2, 0, 722, 2, 0, 0, 927, 0, -2, 0, 722, 2, 0, 0, 503, 0, -2, 0, 722, 2, 0, 0, 424, 0, -2, 0, 722, 2, 0, 0, 1466, 0, -2, 0, 722, 2, 0, 0, 1642, 0, -2, 0, 722, 2, 0, 0, 1218, 0, -2, 0, 722, 2, 0, 0, 1139, 0, -2, 0, 722, 2, 0, 0, 1135, 0, -2, 0, 839, 2, 0, 0, 885, 0, -2, 0, 839, 2, 0, 0, 573, 0, -2, 0, 938, 2, 0, 0, 823, 0, -2, 0, 938, 2, 0, 0, 1410, 0, -2, 0, 938, 2, 0, 0, 1160, 0, -2, 0, 938)
+
+[sub_resource type="QuadMesh" id="QuadMesh_nwvxw"]
+size = Vector2(10, 10)
+
+[sub_resource type="MultiMesh" id="MultiMesh_4bpm7"]
+instance_count = 41
+mesh = SubResource("QuadMesh_nwvxw")
+buffer = PackedFloat32Array(2, 0, 0, 192, 0, -2, 0, 398, 2, 0, 0, 297, 0, -2, 0, 398, 2, 0, 0, 721, 0, -2, 0, 398, 2, 0, 0, 843, 0, -2, 0, 398, 2, 0, 0, 799, 0, -2, 0, 398, 2, 0, 0, 439, 0, -2, 0, 398, 2, 0, 0, 483, 0, -2, 0, 398, 2, 0, 0, 1730, 0, -2, 0, 398, 2, 0, 0, 1774, 0, -2, 0, 398, 2, 0, 0, 987, 0, -2, 0, 398, 2, 0, 0, 1314, 0, -2, 0, 398, 2, 0, 0, 1270, 0, -2, 0, 398, 2, 0, 0, 1562, 0, -2, 0, 398, 2, 0, 0, 1518, 0, -2, 0, 398, 2, 0, 0, 382, 0, -2, 0, 552, 2, 0, 0, 338, 0, -2, 0, 552, 2, 0, 0, 588, 0, -2, 0, 552, 2, 0, 0, 1424, 0, -2, 0, 552, 2, 0, 0, 1174, 0, -2, 0, 552, 2, 0, 0, 1218, 0, -2, 0, 552, 2, 0, 0, 733, 0, -2, 0, 720, 2, 0, 0, 689, 0, -2, 0, 720, 2, 0, 0, 1049, 0, -2, 0, 720, 2, 0, 0, 1093, 0, -2, 0, 720, 2, 0, 0, 971, 0, -2, 0, 720, 2, 0, 0, 547, 0, -2, 0, 720, 2, 0, 0, 442, 0, -2, 0, 720, 2, 0, 0, 1448, 0, -2, 0, 720, 2, 0, 0, 1404, 0, -2, 0, 720, 2, 0, 0, 1624, 0, -2, 0, 720, 2, 0, 0, 1262, 0, -2, 0, 720, 2, 0, 0, 1157, 0, -2, 0, 720, 2, 0, 0, 1073, 0, -2, 0, 837, 2, 0, 0, 823, 0, -2, 0, 837, 2, 0, 0, 867, 0, -2, 0, 837, 2, 0, 0, 555, 0, -2, 0, 936, 2, 0, 0, 511, 0, -2, 0, 936, 2, 0, 0, 761, 0, -2, 0, 936, 2, 0, 0, 1348, 0, -2, 0, 936, 2, 0, 0, 1098, 0, -2, 0, 936, 2, 0, 0, 1142, 0, -2, 0, 936)
+
+[sub_resource type="QuadMesh" id="QuadMesh_n64rs"]
+size = Vector2(12, 10)
+
+[sub_resource type="MultiMesh" id="MultiMesh_i8dsc"]
+instance_count = 23
+mesh = SubResource("QuadMesh_n64rs")
+buffer = PackedFloat32Array(2, 0, 0, 275, 0, -2, 0, 398, 2, 0, 0, 699, 0, -2, 0, 398, 2, 0, 0, 821, 0, -2, 0, 398, 2, 0, 0, 461, 0, -2, 0, 398, 2, 0, 0, 1752, 0, -2, 0, 398, 2, 0, 0, 1292, 0, -2, 0, 398, 2, 0, 0, 360, 0, -2, 0, 552, 2, 0, 0, 610, 0, -2, 0, 552, 2, 0, 0, 1446, 0, -2, 0, 552, 2, 0, 0, 1196, 0, -2, 0, 552, 2, 0, 0, 711, 0, -2, 0, 720, 2, 0, 0, 1071, 0, -2, 0, 720, 2, 0, 0, 949, 0, -2, 0, 720, 2, 0, 0, 525, 0, -2, 0, 720, 2, 0, 0, 1426, 0, -2, 0, 720, 2, 0, 0, 1602, 0, -2, 0, 720, 2, 0, 0, 1240, 0, -2, 0, 720, 2, 0, 0, 1095, 0, -2, 0, 837, 2, 0, 0, 845, 0, -2, 0, 837, 2, 0, 0, 533, 0, -2, 0, 936, 2, 0, 0, 783, 0, -2, 0, 936, 2, 0, 0, 1370, 0, -2, 0, 936, 2, 0, 0, 1120, 0, -2, 0, 936)
+
+[sub_resource type="QuadMesh" id="QuadMesh_p0nbg"]
+size = Vector2(30, 22)
+
+[sub_resource type="MultiMesh" id="MultiMesh_k0u2i"]
+instance_count = 4
+mesh = SubResource("QuadMesh_p0nbg")
+buffer = PackedFloat32Array(2, 0, 0, 382, 0, -2, 0, 596, 2, 0, 0, 1753, 0, -2, 0, 442, 2, 0, 0, 1157, 0, -2, 0, 881, 2, 0, 0, 462, 0, -2, 0, 980)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m8wsw"]
+size = Vector2(30, 22)
+
+[sub_resource type="MultiMesh" id="MultiMesh_aqgqm"]
+instance_count = 12
+mesh = SubResource("QuadMesh_m8wsw")
+buffer = PackedFloat32Array(2, 0, 0, 424, 0, -2, 0, 596, 2, 0, 0, 1661, 0, -2, 0, 442, 2, 0, 0, 1150, 0, -2, 0, 596, 2, 0, 0, 1247, 0, -2, 0, 596, 2, 0, 0, 994, 0, -2, 0, 442, 2, 0, 0, 833, 0, -2, 0, 764, 2, 0, 0, 1065, 0, -2, 0, 881, 2, 0, 0, 370, 0, -2, 0, 980, 2, 0, 0, 1492, 0, -2, 0, 764, 2, 0, 0, 1395, 0, -2, 0, 764, 2, 0, 0, 867, 0, -2, 0, 881, 2, 0, 0, 770, 0, -2, 0, 881)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vvhql"]
+size = Vector2(30, 22)
+
+[sub_resource type="MultiMesh" id="MultiMesh_ysj4n"]
+instance_count = 9
+mesh = SubResource("QuadMesh_vvhql")
+buffer = PackedFloat32Array(2, 0, 0, 466, 0, -2, 0, 596, 2, 0, 0, 1805, 0, -2, 0, 442, 2, 0, 0, 1120, 0, -2, 0, 596, 2, 0, 0, 961, 0, -2, 0, 442, 2, 0, 0, 800, 0, -2, 0, 764, 2, 0, 0, 1209, 0, -2, 0, 881, 2, 0, 0, 514, 0, -2, 0, 980, 2, 0, 0, 1365, 0, -2, 0, 764, 2, 0, 0, 740, 0, -2, 0, 881)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8ov5p"]
+size = Vector2(30, 22)
+
+[sub_resource type="MultiMesh" id="MultiMesh_b1r8e"]
+instance_count = 9
+mesh = SubResource("QuadMesh_8ov5p")
+buffer = PackedFloat32Array(2, 0, 0, 1711, 0, -2, 0, 442, 2, 0, 0, 1200, 0, -2, 0, 596, 2, 0, 0, 784, 0, -2, 0, 596, 2, 0, 0, 1037, 0, -2, 0, 442, 2, 0, 0, 876, 0, -2, 0, 764, 2, 0, 0, 1115, 0, -2, 0, 881, 2, 0, 0, 420, 0, -2, 0, 980, 2, 0, 0, 1445, 0, -2, 0, 764, 2, 0, 0, 820, 0, -2, 0, 881)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ktckp"]
+size = Vector2(30, 22)
+
+[sub_resource type="MultiMesh" id="MultiMesh_7iger"]
+instance_count = 12
+mesh = SubResource("QuadMesh_ktckp")
+buffer = PackedFloat32Array(2, 0, 0, 1651, 0, -2, 0, 442, 2, 0, 0, 1244, 0, -2, 0, 596, -2, 0, 0, 1125, 0, -2, 0, 604, 2, 0, 0, 826, 0, -2, 0, 596, 2, 0, 0, 1079, 0, -2, 0, 442, 2, 0, 0, 918, 0, -2, 0, 764, 2, 0, 0, 1055, 0, -2, 0, 881, 2, 0, 0, 360, 0, -2, 0, 980, -2, 0, 0, 1370, 0, -2, 0, 772, 2, 0, 0, 1489, 0, -2, 0, 764, -2, 0, 0, 745, 0, -2, 0, 889, 2, 0, 0, 864, 0, -2, 0, 881)
 
 [node name="Level" type="Node2D" unique_id=860293535]
 
@@ -106,10 +186,10 @@ texture = ExtResource("5_44tr1")
 position = Vector2(365, -500)
 
 [node name="Player2" parent="." unique_id=1067377693 instance=ExtResource("2_xylue")]
-position = Vector2(-1070, 408)
+position = Vector2(762, -500)
 
 [node name="Player3" parent="." unique_id=594716813 instance=ExtResource("3_xylue")]
-position = Vector2(-656, 408)
+position = Vector2(1159, -500)
 
 [node name="Player4" parent="." unique_id=421116224 instance=ExtResource("4_tj5wv")]
 position = Vector2(1556, -500)
@@ -120,30 +200,6 @@ script = ExtResource("3_tj5wv")
 
 [node name="Platforms" type="Node2D" parent="." unique_id=849574418]
 z_index = -1
-
-[node name="Platform4" type="StaticBody2D" parent="Platforms" unique_id=2133316420]
-position = Vector2(960, 734)
-scale = Vector2(2.7199974, 0.39999998)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4" unique_id=1373088332]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4" unique_id=754499784]
-shape = SubResource("RectangleShape2D_npw3m")
-one_way_collision = true
-
-[node name="Platform5" type="StaticBody2D" parent="Platforms" unique_id=1295687350]
-position = Vector2(960.00006, 412)
-scale = Vector2(3.3199973, 0.39999998)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5" unique_id=1780914457]
-scale = Vector2(3.9921877, 0.3125)
-texture = ExtResource("4_ienac")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform5" unique_id=133891590]
-shape = SubResource("RectangleShape2D_npw3m")
-one_way_collision = true
 
 [node name="GrassPlatform" type="StaticBody2D" parent="Platforms" unique_id=1215527633]
 position = Vector2(580, 566)
@@ -163,10 +219,10 @@ position = Vector2(249, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("14_gs5q7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform" unique_id=1858816435]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform" unique_id=1495087612]
 position = Vector2(0.75, 0)
 scale = Vector2(1, 0.4)
-shape = SubResource("RectangleShape2D_npw3m")
+shape = SubResource("SegmentShape2D_7ldrn")
 one_way_collision = true
 
 [node name="GrassPlatform2" type="StaticBody2D" parent="Platforms" unique_id=1332783735]
@@ -187,10 +243,10 @@ position = Vector2(249, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("14_gs5q7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform2" unique_id=1593013491]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform2" unique_id=571315966]
 position = Vector2(0.75, 0)
 scale = Vector2(1, 0.4)
-shape = SubResource("RectangleShape2D_npw3m")
+shape = SubResource("SegmentShape2D_7ldrn")
 one_way_collision = true
 
 [node name="GrassPlatform3" type="StaticBody2D" parent="Platforms" unique_id=2013154872]
@@ -211,10 +267,10 @@ position = Vector2(249, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("14_gs5q7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform3" unique_id=786420049]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform3" unique_id=1917194349]
 position = Vector2(0.75, 0)
 scale = Vector2(1, 0.4)
-shape = SubResource("RectangleShape2D_npw3m")
+shape = SubResource("SegmentShape2D_7ldrn")
 one_way_collision = true
 
 [node name="GrassPlatform4" type="StaticBody2D" parent="Platforms" unique_id=5335953]
@@ -235,10 +291,10 @@ position = Vector2(249, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("14_gs5q7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform4" unique_id=1553093590]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform4" unique_id=1108830677]
 position = Vector2(0.75, 0)
 scale = Vector2(1, 0.4)
-shape = SubResource("RectangleShape2D_npw3m")
+shape = SubResource("SegmentShape2D_7ldrn")
 one_way_collision = true
 
 [node name="GrassPlatform5" type="StaticBody2D" parent="Platforms" unique_id=357598920]
@@ -262,7 +318,51 @@ texture = ExtResource("14_gs5q7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform5" unique_id=937498695]
 position = Vector2(0.75, 0)
 scale = Vector2(1, 0.4)
-shape = SubResource("RectangleShape2D_npw3m")
+shape = SubResource("SegmentShape2D_7ldrn")
+one_way_collision = true
+
+[node name="GrassPlatform6" type="StaticBody2D" parent="Platforms" unique_id=1265747839]
+position = Vector2(960, 412)
+
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform6" unique_id=230407419]
+position = Vector2(-8.672476e-05, 0)
+scale = Vector2(1670, 2)
+texture = ExtResource("12_44tr1")
+
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform6" unique_id=1604328758]
+position = Vector2(-843, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform6" unique_id=1073057666]
+position = Vector2(843, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform6" unique_id=531089084]
+shape = SubResource("SegmentShape2D_bktio")
+one_way_collision = true
+
+[node name="GrassPlatform7" type="StaticBody2D" parent="Platforms" unique_id=215526431]
+position = Vector2(960, 734)
+
+[node name="Mid" type="Sprite2D" parent="Platforms/GrassPlatform7" unique_id=916697967]
+position = Vector2(-3.4332275e-05, 0)
+scale = Vector2(1368, 2)
+texture = ExtResource("12_44tr1")
+
+[node name="Left" type="Sprite2D" parent="Platforms/GrassPlatform7" unique_id=1746494937]
+position = Vector2(-692, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pmxqn")
+
+[node name="Right" type="Sprite2D" parent="Platforms/GrassPlatform7" unique_id=691893124]
+position = Vector2(692, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("14_gs5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GrassPlatform7" unique_id=2016961619]
+shape = SubResource("SegmentShape2D_npw3m")
 one_way_collision = true
 
 [node name="CrateSpawners" type="Node" parent="." unique_id=1217485087]
@@ -282,5 +382,43 @@ position = Vector2(580, 558)
 [node name="CrateSpawner9" parent="CrateSpawners" unique_id=1173179081 instance=ExtResource("7_ienac")]
 position = Vector2(1340, 558)
 
-[node name="DuckBomb" parent="." unique_id=1461960780 instance=ExtResource("9_or7tv")]
-position = Vector2(460, 532)
+[node name="Decor" type="Node" parent="." unique_id=234982436]
+
+[node name="Grass" type="Node" parent="Decor" unique_id=1631107284]
+
+[node name="Baked_0_Grass_1" type="MultiMeshInstance2D" parent="Decor/Grass" unique_id=1387152695]
+multimesh = SubResource("MultiMesh_17mqb")
+texture = ExtResource("15_pmxqn")
+
+[node name="Baked_1_Grass_2" type="MultiMeshInstance2D" parent="Decor/Grass" unique_id=1943828492]
+multimesh = SubResource("MultiMesh_4bpm7")
+texture = ExtResource("16_gs5q7")
+
+[node name="Baked_2_Grass_4" type="MultiMeshInstance2D" parent="Decor/Grass" unique_id=1475773879]
+multimesh = SubResource("MultiMesh_i8dsc")
+texture = ExtResource("17_q24aw")
+
+[node name="Vine" type="Node" parent="Decor" unique_id=1100972500]
+
+[node name="Baked_0_Vine-4_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=196778152]
+multimesh = SubResource("MultiMesh_k0u2i")
+texture = ExtResource("18_32npc")
+
+[node name="Baked_1_Vine-1_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=483790625]
+multimesh = SubResource("MultiMesh_aqgqm")
+texture = ExtResource("19_yyp3s")
+
+[node name="Baked_2_Vine-3_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=1872913871]
+multimesh = SubResource("MultiMesh_ysj4n")
+texture = ExtResource("20_g4pvc")
+
+[node name="Baked_3_Vine-2_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=64106253]
+multimesh = SubResource("MultiMesh_b1r8e")
+texture = ExtResource("21_g4pvc")
+
+[node name="Baked_4_Vine-5_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=1383934670]
+multimesh = SubResource("MultiMesh_7iger")
+texture = ExtResource("22_ifohm")
+
+[node name="GrassBaker" type="Node2D" parent="." unique_id=1447603814]
+script = ExtResource("20_ifohm")

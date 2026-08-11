@@ -242,26 +242,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		WasOnLand = false
 	
-	#Determine if press is held or tapped
-	if Input.is_action_just_pressed(Secondary):
-		FirstPress = Time.get_ticks_msec()
-		IsAPunch = true
-		HeldDown = true
-	
-	if HeldDown and IsAPunch == true:
-		if (Time.get_ticks_msec() - FirstPress) > HoldTime:
-			IsAPunch = false
-	
-	if Input.is_action_just_released(Secondary):
-		HeldDown = false
-		if IsAPunch and !NodeOverridePunch:
-			Punch()
+	if Input.is_action_just_pressed(Secondary) and !NodeOverridePunch:
+		Punch()
 	
 	if has_node("SpeedManager") and !IsSpeedBoosted:
 		IsSpeedBoosted = true
 		TopSpeed = NormalTopSpeed * get_node("SpeedManager").BoostedSpeed
 		Acceleration = NormalAccel * get_node("SpeedManager").BoostedAccel
-	elif not has_node("SpeedManager") and IsSpeedBoosted:
+	if not has_node("SpeedManager") and IsSpeedBoosted:
 		IsSpeedBoosted = false
 		TopSpeed = NormalTopSpeed
 		Acceleration = NormalAccel

@@ -18,50 +18,65 @@ var Items = {
 	"Turret": preload("res://Scenes/TurretManager.tscn")
 }
 
-var ItemNodeNames = ["DashManager", "DuckBombManager", "GrenadeManager", "JetPack", "MinePlacerItem", "PortalManager", "TurretManager", "SpeedManager", "ShieldManager", "OSL"]
+var ItemNodeNames = {
+	"Dash": "DashManager",
+	"Shield": "ShieldManager",
+	"Mines": "MinePlacerItem",
+	"DuckBomb": "DuckBombManager",
+	"Grenades": "GrenadeManager",
+	"SuperSpeed": "SpeedManager",
+	"Portals": "PortalManager",
+	"OSL": "OSL",
+	"JetPack": "JetPack",
+	"Turret": "TurretManager"
+}
 
 var HasSpawned = false
+
 
 func _ready() -> void:
 	add_to_group("ItemCrates")
 	Area.monitoring = false
-	
+
 	Sprite.modulate.a = 0.0
-	
+
 	var Tween = create_tween()
 	Tween.set_loops(4)
-	
+
 	Tween.tween_property(Sprite, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	Tween.tween_property(Sprite, "modulate:a", 0.0, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	
+
 	await Tween.finished
-	
+
 	Sprite.modulate.a = 1.0
 	Area.monitoring = true
 
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players"):
-		
-		# Getting rid of the old item and remembering it so we don't pick it
+
+		#Find and remove the player's current item
 		var OldItem = null
 		for ItemName in ItemNodeNames:
-			if body.has_node(ItemName):
+			var NodeName = ItemNodeNames[ItemName]
+			if body.has_node(NodeName):
+				print("Bro already has " + ItemName)
 				OldItem = ItemName
-				body.get_node(ItemName).queue_free()
-		
-		# Picking the item, making sure it's not the old one
+				body.get_node(NodeName).queue_free()
+				
+		# Pick a new item that isn't the old item
 		var ChosenItem = Items.keys().pick_random()
+		
 		if OldItem != null:
-			while true:
-				if ChosenItem == OldItem:
-					ChosenItem = Items.keys().pick_random()
-				else:
-					break
+			while ChosenItem == OldItem:
+				ChosenItem = Items.keys().pick_random()
 		
 		var Item = Items[ChosenItem].instantiate()
 		body.add_child(Item)
-		
 		get_parent().RestartCrateShenanigans()
+		
+		var PopUpText = global.SummonText(ChosenItem, global_position,-1, -1)
+		get_tree().current_scene.add_child(PopUpText)
 		
 		EquipSFX.play()
 		EquipSFX.reparent(get_tree().current_scene)

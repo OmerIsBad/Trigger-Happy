@@ -47,3 +47,6 @@ func SpawnGhost() -> void:
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+func _exit_tree() -> void:
+	pass
