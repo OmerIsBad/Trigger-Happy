@@ -90,7 +90,7 @@ func _on_aiming_timer_timeout() -> void:
 	BoomSFX.play()
 	
 	CurrentState = "Shooting"
-	AnimatedSprite.modulate = Color(1,1,1,1)
+	AnimatedSprite.modulate = Color(100.5,1,1,1)
 	AnimatedSprite.play("Laser")
 	LaserTimer.start()
 	global.CameraShake(30,2)

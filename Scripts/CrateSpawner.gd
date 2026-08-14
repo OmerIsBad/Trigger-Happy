@@ -30,9 +30,9 @@ func _on_spawn_in_timer_timeout() -> void:
 	if TotalCrates < MaxCrates:
 		var CrateToSpawn
 		if randi_range(1, ItemBoxChance) == 1:
-			CrateToSpawn = WeaponsCrate.instantiate()
-		else:
 			CrateToSpawn = ItemCrate.instantiate()
+		else:
+			CrateToSpawn = WeaponsCrate.instantiate()
 		
 		add_child(CrateToSpawn)
 		CrateToSpawn.position = SpawnMarker.position

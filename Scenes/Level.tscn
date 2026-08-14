@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://bplmhiv0r8b3d"]
 
-[ext_resource type="PackedScene" uid="uid://byftoioygd6js" path="res://Scenes/Player1.tscn" id="1_fuudy"]
+[ext_resource type="Script" uid="uid://dax5ow7unt664" path="res://Scripts/GrasslandGullys.gd" id="1_32npc"]
 [ext_resource type="Texture2D" uid="uid://tntao7brfkn6" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-0.png" id="1_or7tv"]
 [ext_resource type="Texture2D" uid="uid://x1sifgjn8di1" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-1.png" id="2_fhlu0"]
-[ext_resource type="PackedScene" uid="uid://deth1no6loh1e" path="res://Scenes/Player2.tscn" id="2_xylue"]
 [ext_resource type="Texture2D" uid="uid://dmnticxthuery" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-2.png" id="3_bktio"]
 [ext_resource type="Script" uid="uid://ddgdsmn7jk7a1" path="res://Scripts/Camera.gd" id="3_tj5wv"]
-[ext_resource type="PackedScene" uid="uid://dboxttpabx55w" path="res://Scenes/Player3.tscn" id="3_xylue"]
 [ext_resource type="Texture2D" uid="uid://cbtxasd4tp5ia" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-3.png" id="4_nrlyp"]
-[ext_resource type="PackedScene" uid="uid://d0moe1qvk0f81" path="res://Scenes/Player4.tscn" id="4_tj5wv"]
 [ext_resource type="Texture2D" uid="uid://d1agfmuwtmn7i" path="res://Assets/BackGrounds/Grassland Gully/Grassland-Gullys-LAYERS/pixil-layer-4.png" id="5_44tr1"]
 [ext_resource type="PackedScene" uid="uid://caavupfmnolax" path="res://Scenes/CrateSpawner.tscn" id="7_ienac"]
 [ext_resource type="Texture2D" uid="uid://dyd1ifejnnjbo" path="res://Assets/GrasslandGullysDecor/GrassPlatform_MID.png" id="12_44tr1"]
@@ -100,7 +97,12 @@ instance_count = 12
 mesh = SubResource("QuadMesh_ktckp")
 buffer = PackedFloat32Array(2, 0, 0, 1651, 0, -2, 0, 442, 2, 0, 0, 1244, 0, -2, 0, 596, -2, 0, 0, 1125, 0, -2, 0, 604, 2, 0, 0, 826, 0, -2, 0, 596, 2, 0, 0, 1079, 0, -2, 0, 442, 2, 0, 0, 918, 0, -2, 0, 764, 2, 0, 0, 1055, 0, -2, 0, 881, 2, 0, 0, 360, 0, -2, 0, 980, -2, 0, 0, 1370, 0, -2, 0, 772, 2, 0, 0, 1489, 0, -2, 0, 764, -2, 0, 0, 745, 0, -2, 0, 889, 2, 0, 0, 864, 0, -2, 0, 881)
 
+[sub_resource type="Environment" id="Environment_npw3m"]
+background_mode = 3
+glow_enabled = true
+
 [node name="Level" type="Node2D" unique_id=860293535]
+script = ExtResource("1_32npc")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=419702330]
 scroll_scale = Vector2(0, 0)
@@ -182,17 +184,17 @@ position = Vector2(960, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("5_44tr1")
 
-[node name="Player1" parent="." unique_id=1839866205 instance=ExtResource("1_fuudy")]
+[node name="Spawn1" type="Node2D" parent="." unique_id=1188841057]
 position = Vector2(365, -500)
 
-[node name="Player2" parent="." unique_id=1067377693 instance=ExtResource("2_xylue")]
+[node name="Spawn2" type="Node2D" parent="." unique_id=1449469927]
 position = Vector2(762, -500)
 
-[node name="Player3" parent="." unique_id=594716813 instance=ExtResource("3_xylue")]
+[node name="Spawn3" type="Node2D" parent="." unique_id=477705410]
 position = Vector2(1159, -500)
 
-[node name="Player4" parent="." unique_id=421116224 instance=ExtResource("4_tj5wv")]
-position = Vector2(1556, -500)
+[node name="Spawn4" type="Node2D" parent="." unique_id=1552816841]
+position = Vector2(1556, -504)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1278093968]
 position = Vector2(960, 540)
@@ -387,38 +389,49 @@ position = Vector2(1340, 558)
 [node name="Grass" type="Node" parent="Decor" unique_id=1631107284]
 
 [node name="Baked_0_Grass_1" type="MultiMeshInstance2D" parent="Decor/Grass" unique_id=1387152695]
+z_index = -1
 multimesh = SubResource("MultiMesh_17mqb")
 texture = ExtResource("15_pmxqn")
 
 [node name="Baked_1_Grass_2" type="MultiMeshInstance2D" parent="Decor/Grass" unique_id=1943828492]
+z_index = -1
 multimesh = SubResource("MultiMesh_4bpm7")
 texture = ExtResource("16_gs5q7")
 
 [node name="Baked_2_Grass_4" type="MultiMeshInstance2D" parent="Decor/Grass" unique_id=1475773879]
+z_index = -1
 multimesh = SubResource("MultiMesh_i8dsc")
 texture = ExtResource("17_q24aw")
 
 [node name="Vine" type="Node" parent="Decor" unique_id=1100972500]
 
 [node name="Baked_0_Vine-4_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=196778152]
+z_index = -1
 multimesh = SubResource("MultiMesh_k0u2i")
 texture = ExtResource("18_32npc")
 
 [node name="Baked_1_Vine-1_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=483790625]
+z_index = -1
 multimesh = SubResource("MultiMesh_aqgqm")
 texture = ExtResource("19_yyp3s")
 
 [node name="Baked_2_Vine-3_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=1872913871]
+z_index = -1
 multimesh = SubResource("MultiMesh_ysj4n")
 texture = ExtResource("20_g4pvc")
 
 [node name="Baked_3_Vine-2_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=64106253]
+z_index = -1
 multimesh = SubResource("MultiMesh_b1r8e")
 texture = ExtResource("21_g4pvc")
 
 [node name="Baked_4_Vine-5_png" type="MultiMeshInstance2D" parent="Decor/Vine" unique_id=1383934670]
+z_index = -1
 multimesh = SubResource("MultiMesh_7iger")
 texture = ExtResource("22_ifohm")
 
 [node name="GrassBaker" type="Node2D" parent="." unique_id=1447603814]
 script = ExtResource("20_ifohm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1702540469]
+environment = SubResource("Environment_npw3m")

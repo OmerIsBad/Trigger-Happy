@@ -77,6 +77,8 @@ position = Vector2(-5.9604645e-08, -50)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_npw3m")
 animation = &"Explode"
+frame = 11
+frame_progress = 1.0
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=511990646]
 stream = ExtResource("14_pjl1q")

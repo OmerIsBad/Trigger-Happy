@@ -34,7 +34,7 @@ var Direction = -1.0
 var InputDirection
 var SpeedDegradation = 5
 var RespawnPosition
-var Stock = 10
+var Stock = 3
 var CounterSteerBoost = 10
 var LastShot = 0
 var ShieldMaskOverride = false
@@ -262,7 +262,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and name == "Player1" and !has_node("OSL"):
 		var poop = preload("res://Scenes/OSL.tscn").instantiate()
 		add_child(poop)
-		
+
 	if IsDashing:
 		DashTimer -= delta
 		velocity = DashDirectionVector * DashSpeed

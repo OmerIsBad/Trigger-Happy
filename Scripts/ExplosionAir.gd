@@ -13,6 +13,7 @@ var ExplosiveThingyReduction = 3
 var ShieldStrength = 3
 
 func _ready() -> void:
+	$AnimatedSprite2D.self_modulate = Color(4.5, 3, 3)
 	SFX.play()
 	SFX.reparent(get_tree().current_scene)
 	SFX.finished.connect(SFX.queue_free)
@@ -29,6 +30,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if $AnimatedSprite2D.frame == 2:
 		DoIt = false
+		$AnimatedSprite2D.self_modulate = Color(2, 1.5, 1.5)
+	elif $AnimatedSprite2D.frame == 5:
+		$AnimatedSprite2D.self_modulate = Color(1, 1, 1)
 
 
 func _on_area_2d_body_entered(Thing: Node2D) -> void:

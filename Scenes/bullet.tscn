@@ -20,6 +20,7 @@ height = 16.0
 script = ExtResource("1_oduel")
 
 [node name="Trail" type="Line2D" parent="." unique_id=997602138]
+self_modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
 top_level = true
 width = 5.0
 width_curve = SubResource("Curve_oduel")

@@ -15,6 +15,7 @@ var DirectHitUpwardForce = -1200.0
 var DirectHitHorizontalForce = 4000.0
 
 func _ready() -> void:
+	$AnimatedSprite2D.self_modulate = Color(4.5, 3, 3)
 	if ExplodeText == "QUACK!":
 		QuackSFX.play(0.8)
 	SFX.play()
@@ -51,6 +52,9 @@ func ApplyDirectHit(Victim: Node2D) -> void:
 func _process(delta: float) -> void:
 	if $AnimatedSprite2D.frame == 2:
 		DoIt = false
+		$AnimatedSprite2D.self_modulate = Color(4.5, 1.5, 1.5)
+	elif $AnimatedSprite2D.frame == 7:
+		$AnimatedSprite2D.self_modulate = Color(1, 1, 1)
 
 func _on_area_2d_body_entered(Thing: Node2D) -> void:
 	if Thing.is_in_group("players") and DoIt and !Thing.has_node("SpawnShield") and Thing != DirectVictim:

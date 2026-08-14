@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://df58qbkqclty2"]
+
+[ext_resource type="Script" uid="uid://pj2rt4gnuqys" path="res://Scripts/PlayerSelector.gd" id="1_4g1oj"]
+[ext_resource type="Texture2D" uid="uid://brurq1gppfwel" path="res://Assets/Player_Idle_RED.png" id="1_ivr4c"]
+[ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_4g1oj"]
+[ext_resource type="Texture2D" uid="uid://bnebx5nnj06ih" path="res://Assets/Player_Idle_BLUE.png" id="3_aw7wt"]
+[ext_resource type="Texture2D" uid="uid://4uqum8ar8ntq" path="res://Assets/Player_Idle_GREEN.png" id="4_gieor"]
+[ext_resource type="Texture2D" uid="uid://cek37gn6lflfl" path="res://Assets/Player_Idle_YELLOW.png" id="5_e5v4a"]
+
+[node name="PlayerSelecter" type="Control" unique_id=187245201]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4g1oj")
+
+[node name="PlayerIcon" type="Sprite2D" parent="." unique_id=515442158]
+position = Vector2(287, 350)
+scale = Vector2(7, 7)
+texture = ExtResource("1_ivr4c")
+
+[node name="PlayerIcon2" type="Sprite2D" parent="." unique_id=379733876]
+position = Vector2(717, 350)
+scale = Vector2(7, 7)
+texture = ExtResource("3_aw7wt")
+
+[node name="PlayerIcon3" type="Sprite2D" parent="." unique_id=1228330245]
+position = Vector2(1147, 350)
+scale = Vector2(7, 7)
+texture = ExtResource("4_gieor")
+
+[node name="PlayerIcon4" type="Sprite2D" parent="." unique_id=97657291]
+position = Vector2(1577, 350)
+scale = Vector2(7, 7)
+texture = ExtResource("5_e5v4a")
+
+[node name="PlayerLabel" type="RichTextLabel" parent="." unique_id=1195440718]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 571.0
+offset_right = 451.0
+offset_bottom = 645.0
+theme_override_colors/default_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("2_4g1oj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel2" type="RichTextLabel" parent="." unique_id=1327546202]
+layout_mode = 0
+offset_left = 611.0
+offset_top = 571.0
+offset_right = 881.0
+offset_bottom = 645.0
+theme_override_colors/default_color = Color(0.023529412, 0.23529412, 0.6156863, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("2_4g1oj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Player 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel3" type="RichTextLabel" parent="." unique_id=987423367]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 571.0
+offset_right = 1311.0
+offset_bottom = 645.0
+theme_override_colors/default_color = Color(0.22352941, 0.58431375, 0.17254902, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("2_4g1oj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Player 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel4" type="RichTextLabel" parent="." unique_id=1944446646]
+layout_mode = 0
+offset_left = 1471.0
+offset_top = 571.0
+offset_right = 1741.0
+offset_bottom = 645.0
+theme_override_colors/default_color = Color(1, 0.59607846, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("2_4g1oj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Player 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="." unique_id=539201473]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 641.0
+offset_right = 273.0
+offset_bottom = 665.0
+scale = Vector2(5, 5)
+
+[node name="CheckBox2" type="CheckBox" parent="." unique_id=1801234051]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 641.00006
+offset_right = 709.0
+offset_bottom = 665.00006
+scale = Vector2(5, 5)
+
+[node name="CheckBox3" type="CheckBox" parent="." unique_id=611490028]
+layout_mode = 0
+offset_left = 1113.0
+offset_top = 641.00006
+offset_right = 1137.0
+offset_bottom = 665.00006
+scale = Vector2(5, 5)
+
+[node name="CheckBox4" type="CheckBox" parent="." unique_id=1088095805]
+layout_mode = 0
+offset_left = 1540.9999
+offset_top = 641.00006
+offset_right = 1564.9999
+offset_bottom = 665.00006
+scale = Vector2(5, 5)
+
+[node name="BeginButton" type="Button" parent="." unique_id=1756673218]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -399.0
+offset_top = -121.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_4g1oj")
+theme_override_font_sizes/font_size = 32
+text = "BEGIN!"
+
+[connection signal="pressed" from="BeginButton" to="." method="_on_begin_button_pressed"]
