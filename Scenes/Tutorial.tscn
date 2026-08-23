@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dw6qm7wwtw3f1"]
+
+[ext_resource type="Texture2D" uid="uid://5gudbej0w1e7" path="res://Assets/texture_proto.png" id="1_7bloo"]
+[ext_resource type="Script" uid="uid://ddgdsmn7jk7a1" path="res://Scripts/Camera.gd" id="1_hxa32"]
+[ext_resource type="Texture2D" uid="uid://dyd1ifejnnjbo" path="res://Assets/GrasslandGullysDecor/GrassPlatform_MID.png" id="2_7bloo"]
+[ext_resource type="Texture2D" uid="uid://2i125tamtx6e" path="res://Assets/GrasslandGullysDecor/GrassPlatform_LEFT.png" id="3_rlm2d"]
+[ext_resource type="Texture2D" uid="uid://wxj5wbdgcqf" path="res://Assets/GrasslandGullysDecor/GrassPlatform_RIGHT.png" id="4_3j26a"]
+[ext_resource type="PackedScene" uid="uid://byftoioygd6js" path="res://Scenes/Player1.tscn" id="5_vv0ms"]
+[ext_resource type="PackedScene" uid="uid://deth1no6loh1e" path="res://Scenes/Player2.tscn" id="6_hxa32"]
+[ext_resource type="PackedScene" uid="uid://dboxttpabx55w" path="res://Scenes/Player3.tscn" id="7_dlght"]
+[ext_resource type="PackedScene" uid="uid://d0moe1qvk0f81" path="res://Scenes/Player4.tscn" id="8_8i65c"]
+[ext_resource type="PackedScene" uid="uid://b278fvv0q412x" path="res://Scenes/MoveTeacher.tscn" id="10_dlght"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x7a1n"]
+a = Vector2(-254.75, -17.5)
+b = Vector2(1410.25, -17.5)
+
+[node name="Tutorial" type="Node2D" unique_id=1299460110]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1779870474]
+position = Vector2(960, 540)
+script = ExtResource("1_hxa32")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=947412375]
+offset_left = -919.0
+offset_top = -957.0
+offset_right = 2944.0
+offset_bottom = 2046.0
+texture = ExtResource("1_7bloo")
+stretch_mode = 1
+
+[node name="GrassPlatform" type="StaticBody2D" parent="." unique_id=1210486740]
+position = Vector2(379, 1024)
+
+[node name="Mid" type="Sprite2D" parent="GrassPlatform" unique_id=273000112]
+position = Vector2(580.50006, 0)
+scale = Vector2(1641, 2)
+texture = ExtResource("2_7bloo")
+
+[node name="Left" type="Sprite2D" parent="GrassPlatform" unique_id=188993995]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rlm2d")
+
+[node name="Right" type="Sprite2D" parent="GrassPlatform" unique_id=2053280745]
+position = Vector2(1409, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_3j26a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassPlatform" unique_id=1505212151]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("SegmentShape2D_x7a1n")
+one_way_collision = true
+
+[node name="GrassPlatform2" type="StaticBody2D" parent="." unique_id=413692169]
+position = Vector2(379, 768)
+
+[node name="Mid" type="Sprite2D" parent="GrassPlatform2" unique_id=928539435]
+position = Vector2(580.50006, 0)
+scale = Vector2(1641, 2)
+texture = ExtResource("2_7bloo")
+
+[node name="Left" type="Sprite2D" parent="GrassPlatform2" unique_id=518717094]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rlm2d")
+
+[node name="Right" type="Sprite2D" parent="GrassPlatform2" unique_id=990725521]
+position = Vector2(1409, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_3j26a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassPlatform2" unique_id=1331919452]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("SegmentShape2D_x7a1n")
+one_way_collision = true
+
+[node name="GrassPlatform3" type="StaticBody2D" parent="." unique_id=573536085]
+position = Vector2(379, 512)
+
+[node name="Mid" type="Sprite2D" parent="GrassPlatform3" unique_id=1572431456]
+position = Vector2(580.50006, 0)
+scale = Vector2(1641, 2)
+texture = ExtResource("2_7bloo")
+
+[node name="Left" type="Sprite2D" parent="GrassPlatform3" unique_id=623644556]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rlm2d")
+
+[node name="Right" type="Sprite2D" parent="GrassPlatform3" unique_id=697013196]
+position = Vector2(1409, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_3j26a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassPlatform3" unique_id=483600640]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("SegmentShape2D_x7a1n")
+one_way_collision = true
+
+[node name="GrassPlatform4" type="StaticBody2D" parent="." unique_id=73000280]
+position = Vector2(379, 256)
+
+[node name="Mid" type="Sprite2D" parent="GrassPlatform4" unique_id=1504272249]
+position = Vector2(580.50006, 0)
+scale = Vector2(1641, 2)
+texture = ExtResource("2_7bloo")
+
+[node name="Left" type="Sprite2D" parent="GrassPlatform4" unique_id=1225925862]
+position = Vector2(-248, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rlm2d")
+
+[node name="Right" type="Sprite2D" parent="GrassPlatform4" unique_id=1339413115]
+position = Vector2(1409, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_3j26a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassPlatform4" unique_id=1699129788]
+position = Vector2(0.75, 0)
+scale = Vector2(1, 0.4)
+shape = SubResource("SegmentShape2D_x7a1n")
+one_way_collision = true
+
+[node name="Player1" parent="." unique_id=1839866205 instance=ExtResource("5_vv0ms")]
+position = Vector2(244, 194)
+
+[node name="Player2" parent="." unique_id=1815719413 instance=ExtResource("6_hxa32")]
+position = Vector2(244, 450)
+
+[node name="Player3" parent="." unique_id=799185119 instance=ExtResource("7_dlght")]
+position = Vector2(244, 706)
+
+[node name="Player4" parent="." unique_id=262437238 instance=ExtResource("8_8i65c")]
+position = Vector2(244, 962)
+
+[node name="PositionNode" type="Node2D" parent="." unique_id=1534145685]
+position = Vector2(949, 194)
+
+[node name="PositionNode2" type="Node2D" parent="." unique_id=1152415517]
+position = Vector2(949, 450)
+
+[node name="PositionNode3" type="Node2D" parent="." unique_id=1926065377]
+position = Vector2(949, 706)
+
+[node name="PositionNode4" type="Node2D" parent="." unique_id=1819130756]
+position = Vector2(949, 962)
+
+[node name="MoveTeacher" parent="." unique_id=159780684 instance=ExtResource("10_dlght")]
+position = Vector2(1456, 188)
+Student = "Player1"
+
+[node name="MoveTeacher2" parent="." unique_id=6089985 instance=ExtResource("10_dlght")]
+position = Vector2(1456, 444)
+Student = "Player2"
+
+[node name="MoveTeacher3" parent="." unique_id=328265040 instance=ExtResource("10_dlght")]
+position = Vector2(1456, 700)
+Student = "Player3"
+
+[node name="MoveTeacher4" parent="." unique_id=1966516730 instance=ExtResource("10_dlght")]
+position = Vector2(1456, 956)
+Student = "Player4"

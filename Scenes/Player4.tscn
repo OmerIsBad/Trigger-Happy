@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dxsh7qrupoxrn" path="res://Assets/Player_Air_YELLOW.png" id="2_obhlv"]
 [ext_resource type="Texture2D" uid="uid://cek37gn6lflfl" path="res://Assets/Player_Idle_YELLOW.png" id="3_qqxj0"]
 [ext_resource type="Texture2D" uid="uid://bsdmoqaauoc3d" path="res://Assets/Player_Run_YELLOW.png" id="4_lnsv8"]
-[ext_resource type="PackedScene" uid="uid://ch7jjj0qi2bbs" path="res://Scenes/RocketLauncher.tscn" id="5_qqxj0"]
+[ext_resource type="PackedScene" uid="uid://dlgeapahsfg15" path="res://Scenes/Glock29.tscn" id="5_lnsv8"]
 [ext_resource type="PackedScene" uid="uid://5toaapbxf6gk" path="res://Scenes/SpawnShield.tscn" id="6_obhlv"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_qqxj0"]
 [ext_resource type="AudioStream" uid="uid://cpfxv2vx0p8c7" path="res://Assets/400sfx/Weapons/harsh_thud.wav" id="8_lnsv8"]
@@ -109,6 +109,7 @@ sprite_frames = SubResource("SpriteFrames_2nr5l")
 animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1167642926]
+visible = false
 position = Vector2(8, 6)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_g4pvc")
@@ -119,7 +120,7 @@ scale = Vector2(-1, 1)
 [node name="WeaponHolder" type="Node2D" parent="Hand" unique_id=1040076102]
 position = Vector2(28, 19)
 
-[node name="RocketLauncher" parent="Hand/WeaponHolder" unique_id=1929053549 instance=ExtResource("5_qqxj0")]
+[node name="Glock29" parent="Hand/WeaponHolder" unique_id=40949958 instance=ExtResource("5_lnsv8")]
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=966266317]
 one_shot = true

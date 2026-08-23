@@ -11,20 +11,21 @@ var CenterPreferenceStrength = 0.4  # 0 = ignore center entirely, 1 = always sit
 var MapCenter = Vector2(960,540)
 
 func _process(delta: float) -> void:
-	var Players = get_tree().get_nodes_in_group("players")
-	
-	if Players.is_empty():
-		return
-	
-	var AveragePosition = Vector2.ZERO
-	for Player in Players:
-		AveragePosition += Player.global_position
-	AveragePosition /= Players.size()
-	
-	#Blend between the players' average position and the map's center point
-	var TargetPosition = AveragePosition.lerp(MapCenter, CenterPreferenceStrength)
-	
-	#Clamp so the camera never crosses the top/bottom margins
-	TargetPosition.y = clamp(TargetPosition.y, TopMargin, BottomMargin)
-	
-	global_position = global_position.lerp(TargetPosition, CameraSpeed * delta)
+	if get_parent().name != "Tutorial":
+		var Players = get_tree().get_nodes_in_group("players")
+		
+		if Players.is_empty():
+			return
+		
+		var AveragePosition = Vector2.ZERO
+		for Player in Players:
+			AveragePosition += Player.global_position
+		AveragePosition /= Players.size()
+		
+		#Blend between the players' average position and the map's center point
+		var TargetPosition = AveragePosition.lerp(MapCenter, CenterPreferenceStrength)
+		
+		#Clamp so the camera never crosses the top/bottom margins
+		TargetPosition.y = clamp(TargetPosition.y, TopMargin, BottomMargin)
+		
+		global_position = global_position.lerp(TargetPosition, CameraSpeed * delta)

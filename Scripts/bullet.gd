@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Result:
 		var body = Result.collider
-		if body.is_in_group("players"):
+		if body.is_in_group("players") or body.is_in_group("ShootingDummys"):
 			if !body.has_node("SpawnShield"):
 				PlayerHit = body
 				ManageTextThrow()
@@ -82,6 +82,9 @@ func _physics_process(delta: float) -> void:
 			TurretHitSFX.finished.connect(TurretHitSFX.queue_free)
 			
 			queue_free()
+		
+		#elif body.is_in_group("ShootingDummys"):
+			#pass
 
 			
 		elif body.name == "Shield":

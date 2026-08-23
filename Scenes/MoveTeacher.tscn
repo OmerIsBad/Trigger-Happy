@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b278fvv0q412x"]
+
+[ext_resource type="Script" uid="uid://bd1kx3y2xpu3n" path="res://Scripts/MoveTeacher.gd" id="1_sn8x3"]
+[ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_qdayh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npw3m"]
+
+[node name="MoveTeacher" type="Node2D" unique_id=159780684]
+script = ExtResource("1_sn8x3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1364389770]
+collision_layer = 0
+collision_mask = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1761638609]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_npw3m")
+
+[node name="MoveText" type="RichTextLabel" parent="." unique_id=1605734616]
+offset_left = -406.0
+offset_top = -106.0
+offset_right = 406.0
+offset_bottom = -61.0
+theme_override_colors/default_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("2_qdayh")
+theme_override_font_sizes/normal_font_size = 32
+text = "WASD To Move Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

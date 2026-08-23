@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bd8nykbr4neys"]
 
+[ext_resource type="Script" uid="uid://b20ce2f0p7e77" path="res://Scripts/MainMenu.gd" id="1_853f1"]
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_tt5f1"]
 
 [node name="MainMenu" type="Control" unique_id=2014772209]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_853f1")
 
 [node name="CenterContainer" type="Control" parent="." unique_id=1521438968]
 layout_mode = 1
@@ -75,3 +77,5 @@ theme_override_fonts/font = ExtResource("1_tt5f1")
 theme_override_font_sizes/font_size = 32
 text = "QUIT
 "
+
+[connection signal="pressed" from="CenterContainer/StartButton" to="." method="_on_start_button_pressed"]

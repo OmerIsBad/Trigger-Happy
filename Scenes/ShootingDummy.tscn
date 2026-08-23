@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dkw1sc5lugk8p"]
+
+[ext_resource type="Script" uid="uid://c7wl4uuwatv4j" path="res://Scripts/ShootingDummy.gd" id="1_7bcat"]
+[ext_resource type="Texture2D" uid="uid://bhiurbevnl8pf" path="res://Assets/Dummy.png" id="1_8dh7x"]
+[ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_7bcat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phu8t"]
+size = Vector2(20, 47)
+
+[node name="ShootingDummy" type="CharacterBody2D" unique_id=1844008508]
+collision_layer = 262144
+collision_mask = 262145
+script = ExtResource("1_7bcat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1085909720]
+scale = Vector2(2, 2)
+texture = ExtResource("1_8dh7x")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1622386668]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_phu8t")
+
+[node name="TextBox" type="RichTextLabel" parent="." unique_id=1736818199]
+offset_left = -369.0
+offset_top = -101.0
+offset_right = 369.0
+offset_bottom = -31.0
+theme_override_colors/font_outline_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_7bcat")
+text = "
+Press X To Shoot
+Shoot The Dummy Off The Map"
+horizontal_alignment = 1

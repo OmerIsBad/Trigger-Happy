@@ -4,6 +4,9 @@ extends Node2D
 @onready var EquipSFX = $EquipSFX
 @onready var Area = $Area2D
 @onready var Sprite = $Sprite2D
+@onready var TextBox = $TextBox
+
+var Student
 
 var Items = {
 	"Dash": preload("res://Scenes/DashManager.tscn"),
@@ -35,6 +38,21 @@ var HasSpawned = false
 
 
 func _ready() -> void:
+	
+	if Student == "Player1":
+		TextBox.add_theme_color_override("font_outline_color", Color("b51111"))
+	if Student == "Player2":
+		TextBox.add_theme_color_override("font_outline_color", Color("115bb5"))
+	if Student == "Player3":
+		TextBox.add_theme_color_override("font_outline_color", Color("33af22"))
+	if Student == "Player4":
+		TextBox.add_theme_color_override("font_outline_color", Color("ffdb00"))
+	
+	if get_parent().name == "Tutorial":
+		TextBox.visible = true
+	else:
+		TextBox.visible = false
+	
 	add_to_group("ItemCrates")
 	Area.monitoring = false
 
@@ -73,7 +91,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		var Item = Items[ChosenItem].instantiate()
 		body.add_child(Item)
-		get_parent().RestartCrateShenanigans()
+		if get_parent().name != "Tutorial":
+			get_parent().RestartCrateShenanigans()
 		
 		var PopUpText = global.SummonText(ChosenItem, global_position,-1, -1)
 		get_tree().current_scene.add_child(PopUpText)
@@ -86,5 +105,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_crate_lifetime_timeout() -> void:
-	get_parent().RestartCrateShenanigans()
-	queue_free()
+	if get_parent().name != "Tutorial":
+		get_parent().RestartCrateShenanigans()
+		queue_free()

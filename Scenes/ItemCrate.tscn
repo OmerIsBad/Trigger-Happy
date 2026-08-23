@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dgevyloqkp3dd" path="res://Scripts/ItemCrate.gd" id="1_j4b5y"]
 [ext_resource type="Texture2D" uid="uid://dapd33tvi6mwq" path="res://Assets/RustyItemCrate.png" id="2_bi76j"]
 [ext_resource type="AudioStream" uid="uid://ebalw4ix6hy" path="res://Assets/Snake2/Snake's SECOND Authentic Gun Sounds/& More/Pistol/MP3/9mm Pistol Rack Full.mp3" id="3_k7g2m"]
+[ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="4_bi76j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyd4"]
 size = Vector2(64, 64)
@@ -34,6 +35,18 @@ pitch_scale = 0.78
 [node name="BirthTimer" type="Timer" parent="." unique_id=617181880]
 one_shot = true
 autostart = true
+
+[node name="TextBox" type="RichTextLabel" parent="." unique_id=1007636888]
+offset_left = -369.0
+offset_top = -69.0
+offset_right = 369.0
+offset_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("4_bi76j")
+text = "
+...And Special Items Here!"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="CrateLifetime" to="." method="_on_crate_lifetime_timeout"]

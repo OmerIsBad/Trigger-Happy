@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://2kx5irnd87eb"]
+
+[ext_resource type="Script" uid="uid://b7ilg1wt0m656" path="res://Scripts/Dummy.gd" id="1_f1xi6"]
+[ext_resource type="Texture2D" uid="uid://bhiurbevnl8pf" path="res://Assets/Dummy.png" id="1_jn6xg"]
+[ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_eigwb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eigwb"]
+size = Vector2(20, 47)
+
+[node name="Dummy" type="CharacterBody2D" unique_id=1089857632]
+collision_layer = 262144
+collision_mask = 262145
+script = ExtResource("1_f1xi6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1351006722]
+scale = Vector2(2, 2)
+texture = ExtResource("1_jn6xg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1862450121]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_eigwb")
+
+[node name="TextBox" type="RichTextLabel" parent="." unique_id=1994653737]
+offset_left = -369.0
+offset_top = -101.0
+offset_right = 369.0
+offset_bottom = -31.0
+theme_override_colors/font_outline_color = Color(0.70980394, 0.06666667, 0.06666667, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_eigwb")
+text = "
+Press C To Punch
+Punch The Dummy Off The Map"
+horizontal_alignment = 1

@@ -37,7 +37,7 @@ var TextAlreadyShown = false
 var HitSFXPlayed = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("players") and not ExemptPlayers.has(body.name):
+	if (body.is_in_group("players") and not ExemptPlayers.has(body.name)) or body.is_in_group("Dumm-E"):
 		if !body.has_node("SpawnShield"):
 			global.CameraShake(15.0, 0.2)
 
