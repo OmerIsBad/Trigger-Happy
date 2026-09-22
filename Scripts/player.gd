@@ -259,9 +259,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		NodeOverridePunch = false
 	
-	if Input.is_action_just_pressed("ui_accept") and name == "Player1" and !has_node("OSL"):
-		var poop = preload("res://Scenes/OSL.tscn").instantiate()
-		add_child(poop)
+	#if Input.is_action_just_pressed("ui_accept") and name == "Player1" and !has_node("OSL"):
+		#var poop = preload("res://Scenes/OSL.tscn").instantiate()
+		#add_child(poop)
 
 	if IsDashing:
 		DashTimer -= delta
