@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Trigger Happy"
-run/main_scene="uid://dw6qm7wwtw3f1"
+run/main_scene="uid://bd8nykbr4neys"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -29,7 +29,7 @@ window/stretch/mode="viewport"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/Omer Ahmed/Documents/GitHub/simple-gun-test/PortalDisplay.avi"
+movie_writer/movie_file="C:/Users/imome/OneDrive/Desktop/Godot/Trigger Happy/simple-gun-test/hazy.avi"
 
 [input]
 

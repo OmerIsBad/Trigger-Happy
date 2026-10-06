@@ -1,9 +1,9 @@
 extends Control
 
-var PlayerSelectScene = preload("uid://df58qbkqclty2")
+var MapSelectScreen = preload("res://Scenes/map_select_screen.tscn")
 
 func _on_start_button_pressed() -> void:
-	var NewScene = PlayerSelectScene.instantiate()
+	var NewScene = MapSelectScreen.instantiate()
 	get_tree().root.add_child(NewScene)
 	get_tree().current_scene = NewScene
 	queue_free()
