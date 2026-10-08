@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cif1ne6a20m7h" path="res://Assets/BackGrounds/Hazy Hollows/6 Hazy Hollows 8x.png" id="8_8vaqm"]
 [ext_resource type="Texture2D" uid="uid://bt3dsorriexuw" path="res://Assets/BackGrounds/Hazy Hollows/7 Hazy Hallows 8x.png" id="9_fxdvo"]
 [ext_resource type="Texture2D" uid="uid://b0hv45rtcm4dw" path="res://Assets/BackGrounds/Hazy Hollows/Parallax-buffers/6 Hazy Hollows MARGIN.png" id="11_2qne3"]
-[ext_resource type="Texture2D" uid="uid://cb3mufjqi7ctb" path="res://Assets/BackGrounds/Hazy Hollows/Parallax-buffers/7 Hazy Hollows MARGIN.png" id="13_qx4ln"]
+[ext_resource type="Texture2D" uid="uid://46gsx7orrfny" path="res://Assets/BackGrounds/Hazy Hollows/Parallax-buffers/7 Hazy Hollows MARGIN.png" id="13_qx4ln"]
 [ext_resource type="Texture2D" uid="uid://c2i1ddhl7y6jr" path="res://Assets/HazyHollowsDecor/StonePlatform_MID.png" id="14_qx4ln"]
 [ext_resource type="Texture2D" uid="uid://bs2tgct0yk6nn" path="res://Assets/HazyHollowsDecor/StonePlatform_LEFT.png" id="15_8vaqm"]
 [ext_resource type="Texture2D" uid="uid://c5ef1vx1oj67y" path="res://Assets/HazyHollowsDecor/StonePlatform_RIGHT.png" id="16_fxdvo"]
@@ -175,7 +175,8 @@ texture = ExtResource("11_2qne3")
 flip_h = true
 
 [node name="Parallax2D7" type="Parallax2D" parent="ParralaxBGNodes" unique_id=866135254]
-scroll_scale = Vector2(0.75, 0.75)
+z_index = 6
+scroll_scale = Vector2(1.25, 1.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1394890868]
 z_index = -1
@@ -199,8 +200,21 @@ flip_h = true
 [node name="Sprite2D4" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1449969408]
 z_index = -1
 position = Vector2(960, -548)
-scale = Vector2(3, 1)
 texture = ExtResource("13_qx4ln")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1761119087]
+z_index = -1
+position = Vector2(2880, -548)
+texture = ExtResource("13_qx4ln")
+flip_h = true
+flip_v = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=955220171]
+z_index = -1
+position = Vector2(-960, -548)
+texture = ExtResource("13_qx4ln")
+flip_h = true
+flip_v = true
 
 [node name="Platforms" type="Node2D" parent="." unique_id=1223080257]
 z_index = -1

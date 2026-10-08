@@ -79,3 +79,4 @@ text = "QUIT
 "
 
 [connection signal="pressed" from="CenterContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/QuitButton" to="." method="_on_quit_button_pressed"]
