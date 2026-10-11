@@ -56,9 +56,11 @@ data = PackedByteArray("SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYyLjMuMTAwAAAAAAAAAAAA
 loop = true
 
 [node name="OSL" type="Node2D" unique_id=755086435]
+light_mask = 2
 script = ExtResource("1_jyjyx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854186735]
+light_mask = 4
 sprite_frames = SubResource("SpriteFrames_ueoic")
 animation = &"Aim"
 autoplay = "Aim"

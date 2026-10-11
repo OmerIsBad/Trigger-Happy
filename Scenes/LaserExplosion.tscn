@@ -75,6 +75,7 @@ animations = [{
 }]
 
 [node name="LaserExplosion" type="AnimatedSprite2D" unique_id=1514493427]
+light_mask = 4
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_npw3m")
 autoplay = "default"

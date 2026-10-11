@@ -16,14 +16,122 @@
 [ext_resource type="Texture2D" uid="uid://c2i1ddhl7y6jr" path="res://Assets/HazyHollowsDecor/StonePlatform_MID.png" id="14_qx4ln"]
 [ext_resource type="Texture2D" uid="uid://bs2tgct0yk6nn" path="res://Assets/HazyHollowsDecor/StonePlatform_LEFT.png" id="15_8vaqm"]
 [ext_resource type="Texture2D" uid="uid://c5ef1vx1oj67y" path="res://Assets/HazyHollowsDecor/StonePlatform_RIGHT.png" id="16_fxdvo"]
+[ext_resource type="Texture2D" uid="uid://dpeucoiw2fcb5" path="res://Assets/HazyHollowsDecor/Spike_1.png" id="18_d0bff"]
+[ext_resource type="Texture2D" uid="uid://b65g60hmjrc03" path="res://Assets/HazyHollowsDecor/Spike_3.png" id="19_ad3fe"]
+[ext_resource type="Texture2D" uid="uid://b38b2slpkmfuj" path="res://Assets/HazyHollowsDecor/Spike_5.png" id="20_xelpi"]
+[ext_resource type="Texture2D" uid="uid://cu1oftg5w70td" path="res://Assets/HazyHollowsDecor/Spike_4.png" id="21_lov43"]
+[ext_resource type="Texture2D" uid="uid://3278lcd1tgdo" path="res://Assets/HazyHollowsDecor/Spike_6.png" id="22_e3vwu"]
+[ext_resource type="Texture2D" uid="uid://cvk0gl50hvesm" path="res://Assets/HazyHollowsDecor/HangingSpider.png" id="23_lov43"]
+[ext_resource type="Texture2D" uid="uid://boirwwoi8f6rt" path="res://Assets/HazyHollowsDecor/Web.png" id="24_e3vwu"]
+[ext_resource type="Texture2D" uid="uid://dewhvjxk4nvmn" path="res://Assets/HazyHollowsDecor/Spike_2.png" id="25_3qdal"]
+[ext_resource type="Texture2D" uid="uid://chliprbwkygbn" path="res://Assets/HazyHollowsDecor/Spike_7.png" id="26_m5ddr"]
+[ext_resource type="Texture2D" uid="uid://c8frfeeqhxhgk" path="res://Assets/HazyHollowsDecor/Web_2.png" id="27_m5ddr"]
+[ext_resource type="Texture2D" uid="uid://bsca7d70y5ky0" path="res://Assets/HazyHollowsDecor/Web_3.png" id="28_lm2o5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ucd5l"]
 a = Vector2(-366.75, -17.5)
 b = Vector2(366.25, -17.5)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pggyv"]
+polygon = PackedVector2Array(-367, -5, -367, -3, -349, 7, 350, 7, 368, -3, 368, -5, 366, -7, -365, -7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6tlnh"]
+polygon = PackedVector2Array(-367, -5, -367, -3, -349, 7, 350, 7, 368, -3, 368, -5, 366, -7, -365, -7)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_sagi0"]
 a = Vector2(257, -6)
 b = Vector2(-256, -6)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6e5wu"]
+polygon = PackedVector2Array(-257, -5, -257, -3, -239, 7, 240, 7, 258, -3, 258, -5, 256, -7, -255, -7)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m5ddr"]
+size = Vector2(6, 21)
+
+[sub_resource type="MultiMesh" id="MultiMesh_lm2o5"]
+instance_count = 14
+mesh = SubResource("QuadMesh_m5ddr")
+buffer = PackedFloat32Array(2, 0, 0, 840, 0, -2, 0, 471, 2, 0, 0, 919, 0, -2, 0, 471, 2, 0, 0, 833, 0, -2, 0, 714, 2, 0, 0, 802, 0, -2, 0, 714, 2, 0, 0, 1169, 0, -2, 0, 328, 2, 0, 0, 538, 0, -2, 0, 843, 2, 0, 0, 664, 0, -2, 0, 843, 2, 0, 0, 585, 0, -2, 0, 843, 2, 0, 0, 1179, 0, -2, 0, 714, 2, 0, 0, 1258, 0, -2, 0, 714, 2, 0, 0, 1132, 0, -2, 0, 714, 2, 0, 0, 709, 0, -2, 0, 986, 2, 0, 0, 835, 0, -2, 0, 986, 2, 0, 0, 756, 0, -2, 0, 986)
+
+[sub_resource type="QuadMesh" id="QuadMesh_nsgg2"]
+size = Vector2(6, 15)
+
+[sub_resource type="MultiMesh" id="MultiMesh_mjn4d"]
+instance_count = 7
+mesh = SubResource("QuadMesh_nsgg2")
+buffer = PackedFloat32Array(2, 0, 0, 824, 0, -2, 0, 465, 2, 0, 0, 783, 0, -2, 0, 708, 2, 0, 0, 1184, 0, -2, 0, 322, 2, 0, 0, 1301, 0, -2, 0, 465, 2, 0, 0, 553, 0, -2, 0, 837, 2, 0, 0, 1147, 0, -2, 0, 708, 2, 0, 0, 724, 0, -2, 0, 980)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vi48q"]
+size = Vector2(6, 9)
+
+[sub_resource type="MultiMesh" id="MultiMesh_3sq2a"]
+instance_count = 7
+mesh = SubResource("QuadMesh_vi48q")
+buffer = PackedFloat32Array(2, 0, 0, 862, 0, -2, 0, 459, 2, 0, 0, 819, 0, -2, 0, 702, 2, 0, 0, 732, 0, -2, 0, 702, 2, 0, 0, 1351, 0, -2, 0, 459, 2, 0, 0, 607, 0, -2, 0, 831, 2, 0, 0, 1201, 0, -2, 0, 702, 2, 0, 0, 778, 0, -2, 0, 974)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6prnv"]
+size = Vector2(6, 12)
+
+[sub_resource type="MultiMesh" id="MultiMesh_kyrrn"]
+instance_count = 8
+mesh = SubResource("QuadMesh_6prnv")
+buffer = PackedFloat32Array(2, 0, 0, 876, 0, -2, 0, 462, 2, 0, 0, 681, 0, -2, 0, 705, 2, 0, 0, 1271, 0, -2, 0, 462, 2, 0, 0, 621, 0, -2, 0, 834, 2, 0, 0, 569, 0, -2, 0, 834, 2, 0, 0, 1163, 0, -2, 0, 705, 2, 0, 0, 1215, 0, -2, 0, 705, 2, 0, 0, 792, 0, -2, 0, 977)
+
+[sub_resource type="QuadMesh" id="QuadMesh_w3mak"]
+size = Vector2(6, 6)
+
+[sub_resource type="MultiMesh" id="MultiMesh_lxjdk"]
+instance_count = 8
+mesh = SubResource("QuadMesh_w3mak")
+buffer = PackedFloat32Array(2, 0, 0, 896, 0, -2, 0, 456, 2, 0, 0, 750, 0, -2, 0, 699, 2, 0, 0, 1134, 0, -2, 0, 313, 2, 0, 0, 1315, 0, -2, 0, 456, 2, 0, 0, 503, 0, -2, 0, 828, 2, 0, 0, 641, 0, -2, 0, 828, 2, 0, 0, 1235, 0, -2, 0, 699, 2, 0, 0, 812, 0, -2, 0, 971)
+
+[sub_resource type="QuadMesh" id="QuadMesh_l7fgh"]
+size = Vector2(6, 18)
+
+[sub_resource type="MultiMesh" id="MultiMesh_mo0t2"]
+instance_count = 4
+mesh = SubResource("QuadMesh_l7fgh")
+buffer = PackedFloat32Array(2, 0, 0, 769, 0, -2, 0, 711, 2, 0, 0, 1153, 0, -2, 0, 325, 2, 0, 0, 1335, 0, -2, 0, 468, 2, 0, 0, 522, 0, -2, 0, 840)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5h11d"]
+size = Vector2(6, 3)
+
+[sub_resource type="MultiMesh" id="MultiMesh_kwa0b"]
+instance_count = 4
+mesh = SubResource("QuadMesh_5h11d")
+buffer = PackedFloat32Array(2, 0, 0, 716, 0, -2, 0, 696, 2, 0, 0, 1100, 0, -2, 0, 310, 2, 0, 0, 1285, 0, -2, 0, 453, 2, 0, 0, 469, 0, -2, 0, 825)
+
+[sub_resource type="QuadMesh" id="QuadMesh_v375v"]
+size = Vector2(39, 22)
+
+[sub_resource type="MultiMesh" id="MultiMesh_jkye2"]
+instance_count = 5
+mesh = SubResource("QuadMesh_v375v")
+buffer = PackedFloat32Array(2, 0, 0, 385, 0, -2, 0, 715, -2, 0, 0, 1438, 0, -2, 0, 329, -2, 0, 0, 1102, 0, -2, 0, 472, -2, 0, 0, 1535, 0, -2, 0, 715, 2, 0, 0, 1439, 0, -2, 0, 715)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wb15h"]
+size = Vector2(60, 32)
+
+[sub_resource type="MultiMesh" id="MultiMesh_xlhbo"]
+instance_count = 4
+mesh = SubResource("QuadMesh_wb15h")
+buffer = PackedFloat32Array(2, 0, 0, 1491, 0, -2, 0, 339, -2, 0, 0, 1045, 0, -2, 0, 482, 2, 0, 0, 1478, 0, -2, 0, 725, 2, 0, 0, 927, 0, -2, 0, 854)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hbbrj"]
+size = Vector2(1, 8)
+
+[sub_resource type="MultiMesh" id="MultiMesh_q8sq5"]
+instance_count = 3
+mesh = SubResource("QuadMesh_hbbrj")
+buffer = PackedFloat32Array(2, 0, 0, 1046, 0, -2, 0, 508, 2, 0, 0, 1046, 0, -2, 0, 524, 2, 0, 0, 1479, 0, -2, 0, 751)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ebw7t"]
+size = Vector2(15, 24)
+
+[sub_resource type="MultiMesh" id="MultiMesh_u3u46"]
+instance_count = 2
+mesh = SubResource("QuadMesh_ebw7t")
+buffer = PackedFloat32Array(2, 0, 0, 1046, 0, -2, 0, 556, 2, 0, 0, 1479, 0, -2, 0, 783)
 
 [node name="CaveMap" type="Node2D" unique_id=406216306]
 script = ExtResource("1_pv0i2")
@@ -179,18 +287,21 @@ z_index = 6
 scroll_scale = Vector2(1.25, 1.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1394890868]
+light_mask = 2
 z_index = -1
 position = Vector2(960, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("9_fxdvo")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1245927115]
+light_mask = 2
 z_index = -1
 position = Vector2(2880, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("9_fxdvo")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=526705223]
+light_mask = 2
 z_index = -1
 position = Vector2(-960, 540)
 scale = Vector2(2, 2)
@@ -198,11 +309,13 @@ texture = ExtResource("9_fxdvo")
 flip_h = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1449969408]
+light_mask = 2
 z_index = -1
 position = Vector2(960, -548)
 texture = ExtResource("13_qx4ln")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=1761119087]
+light_mask = 2
 z_index = -1
 position = Vector2(2880, -548)
 texture = ExtResource("13_qx4ln")
@@ -210,11 +323,19 @@ flip_h = true
 flip_v = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="ParralaxBGNodes/Parallax2D7" unique_id=955220171]
+light_mask = 2
 z_index = -1
 position = Vector2(-960, -548)
 texture = ExtResource("13_qx4ln")
 flip_h = true
 flip_v = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1915327027]
+color = Color(0.7254902, 0.73333335, 0.84705883, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=658170860]
+color = Color(0.27450982, 0.26666668, 0.15294118, 1)
+range_item_cull_mask = 4
 
 [node name="Platforms" type="Node2D" parent="." unique_id=1223080257]
 z_index = -1
@@ -243,6 +364,9 @@ scale = Vector2(1, 0.4)
 shape = SubResource("SegmentShape2D_ucd5l")
 one_way_collision = true
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platforms/GrassPlatform" unique_id=396388292]
+occluder = SubResource("OccluderPolygon2D_pggyv")
+
 [node name="GrassPlatform2" type="StaticBody2D" parent="Platforms" unique_id=717233110]
 position = Vector2(1430, 685)
 
@@ -266,6 +390,9 @@ position = Vector2(0.75, 0)
 scale = Vector2(1, 0.4)
 shape = SubResource("SegmentShape2D_ucd5l")
 one_way_collision = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platforms/GrassPlatform2" unique_id=434715515]
+occluder = SubResource("OccluderPolygon2D_pggyv")
 
 [node name="GrassPlatform3" type="StaticBody2D" parent="Platforms" unique_id=1237033083]
 position = Vector2(1166, 442)
@@ -291,6 +418,9 @@ scale = Vector2(1, 0.4)
 shape = SubResource("SegmentShape2D_ucd5l")
 one_way_collision = true
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platforms/GrassPlatform3" unique_id=2115901378]
+occluder = SubResource("OccluderPolygon2D_6tlnh")
+
 [node name="GrassPlatform6" type="StaticBody2D" parent="Platforms" unique_id=1794446839]
 position = Vector2(1315, 299)
 
@@ -312,6 +442,9 @@ one_way_collision = true
 position = Vector2(250, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("16_fxdvo")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platforms/GrassPlatform6" unique_id=156314689]
+occluder = SubResource("OccluderPolygon2D_6e5wu")
 
 [node name="GrassPlatform4" type="StaticBody2D" parent="Platforms" unique_id=198447579]
 position = Vector2(754, 814)
@@ -337,6 +470,9 @@ scale = Vector2(1, 0.4)
 shape = SubResource("SegmentShape2D_ucd5l")
 one_way_collision = true
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platforms/GrassPlatform4" unique_id=1065862094]
+occluder = SubResource("OccluderPolygon2D_6tlnh")
+
 [node name="GrassPlatform7" type="StaticBody2D" parent="Platforms" unique_id=899745591]
 position = Vector2(605, 957)
 
@@ -359,6 +495,9 @@ texture = ExtResource("16_fxdvo")
 shape = SubResource("SegmentShape2D_sagi0")
 one_way_collision = true
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platforms/GrassPlatform7" unique_id=221451031]
+occluder = SubResource("OccluderPolygon2D_6e5wu")
+
 [node name="Spawn1" type="Node2D" parent="." unique_id=1980867765]
 position = Vector2(365, -500)
 
@@ -370,3 +509,54 @@ position = Vector2(1159, -500)
 
 [node name="Spawn4" type="Node2D" parent="." unique_id=572447692]
 position = Vector2(1556, -504)
+
+[node name="Decor" type="Node2D" parent="." unique_id=2120640597]
+
+[node name="Baked_0_Spike_1" type="MultiMeshInstance2D" parent="Decor" unique_id=1866231941]
+multimesh = SubResource("MultiMesh_lm2o5")
+texture = ExtResource("18_d0bff")
+
+[node name="Baked_1_Spike_3" type="MultiMeshInstance2D" parent="Decor" unique_id=813511806]
+multimesh = SubResource("MultiMesh_mjn4d")
+texture = ExtResource("19_ad3fe")
+
+[node name="Baked_2_Spike_5" type="MultiMeshInstance2D" parent="Decor" unique_id=1720559233]
+multimesh = SubResource("MultiMesh_3sq2a")
+texture = ExtResource("20_xelpi")
+
+[node name="Baked_3_Spike_4" type="MultiMeshInstance2D" parent="Decor" unique_id=1075117955]
+multimesh = SubResource("MultiMesh_kyrrn")
+texture = ExtResource("21_lov43")
+
+[node name="Baked_4_Spike_6" type="MultiMeshInstance2D" parent="Decor" unique_id=644890691]
+multimesh = SubResource("MultiMesh_lxjdk")
+texture = ExtResource("22_e3vwu")
+
+[node name="Baked_5_Spike_2" type="MultiMeshInstance2D" parent="Decor" unique_id=176133421]
+multimesh = SubResource("MultiMesh_mo0t2")
+texture = ExtResource("25_3qdal")
+
+[node name="Baked_6_Spike_7" type="MultiMeshInstance2D" parent="Decor" unique_id=745845254]
+multimesh = SubResource("MultiMesh_kwa0b")
+texture = ExtResource("26_m5ddr")
+
+[node name="Baked_7_Web_2" type="MultiMeshInstance2D" parent="Decor" unique_id=1039899284]
+multimesh = SubResource("MultiMesh_jkye2")
+texture = ExtResource("27_m5ddr")
+
+[node name="Baked_8_Web_3" type="MultiMeshInstance2D" parent="Decor" unique_id=1898541850]
+multimesh = SubResource("MultiMesh_xlhbo")
+texture = ExtResource("28_lm2o5")
+
+[node name="Baked_9_Web" type="MultiMeshInstance2D" parent="Decor" unique_id=909360073]
+multimesh = SubResource("MultiMesh_q8sq5")
+texture = ExtResource("24_e3vwu")
+
+[node name="Baked_10_HangingSpider" type="MultiMeshInstance2D" parent="Decor" unique_id=779641906]
+multimesh = SubResource("MultiMesh_u3u46")
+texture = ExtResource("23_lov43")
+
+[node name="READ ME" type="RichTextLabel" parent="." unique_id=1233779465]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "MAKE THE RADIAL LIGHT THINGY NOT SHOW ON MAPS THAT DONT NEED IT BY ADDING A SCRIPT TO THE RADIAL LIGHT THINKY TO MAKE IT DETECT THE PARENTS NAME AND TURN OFF ITS VISIBILITY DEPENDING ON IT IDK HOW TO DO THAT THATS FUTURE ME'S PROBLEM AKA YOU"

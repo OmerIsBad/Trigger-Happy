@@ -73,6 +73,7 @@ position = Vector2(0, -50)
 shape = SubResource("CircleShape2D_npw3m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1182401847]
+light_mask = 4
 position = Vector2(-5.9604645e-08, -50)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_npw3m")

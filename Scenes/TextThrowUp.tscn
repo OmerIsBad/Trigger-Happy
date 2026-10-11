@@ -7,6 +7,7 @@
 script = ExtResource("1_eqckt")
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=1562639977]
+light_mask = 4
 offset_left = -545.0
 offset_top = -27.0
 offset_right = 545.0

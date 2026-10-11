@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var PunchTimer = $PunchCoolDown
 @onready var ItemInstructor = $ItemInstructor
 @onready var LandSFX = $LandSFX
+@onready var ShadowLight = $ShadowLight
 
 var SpawnShieldScene = preload("res://Scenes/SpawnShield.tscn")
 var PunchingScene = preload("res://Scenes/Punch.tscn")
@@ -172,7 +173,14 @@ func _ready() -> void:
 		ItemInstructor.add_theme_color_override("font_outline_color", Color("33af22"))
 	if name == "Player4":
 		ItemInstructor.add_theme_color_override("font_outline_color", Color("ffdb00"))
-
+	
+	#LIST OF ALL MAPS THAT DO NOT NEED THE FRICKING LIGHT
+	if get_parent().name.to_lower() == "level":
+		ShadowLight.visible = false
+	#LIST OF ALL MAPS THAT DO
+	if get_parent().name.to_lower() == "cavemap":
+		ShadowLight.visible = true
+	
 
 
 
