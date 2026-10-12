@@ -555,8 +555,3 @@ texture = ExtResource("24_e3vwu")
 [node name="Baked_10_HangingSpider" type="MultiMeshInstance2D" parent="Decor" unique_id=779641906]
 multimesh = SubResource("MultiMesh_u3u46")
 texture = ExtResource("23_lov43")
-
-[node name="READ ME" type="RichTextLabel" parent="." unique_id=1233779465]
-offset_right = 40.0
-offset_bottom = 40.0
-text = "MAKE THE RADIAL LIGHT THINGY NOT SHOW ON MAPS THAT DONT NEED IT BY ADDING A SCRIPT TO THE RADIAL LIGHT THINKY TO MAKE IT DETECT THE PARENTS NAME AND TURN OFF ITS VISIBILITY DEPENDING ON IT IDK HOW TO DO THAT THATS FUTURE ME'S PROBLEM AKA YOU"
