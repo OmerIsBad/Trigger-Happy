@@ -16,6 +16,7 @@ var Recoil = 1050.0
 var FireRate = 1.0
 var MagSize = 8 #-1 for infinite
 var GunName = "PumpShotgun"
+var GunType = "SHOTGUN"
 var CanShoot = true
 
 #Bullet Stats

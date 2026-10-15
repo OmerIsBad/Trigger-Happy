@@ -174,22 +174,19 @@ func _ready() -> void:
 	if name == "Player4":
 		ItemInstructor.add_theme_color_override("font_outline_color", Color("ffdb00"))
 	
-	##LIST OF ALL MAPS THAT DO NOT NEED THE FRICKING LIGHT
-	#if get_parent().name.to_lower() == "level":
-		#ShadowLight.visible = false
-	##LIST OF ALL MAPS THAT DO
-	#if get_parent().name.to_lower() == "cavemap":
-		#ShadowLight.visible = true
+	#LIST OF ALL MAPS THAT DO NOT NEED THE FRICKING LIGHT
+	if get_parent().name.to_lower() == "level":
+		ShadowLight.visible = false
+	#LIST OF ALL MAPS THAT DO
+	if get_parent().name.to_lower() == "cavemap":
+		ShadowLight.visible = true
 	
-
-
 
 func _physics_process(delta: float) -> void:
 	if position.y > YBoundary:
 		Respawn()
 		return
 
-	
 	
 	#To prevent inconsistent death times after being shot off
 	#the map, we let Yboundary kill the player, and keep

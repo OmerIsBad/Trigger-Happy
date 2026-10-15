@@ -16,6 +16,7 @@ var Recoil = 375.0
 var FireRate = 0.5
 var MagSize = 6 #-1 for infinite
 var GunName = "Revolver"
+var GunType = "PISTOL"
 var CanShoot = true
 
 #Bullet Stats

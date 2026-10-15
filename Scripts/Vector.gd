@@ -14,6 +14,7 @@ var Recoil = 200.0
 var FireRate = 0.1
 var MagSize = 45 #-1 for infinite
 var GunName = "Vector"
+var GunType = "AR"
 var CanShoot = true
 
 #Bullet Stats

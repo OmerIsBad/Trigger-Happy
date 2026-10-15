@@ -15,6 +15,7 @@ var Recoil = 1100.0
 var FireRate = 0.4
 var MagSize = 6 #-1 for infinite
 var GunName = "Musket"
+var GunType = "PISTOL"
 var CanShoot = true
 
 #Bullet Stats

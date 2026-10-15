@@ -14,6 +14,7 @@ var Recoil = 250.0
 var FireRate = 0.2
 var MagSize = 30 #-1 for infinite
 var GunName = "AK47"
+var GunType = "AR"
 var CanShoot = true
 
 #Bullet Stats

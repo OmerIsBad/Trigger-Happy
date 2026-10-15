@@ -16,6 +16,7 @@ var Recoil = 300.0
 var FireRate = 0.3
 var MagSize = 12 #-1 for infinite
 var GunName = "GoldenEagle"
+var GunType = "PISTOL"
 var CanShoot = true
 
 #Bullet Stats

@@ -14,6 +14,7 @@ var Recoil = 300.0
 var FireRate = 0.4
 var MagSize = 5 #-1 for infinite
 var GunName = "GrenadeLauncher"
+var GunType = "LOBBER"
 var CanShoot = true
 
 #Grenade Stats

@@ -14,6 +14,7 @@ var Recoil = 275.0
 var FireRate = 0.175
 var MagSize = 30 #-1 for infinite
 var GunName = "Ace"
+var GunType = "AR"
 var CanShoot = true
 
 #Bullet Stats

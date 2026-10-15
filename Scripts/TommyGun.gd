@@ -14,6 +14,7 @@ var Recoil = 250.0
 var FireRate = 0.1
 var MagSize = 60 #-1 for infinite
 var GunName = "TommyGun"
+var GunType = "AR"
 var CanShoot = true
 
 #Bullet Stats

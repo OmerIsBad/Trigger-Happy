@@ -16,6 +16,7 @@ var Recoil = 725.0
 var FireRate = 1.75
 var MagSize = 5 #-1 for infinite
 var GunName = "AWM_Sniper"
+var GunType = "SNIPER"
 var CanShoot = true
 
 #Bullet Stats

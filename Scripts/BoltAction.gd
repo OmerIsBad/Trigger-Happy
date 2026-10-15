@@ -16,6 +16,7 @@ var Recoil = 1300.0
 var FireRate = 1.25
 var MagSize = 5 #-1 for infinite
 var GunName = "BoltActionSniper"
+var GunType = "SNIPER"
 var CanShoot = true
 
 #Bullet Stats

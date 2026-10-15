@@ -14,6 +14,7 @@ var Recoil = 300.0
 var FireRate = 0.3
 var MagSize = 15 #-1 for infinite
 var GunName = "AutoShotgun"
+var GunType = "SHOTGUN"
 var CanShoot = true
 
 #Bullet Stats

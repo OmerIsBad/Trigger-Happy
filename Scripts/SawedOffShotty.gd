@@ -15,6 +15,7 @@ var Recoil = 975.0
 var FireRate = 0.4
 var MagSize = 7 #-1 for infinite
 var GunName = "SawedOffShotty"
+var GunType = "SHOTGUN"
 var CanShoot = true
 
 #Bullet Stats

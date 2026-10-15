@@ -14,6 +14,7 @@ var Recoil = 150.0
 var FireRate = 0.075
 var MagSize = 65 #-1 for infinite
 var GunName = "Uzi"
+var GunType = "PISTOL"
 var CanShoot = true
 
 #Bullet Stats

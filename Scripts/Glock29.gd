@@ -18,6 +18,7 @@ var Recoil = 250.0
 var FireRate = 0.3
 var MagSize = -1 #-1 for infinite
 var GunName = "Glock29"
+var GunType = "PISTOL"
 var CanShoot = true
 
 #Bullet Stats

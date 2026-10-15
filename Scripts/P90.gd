@@ -14,6 +14,7 @@ var Recoil = 200.0
 var FireRate = 0.125
 var MagSize = 45 #-1 for infinite
 var GunName = "P90"
+var GunType = "AR"
 var CanShoot = true
 
 #Bullet Stats

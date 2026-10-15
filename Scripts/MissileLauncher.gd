@@ -14,6 +14,7 @@ var Recoil = 1200.0
 var FireRate = 2.00
 var MagSize = 3 #-1 for infinite
 var GunName = "MissileLauncher"
+var GunType = "mLAUNCHER"
 var CanShoot = true
 
 #Rocket Stats

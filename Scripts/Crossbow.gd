@@ -16,6 +16,7 @@ var Recoil = 0.0
 var FireRate = 2.25
 var MagSize = 4 #-1 for infinite
 var GunName = "CrossBow"
+var GunType = "SNIPER"
 var CanShoot = true
 
 #Bullet Stats

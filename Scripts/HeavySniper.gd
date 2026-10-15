@@ -16,6 +16,7 @@ var Recoil = 900.0
 var FireRate = 0.75
 var MagSize = 15 #-1 for infinite
 var GunName = "Heavy_Sniper"
+var GunType = "SNIPER"
 var CanShoot = true
 
 #Bullet Stats
