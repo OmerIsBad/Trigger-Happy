@@ -4,8 +4,8 @@ extends Node2D
 var WeaponsCrate = preload("res://Scenes/WeaponCrate.tscn")
 var ItemCrate = preload("res://Scenes/ItemCrate.tscn")
 var MaxCrates: int = 2
-var MinSpawnDelay: int = 10
-var MaxSpawnDelay: int = 30
+var MinSpawnDelay: int = 5
+var MaxSpawnDelay: int = 10
 var SpawnJitterRange: int = 150
 var CrateGroupName: String = "WeaponCrates"
 var ItemCrateGroupName: String = "ItemCrates"

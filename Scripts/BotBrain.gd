@@ -2,18 +2,51 @@ extends Node
 #This code is fucking insane. 
 #This is the single longest and most complex piece of code ive ever written
 
+enum DifficultyPresets { EASY, MEDIUM, HARD, IMPOSSIBLE }
+
+@export var Difficulty: DifficultyPresets = DifficultyPresets.MEDIUM:
+	set(value):
+		Difficulty = value
+		_apply_difficulty_preset(value)
+		notify_property_list_changed() #this is to force refreshing
+
 enum State { Idle, Chase, Fight, UseItem, Recover }
 
 @export_group("Difficulty")
 @export var ThinkInterval := 0.2
 @export_range(0.0, 1.0) var ThinkJitter := 0.25
 @export_range(0.0, 1.0) var MissChance := 0.0
-@export var ShootYTolerance := 120.0
+@export var ShootYTolerance := 70.0
+
+#Internal helper to apply the fucking preset numbers
+func _apply_difficulty_preset(preset: DifficultyPresets) -> void:
+	match preset: # GDScript uses match instead of switch for some fucking reason
+		DifficultyPresets.EASY:
+			ThinkInterval = 0.5
+			ThinkJitter = 0.40
+			MissChance = 0.35
+			ShootYTolerance = 120.0
+		DifficultyPresets.MEDIUM:
+			ThinkInterval = 0.2
+			ThinkJitter = 0.25
+			MissChance = 0.1
+			ShootYTolerance = 70.0
+		DifficultyPresets.HARD:
+			ThinkInterval = 0.08
+			ThinkJitter = 0.10
+			MissChance = 0.05
+			ShootYTolerance = 35.0
+		DifficultyPresets.IMPOSSIBLE:
+			ThinkInterval = 0.01
+			ThinkJitter = 0.0
+			MissChance = 0.0
+			ShootYTolerance = 15.0
+
 
 @export_group("Combat")
 @export var ShootRange := 700.0
 @export var StopDistance := 150.0
-@export var PunchRange := 90.0
+@export var PunchRange := 50.0 # maybe consider 90 maybe idk
 
 @export_group("Navigation")
 @export_flags_2d_physics var GroundMask := 1
