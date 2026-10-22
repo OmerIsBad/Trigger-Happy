@@ -159,7 +159,6 @@ texture = ExtResource("9_sqc4o")
 [node name="BotBrain" type="Node" parent="." unique_id=75599693]
 process_physics_priority = -1
 script = ExtResource("10_sqc4o")
-Difficulty = 3
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]
