@@ -9,7 +9,6 @@
 [ext_resource type="FontFile" uid="uid://bgwujr3aeg6pe" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="8_tchc4"]
 [ext_resource type="Texture2D" uid="uid://dojn4a643t6y5" path="res://Assets/RadialLightTexture.png" id="9_gv6sk"]
 [ext_resource type="AudioStream" uid="uid://cpfxv2vx0p8c7" path="res://Assets/400sfx/Weapons/harsh_thud.wav" id="9_h0l6a"]
-[ext_resource type="Script" uid="uid://b1xcurv0yiw2r" path="res://Scripts/BotBrain.gd" id="10_gv6sk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8ro"]
 atlas = ExtResource("2_2ale3")
@@ -155,10 +154,6 @@ scale = Vector2(5, 5)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("9_gv6sk")
-
-[node name="BotBrain" type="Node" parent="." unique_id=1423160990]
-process_physics_priority = -1
-script = ExtResource("10_gv6sk")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="PunchCoolDown" to="." method="_on_punch_cool_down_timeout"]
